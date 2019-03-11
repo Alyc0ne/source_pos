@@ -1,0 +1,153 @@
+﻿    .nt-wrapper .nt-wrapper-topic {
+        width:100%;
+        float:left;
+        padding: 10px 0 10px 0;
+    }
+    .nt-wrapper .nt-wrapper-topic .subtopic {
+        width: 50%;
+        float: left; 
+    }
+    .table-nt {
+        width: 100%;
+        border: 1px solid #ccc;
+} 
+    .table-nt tr {
+        height:40px;
+    }
+    .table-nt tbody tr {
+        border-top: 1px solid #ccc;
+    }
+    .table-nt tbody tr.checked {
+        background-color:#D8E6FB;
+    }
+     
+    .table-nt td {
+        padding: 5px;
+        border-left: 0px !important;
+        border-radius: 0px !important;
+} 
+    .table-nt th {
+        padding: 10px 5px 10px 5px;
+        border-bottom: none !important;
+        background-color: #F2F2F2;
+        border-left: 0px !important;
+        border-radius: 0px !important;
+    } 
+    .table-nt th.cd-checkbox, .table-nt td.cd-checkbox {
+            width: 5%;
+            text-align: center;
+        } 
+    .table-nt th.cd-managebtn, .table-nt td.cd-managebtn {
+            width: 6%;
+            text-align: center;
+        }
+    .table-nt .cd-managebtn span {
+        position: relative; 
+        cursor:pointer;
+    } 
+    .table-nt th.cd-listno, .table-nt td.cd-listno {
+        width: 6%;
+        text-align: center;
+    } 
+    .table-nt th.cd-info, .table-nt td.cd-info {
+        width: 83.5%;
+    }
+    .table-nt td.cd-info .nt-note{
+        max-height:90px;
+        overflow:auto; 
+    }
+
+    .nt-edit {
+        float: left;
+        height: 20px;
+        width: 20px;
+        display: block;
+        background-image: url("/Content/Default/Images/icon-default/icon-grid-edit.png");
+    }
+
+    .nt-delete {
+        float: left;
+        height: 20px;
+        width: 20px;
+        display: block;
+        background-image: url("/Content/Default/Images/icon-default/icon-grid-remove.png");
+    }
+
+    .nt-save {
+        float: left;
+        height: 20px;
+        width: 20px;
+        display: block;
+        background-image: url("/Content/Default/Images/icon-default/icon-grid-save.png");
+    }
+
+    .nt-cancel {
+        float: left;
+        height: 20px;
+        width: 20px;
+        display: block;
+        background-image: url("/Content/Default/Images/icon-default/icon-grid-delete.png");
+    }
+
+    .nt-list-file {
+        width: 100%;
+        float: left;
+        margin-top: 5px;
+    }
+
+    .nt-file-content {
+        float: left;
+        margin-right: 10px;
+        /*padding-left: 15px;
+        background-image: url('/Content/Default/Images/icon-default/icon-attachment.png');
+        background-repeat: no-repeat;
+        background-position: 0;*/
+        cursor: pointer;
+        max-width: 170px;
+        display: block;
+        margin-right: 1px;
+    }
+    .nt-file {
+        max-width: 130px;
+        float: left;
+        -o-text-overflow: ellipsis;   
+        text-overflow: ellipsis; 
+        overflow: hidden; 
+        white-space: nowrap;  
+        margin-right: 2px;
+    }
+    /*.nt-file-delete {
+        color: #FF0000;
+        font-size:13px;
+        margin-left:5px;
+    } */
+    .nt-file-delete {
+        margin: 1px;
+        padding-left: 17px;
+        background-image: url('/Content/Default/Images/icon-default/icon-grid-delete.png');
+        background-repeat: no-repeat;
+        background-position: 0;
+        background-size: 17px;
+    }
+    .nt-file-preview {
+        margin: 1px;
+        padding-left: 12px;
+        background-image: url('/Content/Default/Images/icon-default/icon-magnifier.png');
+        background-repeat: no-repeat;
+        background-position: 0;
+        background-size: 12px;
+    }
+    #form-nt-note {
+        height: 35px;
+        width: 100%;
+    }
+    .nt-remark{
+        float:left;
+        margin-left:10px;
+    }
+    .nt-remark label {
+        cursor: pointer;
+    }
+    .nt-wrapper input[type=checkbox]{
+        cursor:pointer;
+    }

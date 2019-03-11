@@ -1,0 +1,675 @@
+﻿.transac-grid{
+    width: 100%;
+    border: 1px solid #D7D7D7;
+    float:left;
+} 
+.transac-grid .rows,
+.transac-grid .rows-left
+{
+    display: table;
+    width: 100%;
+    border-bottom: 1px #D7D7D7 solid;
+}
+.transac-grid .rows._checked{
+    background-color:#D8E6FB;
+}
+.transac-grid .rows-nodata{
+    height: 40px;
+    padding: 10px;
+    border-bottom: 1px #D7D7D7 solid;
+}
+.transac-grid .td{
+    float: left;
+    padding: 10px 5px 10px 5px;
+    position: relative;
+    
+    -o-text-overflow: ellipsis; /* Opera */
+    text-overflow: ellipsis; /* IE, Safari (WebKit) */
+    overflow: hidden; /* don't show excess chars */
+    white-space: nowrap; /* force single line */
+}
+
+.transac-grid-wrapper {
+    float:left;
+    width:100%;
+    padding-top:10px;
+}  
+.transac-grid-wrapper .transac-grid-topic{
+    float:left;
+    width:100%;
+    padding:10px 0 10px 0;
+}
+.transac-grid-wrapper .transac-grid-topic .subtopic{ 
+    height: 25px;
+    font-weight: 700;
+    color: #000000;
+    float: left;  
+}
+.transac-grid-wrapper .transac-grid-topic .btn-group-manage{
+    float:right;
+}
+.transac-grid-wrapper .transac-grid-topic .btn-group-manage .btn.btn-other.btn-add{
+    padding-left:30px;
+    background-image : url("/Content/Default/Images/icon-default/icon-add.png");
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    background-position: 7px;
+    width:110px;
+}
+.transac-grid-wrapper .transac-grid-topic .btn-group-manage .btn.btn-other.btn-add.nonstock{ 
+    width:140px;
+}
+.transac-grid-wrapper.transac-deposit .transac-grid-topic .btn-group-manage .btn.btn-other.btn-add{ 
+    width:110px;
+}
+.transac-grid-wrapper .transac-grid-topic .btn-group-manage .btn.btn-other.btn-insert {
+    padding-left: 30px;
+    background-image : url("/Content/Default/Images/icon-default/icon-insert.png");
+    background-repeat: no-repeat; 
+    background-size: 20px;
+    background-position: 11px;
+    width:100px;
+}
+
+.transac-grid-wrapper.transac-deposit .transac-grid-topic .btn-group-manage .btn.btn-other.btn-insert { 
+    width:120px;
+}
+.transac-grid-wrapper .transac-grid-topic .btn-group-manage .btn.btn-other.btn-bin { 
+    background-image: url("/Content/Default/Images/icon-default/icon-delete.png");
+    background-repeat: no-repeat;
+    background-size: 17px;
+    background-position: 8px;
+    width: 34px;
+}
+.transac-grid-wrapper .transac-grid-header{
+
+}
+
+.transac-grid-header{
+    background-color: #F2F2F2;
+}
+.transac-grid-header .tg-w3 {width:3%;} 
+.transac-grid-header .tg-w4 ,
+.transac-grid-header .tg-w6 ,
+.transac-grid-header .tg-w8 ,
+.transac-grid-header .tg-w9-2 ,
+.transac-grid-header .tg-w12 ,
+.transac-grid-header .tg-w12_85{ width:12.85%;}
+.transac-grid-header .tg-w10_4 {width:10.4%;}
+/*.transac-grid-header .tg-w10_6 {width:10.65%;}*/
+.transac-grid-header .tg-w10 {width:10%;}
+.transac-grid-header .tg-w8-8 {width:8.88%;}
+.transac-grid-header .tg-w18 {width:18%;}
+.transac-grid-header .tg-w13 ,
+.transac-grid-header .tg-w13-85 ,
+.transac-grid-header .tg-w14 ,
+.transac-grid-header .tg-w15 ,
+.transac-grid-header .tg-w16 ,
+.transac-grid-header .tg-w17 ,
+.transac-grid-header .tg-w20 ,
+.transac-grid-header .tg-w35 ,
+.transac-grid-header .tg-w37 ,
+.transac-grid-header .tg-w40 ,
+.transac-grid-header .tg-w43 ,
+.transac-grid-header .tg-53 ,
+.transac-grid-header .tg-w76{
+    border-top: 0px;
+}
+.transac-grid-wrapper .transac-grid-body{
+    float:left;
+    width:100%;
+    max-height: 255px;
+    overflow: auto;
+} 
+/*.transac-grid-wrapper .transac-grid-body .rows{
+    cursor :pointer;
+}*/
+.transac-grid-wrapper .transac-grid-body .picker-no {
+    padding-right:22px;
+}
+.transac-grid-wrapper .transac-grid-footer input{
+    height:30px;
+}
+.transac-grid-wrapper .transac-grid-body textarea{
+    padding-top:5px!important;
+}
+.transac-grid-wrapper .transac-grid-footer .vat-wrapper{
+    padding:0px!important;
+}
+.transac-grid-wrapper .transac-grid-footer select.transac-vat{ 
+    height:30px;
+    border:0px;
+    cursor:pointer;
+}
+
+.transac-grid-wrapper .transac-grid-footer{
+    width: 100%;
+    float: left; 
+    background-color: #F8F8F8;
+}
+.transac-grid-wrapper .transac-grid-footer.bg-color-footer, .transac-grid-wrapper .transac-grid-footer.bg-color-footer .remark, .transac-grid-wrapper .transac-grid-footer.bg-color-footer .num-dis{
+    background-color: #F2F2F2 !important;
+}
+.transac-grid-wrapper .transac-grid-footer .td{
+    height:30px;
+}
+.transac-grid-wrapper .transac-grid-footer .footer-left{
+    float: left;
+    width: 50%;
+    height: 185px;
+    background-color: #F8F8F8;
+}
+.transac-grid-wrapper .transac-grid-footer .footer-left._deposit{ 
+    height: 123px; 
+}
+.transac-grid-wrapper .transac-grid-footer .footer-left.receipts { 
+    height: 92px; 
+}
+
+.transac-grid-wrapper .transac-grid-footer .footer-right{
+    float:left;
+    width:50%;
+}
+.transac-grid-wrapper .transac-grid-footer .footer-right .td{  
+    padding:5px 16px 5px 5px;
+}
+.transac-grid-wrapper .transac-grid-footer .footer-right .td.detail{  
+    padding:5px;
+}
+.transac-grid-wrapper .transac-grid-footer .footer-right .td-label,
+.transac-grid-wrapper .transac-grid-footer .footer-left .td-label
+{
+    float:left;
+    padding:6px;
+    position:relative;
+    text-align:right;
+    width:30.18%; 
+    border-right:1px #D7D7D7 solid;
+    background-color:white;
+}
+.transac-grid-wrapper .transac-grid-footer .b_r{
+    border-right:1px #D7D7D7 solid;
+}
+.transac-grid-wrapper .transac-grid-footer .b_r0{
+    border-right:0px!important;
+}
+.transac-grid-wrapper .transac-grid-footer .b_b0{
+    border-bottom:0px!important;
+}
+.transac-grid-wrapper .transac-grid-footer .b_l0{
+    border-left:0px!important;
+}
+.transac-grid-wrapper .transac-grid-footer .rows{
+    border:1px #D7D7D7 solid;
+    border-top:0px;
+    border-right:0px;
+}
+.transac-grid-wrapper .transac-grid-footer .footer-left .rows{
+    border: 0px;
+    border-bottom:1px #D7D7D7 solid;
+}
+/*.transac-grid-wrapper .transac-grid-footer .rows-left{
+    border-top: 1px #D7D7D7 solid;
+}*/
+.transac-grid-wrapper .transac-grid-footer .num-dis{
+    background-color:#F8F8F8;
+    text-align:right;
+    padding: 5px 16px 5px 5px;
+} 
+.transac-grid-wrapper .transac-grid-footer .td-input{
+    padding:0px!important;
+    text-align:right;
+}
+.transac-grid-wrapper .transac-grid-footer .td-input input[type=text]:not(.searchgrid){ 
+    padding: 5px 15px 5px 5px;
+    height:30px;
+    border:none;
+    text-align:right; 
+}
+.transac-grid-wrapper .transac-grid-footer .td-input input[type=text]:not(.searchgrid):focus{ 
+    border:1px solid #0099CC;
+} 
+.transac-grid-wrapper .transac-grid-footer .remark{ 
+    float:left;
+    background-color:white;
+    width:100%;
+    padding:15px;
+    height:154px;
+}
+
+.transac-grid-wrapper .transac-grid-footer .remark._invoice{
+    height:185px!important;
+}
+.transac-grid-wrapper .transac-grid-footer .remark._creditnote{
+    height:92px!important;
+}
+.transac-grid-wrapper .transac-grid-footer .remark._creditnote textarea{
+    height:60px!important;
+}
+.transac-grid-wrapper.transac-deposit .transac-grid-footer .remark{ 
+    height:120px;
+}
+
+.transac-grid-wrapper.transac-deposit .transac-grid-footer .remark textarea{ 
+    height:91px;
+}
+
+.transac-grid-wrapper .transac-grid-footer .remark textarea{
+    float:right;
+    min-width: 360px;
+    width: 85%;
+    resize:none;
+    height : 124px;
+}
+.transac-grid-wrapper .transac-grid-footer .remark-detail{
+    float: left;
+    padding: 6px;
+    background-color: #F8F8F8;
+    width: 100%;
+    border-top: 1px #D7D7D7 solid;
+}
+.transac-grid-body .tg-w3{
+    width: 3%;
+}
+.transac-grid-body .tg-w10_4{
+    width: 10.4%;
+}
+.transac-grid-body .tg-w10{
+    width: 10%;
+}
+.transac-grid .tg-w4{
+    width: 4%;
+}
+.transac-grid .tg-w7{
+    width: 7%;
+}
+.transac-grid .tg-w6{
+    width: 6%;
+}
+.transac-grid .w8-8{
+    width: 8.8%;
+}
+.transac-grid .tg-w8{
+    width: 8%;
+}
+.transac-grid .tg-w9-2{
+    width: 9.2%;
+}
+.transac-grid .tg-w9-4{
+    width: 9.4%;
+}
+.transac-grid .tg-w12{
+    width: 12%;
+}
+.transac-grid .w12_85{
+    width:12.85%;
+}
+.transac-grid .tg-w13{
+    width: 13%;
+}
+.transac-grid .tg-w13-55{
+    width: 13.55%;
+}
+.transac-grid .tg-w13-85{
+    width: 13.85%;
+}
+.transac-grid .tg-w14{
+    width: 14%;
+}
+.transac-grid .tg-w15{
+    width: 15%;
+}
+.transac-grid .tg-w16{
+    width: 16%;
+}
+.transac-grid .tg-w17{
+    width: 17%;
+}
+.transac-grid .tg-w18{
+    width: 18%;
+}
+.transac-grid .tg-w20{
+    width: 20%;
+}
+.transac-grid .tg-w22{
+    width: 22%;
+}
+.transac-grid .tg-w24{
+    width: 24%;
+}
+.transac-grid .tg-w25{
+    width: 25%;
+}
+.transac-grid .tg-w30{
+    width: 30%;
+}
+.transac-grid .tg-w32{
+    width: 32%;
+}
+.transac-grid .tg-w33{
+    width: 33%;
+}
+.transac-grid .tg-w34{
+    width: 34%;
+}
+.transac-grid .tg-w35{
+    width: 35%;
+}
+.transac-grid .tg-w36{
+    width: 36%;
+}
+.transac-grid .tg-w37{
+    width: 37%;
+}
+.transac-grid .tg-w40{
+    width: 40%;
+}
+.transac-grid .tg-w43{
+    width: 43%;
+}
+.transac-grid .tg-w47{
+    width: 47%;
+}
+.transac-grid .tg-w53{
+    width: 53%;
+} 
+.transac-grid .tg-w58{
+    width: 58%;
+} 
+.transac-grid .tg-w65{
+    width: 65%;
+}
+.transac-grid .tg-w69{
+    width: 69%;
+}
+.transac-grid .tg-w76{
+    width: 76%;
+}
+
+.transac-grid .tg-footer-w5{
+    width: 5%;
+    border-top: 1px solid #D7D7D7;
+    border-left: 1px solid #D7D7D7;
+}
+.transac-grid .tg-footer-w10{
+    width: 10%;
+    border-top: 1px solid #D7D7D7;
+    border-left: 1px solid #D7D7D7;
+}
+.transac-grid .tg-footer-w15{
+    width: 15%;
+    border-top: 1px solid #D7D7D7;
+    border-left: 1px solid #D7D7D7;
+}
+.transac-grid .tg-footer-w25{
+    width: 25%;
+    border-top: 1px solid #D7D7D7;
+    border-left: 1px solid #D7D7D7;
+}
+.transac-grid .tg-footer-w40{
+    width: 40%;
+    border-top: 1px solid #D7D7D7;
+    border-left: 1px solid #D7D7D7;
+}
+.transac-grid .tg-footer-w60{
+    width: 60%;
+    border-top: 1px solid #D7D7D7;
+}
+
+
+.transac-grid input[type="text"]:not(.searchgrid), select, .td textarea {
+    width: 100%;
+    padding: 2px 5px 3px 5px;
+}
+.transac-grid input[type="text"]:not(.searchgrid), select, .td textarea.off {
+    width: 100%;
+    padding: 2px 10px 3px 5px;
+    height:30px;
+} 
+.transac-grid input[type="text"]._error{
+    border:1px solid red;
+}
+._error-goods{
+    border:1px solid red;
+}
+.transac-grid .rows .showmodaldetail{
+    display:none; 
+}
+.transac-grid .rows .rows-detail .showmodaldetail{
+    display:block; 
+}
+.transac-grid .rows._active .showmodaldetail{
+    display:block; 
+}
+.transac-grid .rows .td input[type="checkbox"]{
+    margin: 0px;
+}
+.transac-grid .rows .td .input-img-search {
+    background: url('/Content/Default/Images/icon-default/icon-picker-search.png') no-repeat;
+    padding: 50px 27px 0px 6px;
+    background-size: 12px;
+    position: absolute;
+    top: 0px;
+    background-position: 4px;
+    cursor: pointer;
+    right: -7px;
+    height: 43px;
+}
+.transac-grid .rows .td .input-img-calendar {
+   background: url('/Content/Default/Images/icon-default/icon-input-calendar.png') no-repeat;
+    padding: 6px 27px 0px 6px;
+    position: absolute;
+    top: 0px;
+    background-position: 2px;
+    cursor: pointer;
+    right: 0px;
+    height: 45px;
+}
+.transac-grid .rows .td .tg-btngroup input{
+    padding: 2px 20px 3px 5px;
+}
+.transac-grid .rows .rows-detail{ 
+    overflow: hidden;
+    white-space: nowrap;
+
+    max-height: 70px;
+    overflow-y: auto;
+}
+ 
+.transac-grid .w10{
+    width : 10%;
+}
+.transac-grid .w15{
+    width : 15%;
+}
+.transac-grid .w16{
+    width : 16.98%;
+}
+.transac-grid .w20_13{
+    width : 20.13%;
+}
+.transac-grid .w25{
+    width : 25.47%;
+}
+.transac-grid .w27{
+    width : 27.35%;
+}
+.transac-grid .w30{
+    width : 30.18%;
+}
+.transac-grid .w30_851{
+    width : 30.851%;
+}
+.transac-grid .w40{
+    width : 40%;
+}
+.transac-grid .w42_5{
+    width:42.5%!important;
+}
+.transac-grid .w43{
+    width : 43.33%;
+}
+.transac-grid .w44{
+    width : 44%;
+}
+.transac-grid .w50{
+    width:50%;
+}
+.transac-grid .w53_24{
+    width:53.24%!important;
+}
+.transac-grid .w53_5{
+    width:53.5%!important;
+}
+.transac-grid .w57_24{
+    width:57.24%!important;
+}
+.transac-grid .w57_5{
+    width:57.5%!important;
+}
+.transac-grid .w69{
+    width:69.8%;
+}  
+.transac-grid .w69_148{
+    width:69.148%!important;
+}  
+.transac-grid .w100{
+    width:100%!important;
+}  
+#modalTransacItemsDetail .body-content-tab{
+    width:100%!important;
+}
+.frm-content-freetax{
+    float:left;
+    padding: 3px 0 0 0 ;
+}
+.transac-grid.grid-docacc .transac-grid-footer .remark {
+    height:auto;
+}
+.transac-grid.grid-docacc .transac-grid-footer .remark textarea {
+    min-width:330px;
+    height:90px;
+}
+.transac-grid.grid-docacc .transac-grid-footer .td-label{
+    width:42.75%;
+}
+.transac-grid.grid-docacc .transac-grid-footer .rows{
+    height:40px;
+}
+.transac-grid.grid-docacc .transac-grid-footer .footer-right .td-label{
+    padding:10px;
+    height:40px;
+}
+.transac-grid.grid-docacc .transac-grid-footer .footer-right .td{
+    padding:10px;
+    height:40px;
+}
+.transac-grid.grid-docacc  .transac-grid-footer .td-input input[type=text]:not(.searchgrid){
+    height:40px;
+}
+ .transac-grid.grid-docacc .rows .rows-detail{ 
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: 30px;
+}
+
+ .transac-grid.grid-docacc input.rows-checkbox{
+     margin: 8px !important;
+ }
+
+
+.transac-grid.grid-docaccpre .transac-grid-footer .remark {
+    height:auto;
+}
+.transac-grid.grid-docaccpre .transac-grid-footer .remark textarea {
+    min-width:330px;
+    height:90px;
+}
+.transac-grid.grid-docaccpre .transac-grid-footer .td-label{
+    width:60%;
+}
+.transac-grid.grid-docaccpre .transac-grid-footer .rows{
+    height:30px;
+}
+.transac-grid.grid-docaccpre .transac-grid-footer .footer-right .td-label{
+    padding:6px;
+    background-color: #F8F8F8;
+}
+.transac-grid.grid-docaccpre .transac-grid-footer .footer-right .td{
+    padding:10px;
+    height:30px;
+}
+.transac-grid.grid-docaccpre  .transac-grid-footer .td-input input[type=text]:not(.searchgrid){
+    height:30px;
+}
+.transac-grid.grid-docaccpre .transac-grid-footer .td[data-name=TotalAmnt]{
+    padding: 6px 16px 10px 5px
+} 
+.transac-grid.grid-docaccpre .rows .rows-detail{ 
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: 30px;
+}
+
+.transac-grid.grid-docaccpre input.rows-checkbox{
+     margin: 8px !important;
+ }
+.frm-goods-img{
+    height: 180px;
+    width: 230px;
+    position: absolute; 
+    right: 50px;
+    top: 112px;
+    text-align:center;
+ }
+.frm-goods-img img {
+    height:180px;
+    width:auto;
+    max-width:260px;
+}
+.vat_total_wrapper{
+    width:570px;
+    float:right;
+}
+.vat_total_wrapper .label_content{
+    position:relative;
+}
+.vat_total_wrapper .grid-label{
+    text-align:right;
+}
+.label_avg{
+    right: 0px;
+    width: 190px;
+    float:left;
+}
+.label_avg .grid-label{
+    width:75px;
+}
+
+
+.label_amnt{
+    right: 0px;
+    width: 190px;
+    float:left;
+}
+.label_amnt .grid-label{
+    width:85px;
+}
+
+.label_base{
+    right: 0px;
+    width: 190px;
+    float:left;
+}
+.label_base .grid-label{
+    width:85px;
+}
+
+#RefDocNo{
+    width:130px!important;
+}
+.picker-link .picker-text{
+    cursor:pointer;
+}
+
+

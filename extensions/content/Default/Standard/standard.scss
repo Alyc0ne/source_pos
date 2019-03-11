@@ -1,0 +1,675 @@
+@import "../Compass/css3";
+
+/*---------------------Font------------------*/
+@include font-face("OpenSan", "../Fonts/", "opensans-regular", "opensans-regular");
+@include font-face("ThaiSanLite", "../Fonts/", "thaisanslite", "thaisanslite");
+
+$ibiz_blue : #0063B1;
+$account_cloud_blue : #0D83DD;
+body.ibiz .wrapper-body .wrapper-header { 
+    background: $ibiz_blue; 
+}
+
+body.account-cloud .wrapper-body .wrapper-header { 
+    background: $account_cloud_blue; 
+}
+
+.font-normal {
+    font-family: "OpenSan";
+    font-size: 13px;
+    color: #333333;
+}
+
+.font-link {
+    font-family: "OpenSan";
+    color: #0099CC;
+}
+
+.font-main-topic {
+    font-family: "OpenSan";
+    font-size: 24px;
+    color: #000000;
+}
+
+.font-require-field {
+    font-family: "OpenSan";
+    font-size: 13px;
+    color: #FF0000;
+}
+
+.font-column-table {
+    font-family: "OpenSan";
+    font-size: 13px;
+    color: #000000;
+}
+
+.font-topic-notifi-modal {
+    font-family: "ThaiSanLite";
+    font-size: 32px;
+    color: #000000;
+}
+
+.font-topic-picker, .font-topic-modal {
+    font-family: "OpenSan";
+    font-size: 13px;
+    color: #FFFFFF;
+}
+
+/*-------------------Form-------------------*/
+@mixin border-radius($radius: 1px) {
+    -webkit-border-radius: $radius !important;
+    -moz-border-radius: $radius !important;
+    border-radius: $radius !important;
+}
+
+input {
+    border: 1px solid #D7D7D7;
+    background-color: #FFFFFF;
+    @include border-radius(1px);
+    
+    &.input-long {
+        width: 335px;
+        height: 25px;
+    }
+
+    &.input-short {
+        width: 130px;
+        height: 25px;
+    }
+
+    &.input-list {
+        width: auto;
+        height: 25px;
+    }
+    
+    &:focus {
+        border: 1px solid #0099CC;
+        background-color: #FFFFFF;
+    }
+
+    &:disabled {
+        border: 1px solid #D7D7D7;
+        background-color: #F2F2F2;
+    }
+    
+    &[type=checkbox] {
+        width: 13px;
+        height: 13px;
+        margin: 0 !important;
+    }
+
+    &[type=radio] {
+        width: 13px;
+        height: 13px;
+        margin: 0 !important;
+    }
+    
+    &::-webkit-input-placeholder {
+        font-family: "OpenSan";
+        font-size: 13px;
+        color: #999999;
+    } 
+
+    &::-moz-placeholder {
+        font-family: "OpenSan";
+        font-size: 13px;
+        color: #999999;
+    }
+
+    &:-moz-placeholder {
+        font-family: "OpenSan";
+        font-size: 13px;
+        color: #999999;
+    }
+
+    &:-ms-input-placeholder {
+        font-family: "OpenSan";
+        font-size: 13px;
+        color: #999999;
+    }
+}
+
+select {
+    border: 1px solid #D7D7D7;
+    background-color: #FFFFFF;
+    @include border-radius(1px);
+    width: 130px;
+    height: 25px;
+
+    &.select-list {
+        width: auto;
+        height: 25px;
+    }
+}
+select:disabled {
+    border: 1px solid #D7D7D7;
+    background-color: #F2F2F2;
+}
+
+textarea {
+	padding: 5px;
+    border: 1px solid #D7D7D7;
+    background-color: #FFFFFF;
+    @include border-radius(1px);
+    width: 330px;
+    height: 70px;
+	resize: none;
+	&:disable{
+	
+        border: 1px solid #D7D7D7;
+        background-color: #F2F2F2;
+	}
+	&:focus{ 
+        border: 1px solid #0099CC; 
+	}
+}
+
+.line {
+    border-bottom: 1px solid #E4E4E4;
+    width:100%;
+}
+
+/*-------------------button-----------------*/
+.btn {
+    border: 1px solid transparent;
+    @include border-radius(1px); 
+	font-size:13px!important;
+
+    &.btn-new {
+        width: 90px;
+        height: 32px;
+        border: 1px solid #1EB06A;
+        background-color: #1EB06A;
+        color: #FFFFFF;
+        
+        span {
+            font-size: 10px;
+        }        
+
+        &:hover {
+            border: 1px solid #1B9E60;
+            background-color: #1B9E60;
+            color: #FFFFFF;
+        }
+    }
+        &.btn-saveall{
+			width: 25px;
+			height: 32px;
+			border: 1px solid #1EB06A;
+			background-color: #1EB06A;
+			color: #FFFFFF;
+			border-bottom-left-radius: 0 !important;
+			border-top-left-radius: 0 !important;
+			float: left;
+			border-left: 0;
+			&:hover {
+            background-color: #1B9E60;
+            color: #FFFFFF;
+			}
+			&:focus {
+            background-color: #1B9E60;
+            color: #FFFFFF;
+			}
+        }
+		&.btn-save{
+			width: 75px;
+            height: 32px;
+            border: 1px solid #1EB06A;
+            background-color: #1EB06A;
+            color: #FFFFFF;
+			border-bottom-right-radius: 0 !important;
+			border-top-right-radius: 0 !important;
+			border-right: 1px solid #23CD7C;
+			float: left;
+			&:hover {
+            background-color: #1B9E60;
+            color: #FFFFFF;
+			}
+			&:focus {
+            background-color: #1B9E60;
+            color: #FFFFFF;
+			}
+		}
+        &.btn-active{
+            width: 90px;
+            height: 32px;
+            border: 1px solid #1EB06A;
+            background-color: #FFFFFF;
+            color: #1EB06A;
+            &:hover {
+            border: 1px solid #1B9E60;
+            background-color: #1B9E60;
+            color: #FFFFFF;
+			}
+        }
+
+         &.btn-inactive{
+            width: 90px;
+            height: 32px;
+            border: 1px solid #1EB06A;
+            background-color: #1EB06A;
+            color: #FFFFFF;
+        }
+    &.btn-save-dropdown {
+        width: 70px;
+        height: 32px;
+        border: 1px solid #1EB06A;
+        background-color: #1EB06A;
+        color: #FFFFFF;
+        border-top-right-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+
+        &.dropdown-toggle {
+            width: 25px;
+            border-radius: 0 3px 3px 0 !important;
+        }
+
+        .caret {
+            border-top: 4px solid #FFFFFF;
+        }
+        
+        &:hover {
+            border: 1px solid #1B9E60;
+            background-color: #1B9E60;
+            color: #FFFFFF;
+        }
+    }
+
+    &.btn-select {
+        width: auto;
+        height: 32px;
+        border: 1px solid #D7D7D7;
+        background-color: #FFFFFF;
+        color: #0063B1;
+
+        &:hover {
+            border: 1px solid #0063B1;
+            color: #0063B1;
+        }
+
+        span {
+            font-size: 16px;
+        }
+    }
+
+    &.btn-icon {
+        width: 34px;
+        height: 32px;
+        border: 1px solid #D7D7D7;
+        background-color: #FFFFFF;
+        color: #0063B1;
+
+        &:hover {
+            border: 1px solid #0063B1;
+            color: #0063B1;
+        }
+
+        span {
+            font-size: 16px;
+            right: 4.5px;
+        }
+    }
+
+    &.btn-cancel {
+        width: 80px;
+        height: 32px;
+        border: 1px solid #D7D7D7;
+        background-color: #FFFFFF;
+        color: #0063B1;
+        
+        &:hover {
+            border: 1px solid #0063B1;
+            color: #0063B1;
+        }
+    }
+
+    &.btn-confirm-modal, &.btn-select-modal, &.btn-save-modal {
+        width: 80px;
+        height: 32px;
+        border: 1px solid #0063B1;
+        background-color: #0063B1;
+        color: #FFFFFF;
+
+        &:hover {
+            border: 1px solid #004D8A;
+            background-color: #004D8A; 
+			color:#FFFFFF;
+        }
+        &:focus {
+            border: 1px solid #004D8A;
+            background-color: #004D8A; 
+			color:#FFFFFF;
+        }
+        &:active {
+            border: 1px solid #004D8A;
+            background-color: #004D8A; 
+			color:#FFFFFF;
+        }
+    }
+
+    &.btn-dropdown {
+        width: auto;
+        height: 32px;
+        border: 1px solid #D7D7D7;
+        background-color: #FFFFFF;
+        color: #333333;
+
+        &:hover {
+            border: 1px solid #0063B1;
+            color: #333333;
+        }
+        .caret {
+            border-top: 4px solid #0063B1;
+        }
+    }
+
+    &.btn-other {
+        width: 90px;
+        height: 32px;
+        border: 1px solid #D7D7D7;
+        background-color: #FFFFFF;
+        color: #0063B1;
+
+        &:hover {
+            border: 1px solid #0063B1;
+            color: #0063B1;
+        }
+    }
+	&.btn-other-long {
+        width: 165px;
+        height: 32px;
+        border: 1px solid #D7D7D7;
+        background-color: #FFFFFF;
+        color: #0063B1;
+
+        &:hover {
+            border: 1px solid #0063B1;
+            color: #0063B1;
+        }
+    }
+	&.btn-fullreceive {
+        width: 100px;
+        height: 32px;
+        border: 1px solid #D7D7D7;
+        background-color: #FFFFFF;
+        color: #1EB06A;
+
+        &:hover {
+            border: 1px solid #1EB06A;
+            color: #1EB06A;
+        }
+    }
+	&.btn-select-picker{
+		width: 80px;
+		height: 32px;
+		background-color:#0063B1;
+		color:white;
+		
+        &:hover { 
+            color: white;
+			background-color:#004D8A;
+        }
+	}
+}
+
+/*----------------------Alert-------------------*/
+ul {
+    &.messenger {
+        margin: 0;
+        padding: 0;
+
+        > li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        &.messenger-empty {
+            display: none;
+        }
+
+        .messenger-message {
+            overflow: hidden;
+            *zoom: 1;
+
+            &.messenger-hidden {
+                display: none;
+            }
+
+            .messenger-phrase {
+                padding-right: 5px;
+            }
+
+            .messenger-actions {
+                float: right;
+
+                a {
+                    padding-right: 5px;
+                    cursor: pointer;
+                    text-decoration: underline;
+                }
+            }
+
+            ul, ol {
+                margin: 10px 18px 0;
+            }
+        }
+
+        &.messenger-fixed {
+            position: fixed;
+            z-index: 5000;
+
+            .messenger-message {
+                min-width: 0;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+
+            .message {
+                .messenger-actions {
+                    float: left;
+                }
+            }
+
+            &.messenger-on-top {
+                top: 20px;
+                left: 50%;
+                width: 800px;
+                margin-left: -400px;
+
+                &.messenger-on-right {
+                    right: 20px;
+                    left: auto;
+                }
+
+                &.messenger-on-left {
+                    left: 20px;
+                    margin-left: 0;
+                }
+            }
+
+            &.messenger-on-bottom {
+                bottom: 20px;
+                left: 50%;
+                width: 800px;
+                margin-left: -400px;
+
+                &.messenger-on-right {
+                    right: 20px;
+                    left: auto;
+                }
+
+                &.messenger-on-left {
+                    left: 20px;
+                    margin-left: 0;
+                }
+            }
+
+            &.messenger-on-right, &.messenger-on-left {
+                width: 350px;
+                
+                .messenger-actions {
+                    float: left;
+                }
+            }
+
+            @media (max-width: 960px) {
+                &.messenger-on-top, &.messenger-on-bottom {
+                    left: 10%;
+                    width: 80%;
+                    margin-left: 0;
+                }
+            }
+        }
+
+        .messenger-spinner {
+            display: none;
+        }
+
+        &.messenger-theme-block {
+            &.messenger-fixed {
+                width: 100%;
+                top: 0;
+                left: 0;
+                margin-left: 0;
+                
+                &.messenger-on-bottom {
+                    top: auto;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+
+                    &.messenger-on-right {
+                        width: 350px;
+                        left: auto;
+                    }
+
+                    &.messenger-on-left {
+                        width: 350px;
+                        right: auto;
+                    }
+                }
+
+                &.messenger-on-top {
+                    top: 0;
+                    bottom: auto;
+                    left: 0;
+                    right: 0;
+					z-index:100000;
+
+                    &.messenger-on-right {
+                        width: 350px;
+                        left: auto;
+                    }
+                    
+                    &.messenger-on-left {
+                        width: 350px;
+                        right: auto;
+                    }
+                }
+
+                .messenger-message-slot {
+                    max-width: none;
+                }
+
+                .messenger-message {
+                    margin-bottom: 0;
+                    text-align: center;
+                    height: 60px;
+                    border-radius: 0;
+					width:100%;
+                    &.message-success
+                    {
+                        background-color: #1EB06A;
+                        border-color: #1EB06A;
+                        color: #FFFFFF;
+                        font-family: "ThaiSanLite";
+                        font-size: 24px;
+                        line-height: 1;
+
+                        .messenger-close {    
+                            color: #FFFFFF;
+                            font-size: 24px; 
+                            display: block;
+                            float: right;
+                            background: none;
+                            border: none;
+                            padding: 0;
+                            line-height: 20px;
+                            margin: 0;
+                        }
+
+                        .message-icon {
+                            width: 20px;
+                            height: 20px;
+                            margin-right: 10px;
+							position: relative;
+							top: 5px;
+                        }
+                    }
+
+                    &.message-error
+                    {
+                        background-color: #EF6650;
+                        border-color: #EF6650;
+                        color: #FFFFFF;
+                        font-family: "ThaiSanLite";
+                        font-size: 24px;
+                        line-height: 1;
+
+                        .messenger-close {    
+                            color: #FFFFFF;
+                            font-size: 24px; 
+                            display: block;
+                            float: right;
+                            background: none;
+                            border: none;
+                            padding: 0;
+                            line-height: 20px;
+                            margin: 0;
+                        }
+
+                        .message-icon {
+                            width: 20px;
+                            height: 20px;
+                            display: inline-block;
+                            vertical-align: middle;
+                            margin-right: 10px;
+                        }
+                    }
+
+                    &.message-info
+                    {
+                        background-color: #E3B771;
+                        border-color: #E3B771;
+                        color: #FFFFFF;
+                        font-family: "ThaiSanLite";
+                        font-size: 24px;
+                        line-height: 1;
+
+                        .messenger-close {    
+                            color: #FFFFFF;
+                            font-size: 24px;
+                            display: block;
+                            float: right;
+                            background: none;
+                            border: none;
+                            padding: 0;
+                            line-height: 20px;
+                            margin: 0;
+                        }
+
+                        .message-icon {
+                            width: 22px;
+                            height: 22px;
+                            display: inline-block;
+                            vertical-align: middle;
+                            margin-right: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

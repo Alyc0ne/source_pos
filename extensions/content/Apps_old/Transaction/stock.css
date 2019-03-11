@@ -1,0 +1,74 @@
+﻿    .st-wrapper .st-wrapper-topic {
+        width:100%;
+        float:left;
+        padding: 10px 0 10px 0;
+    }
+    .st-wrapper .st-wrapper-topic .subtopic {
+        width: 50%;
+        float: left; 
+    }
+    .table-st {
+        width: 1060px;
+        border: 1px solid #ccc;
+} 
+    .table-st tr {
+        height:40px;
+    }
+    .table-st tbody tr {
+        border-top: 1px solid #ccc;
+    }
+    .table-st tbody tr.checked {
+        background-color:#D8E6FB;
+    }
+     
+    .table-st td {
+        padding: 5px;
+        border-left: 0px !important;
+        border-radius: 0px !important;
+} 
+    .table-st th {
+        padding: 10px 5px 10px 5px;
+        border-bottom: none !important;
+        background-color: #F2F2F2;
+        border-left: 0px !important;
+        border-radius: 0px !important;
+    } 
+    .table-st th.cl-checkbox, .table-st td.cl-checkbox {
+            width: 5%;
+            text-align: center;
+        } 
+    .table-st th.cl-managebtn, .table-st td.cl-managebtn {
+            width: 6%;
+            text-align: center;
+        }
+    .table-st .cl-managebtn span {
+        position: relative; 
+        cursor:pointer;
+    } 
+    .table-st th.cl-listno, .table-st td.cl-listno {
+        width: 6%;
+        text-align: center;
+    } 
+    .table-st th.cl-info, .table-st td.cl-info {
+        width: 20%;
+    }
+    .table-st td.cl-info .st-note{
+        max-height:90px;
+        overflow:auto; 
+    }
+    .st-remark{
+        float:left;
+        margin-left:10px;
+    }
+    .st-remark label {
+        cursor: pointer;
+    }
+    .st-wrapper input[type=checkbox]{
+        cursor:pointer;
+    }
+    
+/** Scroll Bar is Verify count stock grid*/
+.table-scroll{
+    width: 1060px; 
+    overflow-x: scroll;
+}

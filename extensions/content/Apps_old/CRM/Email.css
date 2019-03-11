@@ -1,0 +1,24 @@
+﻿    /*.content-full{
+        width: 100% !important;
+        max-width: 1146px !important;
+    }
+    .description{
+        width:inherit !important;
+        height: 150px !important;
+    }
+    .content-left{
+        width: 170px;
+        float:left;
+    }
+    .content-right{
+        float:left;
+    }
+    .emp-picker{
+        width:240px !important;
+    }
+    .btngroup-emp{
+        width:240px !important;
+    }
+.frm-content.frm-btngroup{
+            width: 424px !important;
+    }*/
