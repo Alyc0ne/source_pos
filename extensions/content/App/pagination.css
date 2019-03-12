@@ -1,0 +1,39 @@
+.cdp {
+  position: relative;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0;
+  z-index: 6;
+  margin: 50px 0;
+  animation: cdp-in 500ms ease both;
+  animation-timeout: 200ms;
+}
+.page-item {
+  font-size: 14px;
+  text-decoration: none;
+  transition: background 250ms;
+  /* display: inline-block; */
+  text-transform: uppercase;
+  margin: 0 3px 6px;
+  height: 38px;
+  min-width: 38px;
+  border-radius: 38px;
+  border: 2px solid black;
+  line-height: 38px;
+  padding: 0;
+  color: black;
+  font-weight: 700;
+  letter-spacing: .03em;
+  display: none;
+}
+.page-item:first-child, .page-item:last-child {
+  padding: 0 16px;
+  margin: 0 12px 6px;
+}
+.page-item {
+  display: inline-block;
+}
+.page-item:hover {
+  background-color: #000;
+  color: #fff;
+}

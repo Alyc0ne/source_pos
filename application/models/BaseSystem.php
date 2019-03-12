@@ -101,6 +101,30 @@ class BaseSystem extends CI_Model
             "TableData"=>$table
         );
     }
+
+    public function GenListGoods($ListGoods,$start)
+    {   
+        if ($ListGoods != null) {
+            $result = $ListGoods[$start - 1];
+        }
+        //<td>"'.$Icon_Edit.$Icon_Delete.'"</td>
+        $table = '';
+        foreach ($result as $Goods) {
+            $table .= '
+                <tr>
+                    <td>"'.$Goods['GoodsBarcode'].'"</td>
+                    <td>"'.$Goods['GoodsName'].'"</td>
+                    <td>"'.$Goods['GoodsQty'].'"</td>
+                    <td>"'.number_format((float)$Goods['GoodsPrice'], 2, '.', ',').'"</td>    
+                </tr>
+            ';
+        }
+
+        return $ResultData = array(
+            "ListGoods"=>$result,
+            "TableData"=>$table
+        );
+    }
     
 }
       

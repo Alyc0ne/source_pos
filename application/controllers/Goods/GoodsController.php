@@ -7,8 +7,34 @@ class GoodsController extends CI_Controller{
 
     public function index()
     {
+        $Where = array('IsDelete' => 0);
+        $query = $this->db->where($Where)->get('smGoods')->result_array();
+        $record_per_page = 1; 
+        if($this->input->post("page") != null)
+        {  
+             $page = $this->input->post("page");  
+        }  
+        else  
+        {  
+             $page = 1;  
+        }  
+        $start = ( $page - 1 ) * $record_per_page;  
+        $total_pages = ceil($this->db->where($Where)->count_all('smGoods') / $record_per_page);
+        $ListGoods = array_chunk($query, $record_per_page); 
+        $ResultData = $this->BaseSystem->GenListGoods($ListGoods,$page);
+        $arr = array(
+            "GoodsData"=>$ResultData['ListGoods'],
+            "TableData"=>$ResultData['TableData'],
+            "PageData"=>$total_pages
+        );
+
+        echo json_encode($arr);
+
+
         $data['path_link'] = "Goods/index";
-        $data['result'] = $this->db->get('smGoods')->result_array();
+        
+        //$data['page'] = $total_pages;
+        $data['result'] = $query;
         $this->load->view("Dashboard/index",$data);
     }
 

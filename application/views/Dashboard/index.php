@@ -132,7 +132,7 @@
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-                <div class="row t_test">
+                <div class="row">
                     <div class="col-md-12">
                         <div class="row">
                             <?php 
