@@ -132,7 +132,7 @@
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-                <div class="row">
+                <div class="row t_test">
                     <div class="col-md-12">
                         <div class="row">
                             <?php 
@@ -148,12 +148,11 @@
                             }
                             ?>
                         </div>
-
                     </div>
                 </div>
             </div>
             <footer class="footer text-center">
-                All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
+               
             </footer>
         </div>
     </div>
