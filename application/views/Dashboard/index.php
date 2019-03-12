@@ -9,26 +9,26 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
-    <title>Matrix Template - The Ultimate Multipurpose admin template</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url(); ?>extensions/images/icon/store_16.png">
+    <title>SL - Shop</title>
     <!-- Custom CSS -->
-    <link href="<?php echo base_url(); ?>ex/css/float-chart.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>extensions/content/css/float-chart.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="<?php echo base_url(); ?>ex/css/style.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>extensions/content/css/style.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url(); ?>extensions/content/App/site.css">
 
-    <script src="<?php echo base_url(); ?>ex/js/jquery_3.3.1.min.js"></script>
+    <script src="<?php echo base_url(); ?>extensions/js/jquery_3.3.1.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="<?php echo base_url(); ?>ex/js/popper.min.js"></script>
-    <script src="<?php echo base_url(); ?>ex/js/bootstrap_4.1.0.min.js"></script>
-    <script src="<?php echo base_url(); ?>ex/js/perfect-scrollbar.jquery.min.js"></script>
-    <script src="<?php echo base_url(); ?>ex/js/sparkline.js"></script>
+    <script src="<?php echo base_url(); ?>extensions/js/popper.min.js"></script>
+    <script src="<?php echo base_url(); ?>extensions/js/bootstrap_4.1.0.min.js"></script>
+    <script src="<?php echo base_url(); ?>extensions/js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="<?php echo base_url(); ?>extensions/js/sparkline.js"></script>
     <!--Wave Effects -->
-    <script src="<?php echo base_url(); ?>ex/js/waves.js"></script>
+    <script src="<?php echo base_url(); ?>extensions/js/waves.js"></script>
     <!--Menu sidebar -->
-    <script src="<?php echo base_url(); ?>ex/js/sidebarmenu.js"></script>
+    <script src="<?php echo base_url(); ?>extensions/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
-    <script src="<?php echo base_url(); ?>ex/js/custom.min.js"></script>
+    <script src="<?php echo base_url(); ?>extensions/js/custom.min.js"></script>
     <script>var base_url = '<?php echo base_url() ?>';</script>
     <script type="text/javascript" src="<?php echo base_url(); ?>extensions/scripts/Default/apps.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
