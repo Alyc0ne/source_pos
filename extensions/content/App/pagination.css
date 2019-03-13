@@ -28,12 +28,15 @@
 }
 .page-item:first-child, .page-item:last-child {
   padding: 0 16px;
-  margin: 0 12px 6px;
 }
 .page-item {
   display: inline-block;
 }
 .page-item:hover {
+  background-color: #000;
+  color: #fff;
+}
+.page-item_hover {
   background-color: #000;
   color: #fff;
 }

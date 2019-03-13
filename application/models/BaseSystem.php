@@ -108,14 +108,19 @@ class BaseSystem extends CI_Model
             $result = $ListGoods[$start - 1];
         }
         //<td>"'.$Icon_Edit.$Icon_Delete.'"</td>
+        $Icon_Edit = "<span class='m_r5'><img src=".base_url()."extensions\images\icon\Edit_16.png class='pointer'></span>";
+        $Icon_Delete = "<span><img src=".base_url()."extensions\images\icon\Delete_16.png class='pointer'></span>";
         $table = '';
         foreach ($result as $Goods) {
+            $GoodsBarcode = $Goods['GoodsBarcode'] != null ? $Goods['GoodsBarcode'] : "-";
+            $center = $Goods['GoodsBarcode'] == null ? "text-center" : "";
             $table .= '
                 <tr>
-                    <td>'.$Goods['GoodsBarcode'].'</td>
+                    <td class='.$center.'>'.$GoodsBarcode.'</td>
                     <td>'.$Goods['GoodsName'].'</td>
                     <td>'.$Goods['GoodsQty'].'</td>
                     <td>'.number_format((float)$Goods['GoodsPrice'], 2, '.', ',').'</td>    
+                    <td>'.$Icon_Edit.$Icon_Delete.'</td>
                 </tr>
             ';
         }

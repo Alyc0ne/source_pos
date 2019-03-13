@@ -27,19 +27,36 @@ function ListGoods(page) {
             TempTableData = e.TableData;
             $(".ListGoods_body").html("");
             $(".ListGoods_body").append(e.TableData);
-            $(".page").html("");
+            $(".pageListGood").html("");
             var pagination = "";
             if (page > 1) 
                 pagination += "<a href='#' class='page-item' id=" + ($i - 1) + ">Previous</a>";
 
             for ($i=0; $i < e.PageData; $i++) { 
-                pagination += "<a href='#' class='page-item' id=" + ($i + 1) + ">" + ($i + 1) + "</a>";
+                if (($i+1) == page) {
+                    pagination += "<a href='#' class='page-item page-item_hover' id=" + ($i + 1) + ">" + ($i + 1) + "</a>";
+                }else{
+                    if ($i == 0) {
+                        if (typeof page == 'undefined') {
+                            pagination += "<a href='#' class='page-item page-item_hover' id=" + ($i + 1) + ">" + ($i + 1) + "</a>";
+                        }else{
+                            pagination += "<a href='#' class='page-item' id=" + ($i + 1) + ">" + ($i + 1) + "</a>";
+                        }
+                    }else{
+                        pagination += "<a href='#' class='page-item' id=" + ($i + 1) + ">" + ($i + 1) + "</a>";
+                    }
+                }
+
+                if ($i == (e.PageData - 1)) 
+                    if (page != e.PageData) 
+                        pagination += "<a href='#' class='page-item' id=" + ($i + 1) + ">Next</a>";
             }
 
-            if (e.PageData != page) 
-                pagination += "<a href='#' class='page-item' id=" + ($i + 2) + ">Next</a>";
+            if (page == null) {
+                $(".page-item#1").addClass('page-item_hover');
+            }
 
-            $('.page').append(pagination);
+            $('.pageListGood').append(pagination);
         },
         error: function (e) {
             //openloading(false);

@@ -1,28 +1,10 @@
 <script src="<?php echo base_url(); ?>extensions/js/Goods.js"></script>
-<style>
-tbody { display: block; }
-
-tbody {
-    height: 100px;       /* Just for the demo          */
-    overflow-y: auto;    /* Trigger vertical scroll    */
-    overflow-x: hidden;  /* Hide the horizontal scroll */
-    width: 100%;
-}
-</style>
 <link rel="stylesheet" href="<?php echo base_url(); ?>extensions/content/App/pagination.css">
+
 <div class="table-responsive t_test" data-pattern="priority-columns">
   <table summary="This table shows how to create responsive tables using RWD-Table-Patterns' functionality" class="table table-hover">
     <caption class="text-center">
-    <div class="content_detail__pagination cdp page" actpage="1">
-      <?php
-        // for ($i=0; $i < $page; $i++) { 
-        //   if ($page > 1 && $i == 0) 
-        //     echo "<a href='#!1' class='page-item'>Previous</a>";
-        //   echo "<a href='#!1' class='page-item'>".($i + 1)."</a>";
-        //   if ($page > 1 && $i == ($page -1)) 
-        //     echo "<a href='#!1' class='page-item'>Next</a>";
-        // }
-      ?>
+    <div class="content_detail__pagination cdp pageListGood" actpage="1">
 		</div>
     </caption>
     <thead style='background-color:#1F262D;color:white;'>
@@ -35,28 +17,8 @@ tbody {
       </tr>
     </thead>
     <tbody class='ListGoods_body'>
-    <?php 
-      // foreach ($result as $Goods) {
-      //   if (Count($result) > 0) {
-      //     //$num = 1;
-      //     echo "<tr>";
-      //         //echo "<td>",$Icon_Edit.$Icon_Delete,"</td>";
-      //         //echo "<th scope='row'>",$Icon_Edit.$Icon_Delete,"</th>";
-      //         echo "<td>",$Goods['GoodsBarcode'],"</td>";
-      //         echo "<td>",$Goods['GoodsName'],"</td>";
-      //         echo "<td>",$Goods['GoodsQty'],"</td>";
-      //         echo "<td>".number_format((float)$Goods['GoodsPrice'], 2, '.', ',')."</td>";
-      //         echo "<td>",$Icon_Edit.$Icon_Delete,"</td>";
-      //     echo "</tr>";
-      //     //$num++;
-      //   }else {
-      //     echo "<tr>";
-      //       echo "<th scope='row' colspan='5'> ไม่มีรายการสินค้า </th>";
-      //     echo "</tr>";
-      //   }
-      // }
+      
 
-    ?>
     </tbody>
   </table>
 </div>
