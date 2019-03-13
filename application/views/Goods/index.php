@@ -1,17 +1,27 @@
 <script src="<?php echo base_url(); ?>extensions/js/Goods.js"></script>
+<style>
+tbody { display: block; }
+
+tbody {
+    height: 100px;       /* Just for the demo          */
+    overflow-y: auto;    /* Trigger vertical scroll    */
+    overflow-x: hidden;  /* Hide the horizontal scroll */
+    width: 100%;
+}
+</style>
 <link rel="stylesheet" href="<?php echo base_url(); ?>extensions/content/App/pagination.css">
 <div class="table-responsive t_test" data-pattern="priority-columns">
   <table summary="This table shows how to create responsive tables using RWD-Table-Patterns' functionality" class="table table-hover">
     <caption class="text-center">
-    <div class="content_detail__pagination cdp" actpage="1">
+    <div class="content_detail__pagination cdp page" actpage="1">
       <?php
-        for ($i=0; $i < $page; $i++) { 
-          if ($page > 1 && $i == 0) 
-            echo "<a href='#!1' class='page-item'>Previous</a>";
-          echo "<a href='#!1' class='page-item'>".($i + 1)."</a>";
-          if ($page > 1 && $i == ($page -1)) 
-            echo "<a href='#!1' class='page-item'>Next</a>";
-        }
+        // for ($i=0; $i < $page; $i++) { 
+        //   if ($page > 1 && $i == 0) 
+        //     echo "<a href='#!1' class='page-item'>Previous</a>";
+        //   echo "<a href='#!1' class='page-item'>".($i + 1)."</a>";
+        //   if ($page > 1 && $i == ($page -1)) 
+        //     echo "<a href='#!1' class='page-item'>Next</a>";
+        // }
       ?>
 		</div>
     </caption>
@@ -24,7 +34,7 @@
         <th data-priority="4">#</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class='ListGoods_body'>
     <?php 
       // foreach ($result as $Goods) {
       //   if (Count($result) > 0) {

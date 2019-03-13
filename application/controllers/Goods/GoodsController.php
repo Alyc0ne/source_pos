@@ -7,9 +7,15 @@ class GoodsController extends CI_Controller{
 
     public function index()
     {
+        $data['path_link'] = "Goods/index";
+        $this->load->view("Dashboard/index",$data);
+    }
+
+    public function ListGoods()
+    {
         $Where = array('IsDelete' => 0);
         $query = $this->db->where($Where)->get('smGoods')->result_array();
-        $record_per_page = 1; 
+        $record_per_page = 10; 
         if($this->input->post("page") != null)
         {  
              $page = $this->input->post("page");  
@@ -29,13 +35,6 @@ class GoodsController extends CI_Controller{
         );
 
         echo json_encode($arr);
-
-
-        $data['path_link'] = "Goods/index";
-        
-        //$data['page'] = $total_pages;
-        $data['result'] = $query;
-        $this->load->view("Dashboard/index",$data);
     }
 
     public function edit()

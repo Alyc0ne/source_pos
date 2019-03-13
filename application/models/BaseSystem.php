@@ -112,10 +112,10 @@ class BaseSystem extends CI_Model
         foreach ($result as $Goods) {
             $table .= '
                 <tr>
-                    <td>"'.$Goods['GoodsBarcode'].'"</td>
-                    <td>"'.$Goods['GoodsName'].'"</td>
-                    <td>"'.$Goods['GoodsQty'].'"</td>
-                    <td>"'.number_format((float)$Goods['GoodsPrice'], 2, '.', ',').'"</td>    
+                    <td>'.$Goods['GoodsBarcode'].'</td>
+                    <td>'.$Goods['GoodsName'].'</td>
+                    <td>'.$Goods['GoodsQty'].'</td>
+                    <td>'.number_format((float)$Goods['GoodsPrice'], 2, '.', ',').'</td>    
                 </tr>
             ';
         }

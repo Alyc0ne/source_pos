@@ -1,5 +1,6 @@
 var TempDataNoGoodsBarcode = null;
 let TempGoodsIDNoGoodsBarcode = new Array();
+var TempTableData = null;
 let numClick = 0;
 
 $(document).ready(function() {
@@ -8,7 +9,48 @@ $(document).ready(function() {
     $("#GoodsUnitName").change(function () {
         
     });
+
+    ListGoods();
 });
+
+function ListGoods(page) {
+    $.ajax({
+        type: 'POST',
+        url: base_url + "Goods/GoodsController/ListGoods",
+        data: {
+            page : page,
+        },
+        dataType: "json",
+        traditional: true,
+        success: function (e) {
+            TempDataNoGoodsBarcode = e.GoodsData;
+            TempTableData = e.TableData;
+            $(".ListGoods_body").html("");
+            $(".ListGoods_body").append(e.TableData);
+            $(".page").html("");
+            var pagination = "";
+            if (page > 1) 
+                pagination += "<a href='#' class='page-item' id=" + ($i - 1) + ">Previous</a>";
+
+            for ($i=0; $i < e.PageData; $i++) { 
+                pagination += "<a href='#' class='page-item' id=" + ($i + 1) + ">" + ($i + 1) + "</a>";
+            }
+
+            if (e.PageData != page) 
+                pagination += "<a href='#' class='page-item' id=" + ($i + 2) + ">Next</a>";
+
+            $('.page').append(pagination);
+        },
+        error: function (e) {
+            //openloading(false);
+        }
+    });
+}
+
+$(document).on('click', '.page-item', function(){  
+    var page = $(this).attr("id");  
+    ListGoods(page);  
+});  
 
 $(document).on("click", "#btn-Save-Goods", function () {
     if (bindValidate("#frmGoods")){
@@ -53,11 +95,6 @@ function ShowModalGoods() {
         },700);
     }
 }
-
-$(document).on('click', '.page-link', function(){  
-    var page = $(this).attr("id");  
-    GetGoods(page);  
-});  
 
 function GetGoods(page) {
     $.ajax({
