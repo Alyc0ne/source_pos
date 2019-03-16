@@ -3,7 +3,7 @@
 
 
 <div class="col-md-8">
-    <div class="card" id="left_SellGoods" style="height:600px!important;">
+    <div class="card h_detail_pos" id="left_SellGoods">
         <div class="card-body" style="height:100%!important;">
             <div class="col-12" id="Sell-PageLeft" style="height:100%!important;">  
                 <div class="row">
@@ -46,7 +46,7 @@
 </div>
 
 <div class="col-md-4">
-    <div class="card" id="Right_SellGoods" style="height:600px!important;">
+    <div class="card h_detail_pos" id="Right_SellGoods">
         <div class="card-body" style="height:100%!important;">
             <div class="col-12" id="Sell-PageRight" style="height:100%!important;">  
                 <!-- GEN BY TRANSACGRID -->

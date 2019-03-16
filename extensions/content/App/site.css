@@ -144,4 +144,44 @@ p.footer {
     margin: 20px 0 0 0;
 }
 
+.h_detail_pos{
+    height: 600px !important;
+}
+
+.transacgrid_d{
+    overflow:auto;
+    height:70%;
+    /* border:solid 1px blue; */
+}
+
+.transacgrid_f{
+    width: 30% !important;
+}
+
+.f_15{
+    font-size: 15pt;    
+}
+
+/* Control CSS according to screen size  */
+@media only screen and (max-height:1366px){
+    .h_detail_pos{
+        height: 510px !important;
+    }
+
+    .transacgrid_d{
+        overflow:auto;
+        height:60%;
+    }
+
+    .transacgrid_f{
+        width: 35% !important;
+    }
+}
+
+.box_header {
+    border: 1px solid #D0D0D0;
+    box-shadow: 0 0 8px #D0D0D0;
+    background-color: black;
+    color:white;
+}
  

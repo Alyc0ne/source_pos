@@ -23,22 +23,17 @@ function setTransac() {
             return _t.Element;
         },
         genGrid: function () {
-            // var LeftBox = $('<div class="row" style="height:100%!important;"></div>');
-            // LeftBox.append("<input type='text' style='border:none;height:5%;' class='w_15' value='Qty (จำนวนสินค้า) : '> ");
-            // LeftBox.append("<input type='number' style='height:5%;' class='w_5 text-center m_l10' id='QtyBarcode' name='QtyBarcode' min='1' max='99' value='1'>");
-            // LeftBox.append("<input list='Goods' class='w-75 input-icon-barcode' id='GoodsBarcodeSearch' style='height:5%;margin: 0 auto;'>");
-            // LeftBox.append("<datalist id='Goods'></datalist>");
 
             var Rightbox = $('<div class="row" style="height:100%!important;"></div>');
             var gridStart = $('<div id="gridStart" style="width:100%;"></div>');
-            gridStart.append("<div class='col-12 p_a5' style='height:5%;border:solid 1px red;'></div>");
-            gridStart.append("<div class='col-12 p_a5' style='overflow:auto;height:70%;border:solid 1px blue;' id='transac-body'></div>");
+            gridStart.append("<div class='col-12 p_a5 f_15 box_header' style='height:10%;'> สินค้าในตะกร้า </div>");
+            gridStart.append("<div class='col-12 p_a5 transacgrid_d' id='transac-body'></div>");
 
             var gridEnd = $('<div id="gridEnd" style="width:100%;"></div>');
             var table = "<table style='width:100%;margin:7px;'>";
-            table += "<tr style='width:100%;'><td style='width:30%;'>รวมเงิน</td><td style='width:5%;'> : </td><td style='width:65%;'><input type='text' class='w-100 float-right text-right' id='sub_total' name='sub_total' value='' readonly></td></tr>";
-            table += "<tr style='width:100%;'><td style='width:30%;'>ส่วนลด</td><td style='width:5%;'> : </td><td><input type='text' class='w-100 float-right text-right _number' id='discount' name='discount' value=''></td></tr>";  
-            table += "<tr style='width:100%;'><td style='width:30%;'>จำนวนเงินทั้งสิ้น</td><td style='width:5%;'> : </td><td><input type='text' class='w-100 float-right text-right' id='totalPrice' name='totalPrice' value='' readonly></td></tr>";  
+            table += "<tr style='width:100%;'><td class='transacgrid_f' style='width:30%;'>รวมเงิน</td><td style='width:5%;'> : </td><td style='width:65%;'><input type='text' class='w-100 float-right text-right' id='sub_total' name='sub_total' value='' disabled></td></tr>";
+            table += "<tr style='width:100%;'><td style='transacgrid_f'>ส่วนลด</td><td style='width:5%;'> : </td><td><input type='text' class='w-100 float-right text-right _number' id='discount' name='discount' value=''></td></tr>";  
+            table += "<tr style='width:100%;'><td style='transacgrid_f'>จำนวนเงินทั้งสิ้น</td><td style='width:5%;'> : </td><td><input type='text' class='w-100 float-right text-right' id='totalPrice' name='totalPrice' value='' disabled></td></tr>";  
             table += "</table>";
             gridEnd.append(table);
             gridEnd.append("<div class='w-100'></div>");
