@@ -224,7 +224,7 @@ function checkDataTable(system) {
             } else {
                 switch (system) {
                     case "Unit":
-                        txtAlert = "กรุณากำหนดหน่วยนับสินค้าก่อน!";
+                        txtAlert = "<img src='" + base_url + "extensions/images/icon/trolley.png'><h3 class='text-center text-red'>กรุณากำหนดหน่วยนับสินค้าก่อน!</h3>";
                     break;
                     default:
                         break;
@@ -299,8 +299,19 @@ function RandomMath() {
     return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
 }
 
-function AlertModal(AlertText) {
-    var html = "<h3 class='text-center text-red'>" + AlertText +  "</h3>";
+function AlertModal(AlertIcon,AlertText) {
     $("#AlertModal").modal();
-    $("#Alert-body").html(html);
+    $("#Alert-body-img").html(AlertIcon);
+    $("#Alert-body").html(AlertText);
+}
+
+function callImages(type) {
+    switch (type) {
+        case cart: base_url + "";
+            
+            break;
+    
+        default:
+            break;
+    }
 }

@@ -60,7 +60,6 @@ $(document).on("click","#SaveInvoice", function () {
     var GridGoods = transacSalesGoods.gridControl.selectDataGrid().length;
     if (GridGoods > 0) {
         $("#ConfrimModal").modal();
-        //if ($('#ConfrimModal').is(':visible')) {
             $("#Confrim_SaveInvoice").click(function () {
                 SaveInvoice(function (callback) {
                     if (!!callback) {
@@ -70,9 +69,10 @@ $(document).on("click","#SaveInvoice", function () {
                     }
                 });
             });
-        //}
     }else{
-        bootbox.alert("<center>ไม่สามารถดำเนินการต่อได้<br>กรุณาเพิ่มสินค้า</center>");
+        var iconAlert = "<img src='" + base_url + "extensions/images/icon/box.png'>";
+        var txtAlert = "<h3 class='text-center text-red float-left'>ไม่มีสินค้าในตะกร้า !</h3>";
+        AlertModal(iconAlert,txtAlert);
     }
     
 })

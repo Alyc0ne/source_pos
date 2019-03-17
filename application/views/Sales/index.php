@@ -3,7 +3,7 @@
 
 
 <div class="col-md-8">
-    <div class="card h_detail_pos" id="left_SellGoods">
+    <div class="card h_detail_pos box_shadow" id="left_SellGoods">
         <div class="card-body" style="height:100%!important;">
             <div class="col-12" id="Sell-PageLeft" style="height:100%!important;">  
                 <div class="row">
@@ -12,32 +12,14 @@
                     <input list='Goods' class='w-75 input-icon-barcode' id='GoodsBarcodeSearch' style='height:5%;margin: 0 auto;'>
                     <datalist id='Goods'></datalist>
                 </div>
-
-                <div class="row m_t5p">
-                    <div class="col">
-                        <div class="row el-element-overlay">
-                            <div class="card">
-                                <div class="el-card-item">
-                                    <div class="el-card-avatar el-overlay-1"> <img src="<?php echo base_url(); ?>extensions/images/icon/no-barcode.png" style="width:10%;" alt="user" />
-                                        <div class="el-overlay">
-                                            <ul class="list-style-none el-info">
-                                                <li class="el-item"><a class="btn default btn-outline image-popup-vertical-fit el-link" href="../../assets/images/big/img1.jpg"><i class="mdi mdi-magnify-plus"></i></a></li>
-                                                <li class="el-item"><a class="btn default btn-outline el-link" href="javascript:void(0);"><i class="mdi mdi-link"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="el-card-content">
-                                        <h4 class="m-b-0">Project title</h4> <span class="text-muted">subtitle of project</span>
-                                    </div>
-                                </div>
+                <div class="row m_t5">
+                    <div class="col-md-6 col-lg-4 col-xlg-3">
+                        <div class="card pointer" onclick="javascript:ShowModalNoGoodsBarcode();">
+                            <div class="box bg-cyan text-center">
+                                <h1 class="font-light text-white"><i class="m-r-10 mdi mdi-barcode-scan"></i></h1>
+                                <h6 class="text-white">สินค้าไม่มีบาร์โค้ด</h6>
                             </div>
                         </div>
-                    </div>
-                    <div class="col">
-                    2 of 3
-                    </div>
-                    <div class="col">
-                    3 of 3
                     </div>
                 </div>
             </div>
@@ -46,8 +28,8 @@
 </div>
 
 <div class="col-md-4">
-    <div class="card h_detail_pos" id="Right_SellGoods">
-        <div class="card-body" style="height:100%!important;">
+    <div class="card h_detail_pos box_shadow" id="Right_SellGoods">
+        <div class="card-body p_a0" style="height:100%!important;">
             <div class="col-12" id="Sell-PageRight" style="height:100%!important;">  
                 <!-- GEN BY TRANSACGRID -->
             </div>

@@ -24,6 +24,7 @@ function GetNoGoodsBarcode(page) {
         dataType: "json",
         traditional: true,
         success: function (e) {
+            TempGoodsIDNoGoodsBarcode = [];
             TempDataNoGoodsBarcode = e.GoodsData;
             $(".table-responsive").html("");
             $(".page").html("");
@@ -75,12 +76,10 @@ $(document).on("click", ".chkNoGoodsBarcode", function (e) {
 });
 
 $(document).on("click", "#btn-Select-NoGoodsBarcode", function (e) {
+    numClick =0;
     var arrResult = new Array();
     if (TempGoodsIDNoGoodsBarcode != null && TempGoodsIDNoGoodsBarcode.length > 0) {
         for (let c = 0; c < TempGoodsIDNoGoodsBarcode.length; c++) {
-            // var result = $.grep(TempGoodsIDNoGoodsBarcode, function (e) {
-            //     return e.GoodsID == TempGoodsIDNoGoodsBarcode[c].GoodsID;
-            // });
             var result = TempDataNoGoodsBarcode.find(x => x.GoodsID == TempGoodsIDNoGoodsBarcode[c]);
             arrResult.push(result);
         }
@@ -89,12 +88,13 @@ $(document).on("click", "#btn-Select-NoGoodsBarcode", function (e) {
         if (arrResult != null && arrResult.length > 0) {
             for (let a = 0; a < arrResult.length; a++) {
                 var QtyBarcode = $(".NoGoodsBarcode_Body").find('tr[data-goodsid=' + arrResult[a].GoodsID + '] td#NoGoodsBarcode_QtyBarcode input#QtyBarcode').val();
-                // transacSalesGoods.gridControl.addData(arrResult[a].GoodsID,arrResult[a].GoodsName,arrResult[a].GoodsPrice,1);
                 manageAdd_updateGoods(QtyBarcode,arrResult[a],GridGoods);
             }
         }
     }
     $('#NoGoodsBarcodeModal').modal('toggle');
+    $(".table-responsive").html("");
+    $(".page").html("");
 });
 
 $(document).on("change", "#GoodsBarcodeSearch", function(ae) {
@@ -109,19 +109,6 @@ $(document).on("change", "#GoodsBarcodeSearch", function(ae) {
             if(e != null){
                 var GridGoods = transacSalesGoods.gridControl.selectDataGrid();
                 manageAdd_updateGoods(QtyBarcode,e,GridGoods,GridGoods);
-
-                // if(GridGoods.length >= 1){
-                //     var GoodsID = e.GoodsID;
-                //     index = GridGoods.find((x => x.GoodsID == GoodsID));
-                // }
-
-                // if(index == null){
-                //     var GoodsPrice = transacSalesGoods.gridControl.addData(e.GoodsID,e.GoodsName,e.GoodsPrice,QtyBarcode);
-                //     transacSalesGoods.gridControl.calSummary(true,parseFloat(GoodsPrice));
-                    
-                // }else{
-                //     transacSalesGoods.gridControl.updateGoodsByIndex(index.uid,e.GoodsPrice,QtyBarcode);
-                // } 
             }
         },
         error: function(e) {

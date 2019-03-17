@@ -23,17 +23,16 @@ function setTransac() {
             return _t.Element;
         },
         genGrid: function () {
-
             var Rightbox = $('<div class="row" style="height:100%!important;"></div>');
             var gridStart = $('<div id="gridStart" style="width:100%;"></div>');
-            gridStart.append("<div class='col-12 p_a5 f_15 box_header' style='height:10%;'> สินค้าในตะกร้า </div>");
+            gridStart.append("<div class='col-12 p_a8 f_16 box_shadow' style='height:7%;background-color: #1F262D;'><i class='m-r-10 mdi mdi-cart-outline text_white'></i><span class='text_white'>สินค้าในตะกร้า</span></div>");  
             gridStart.append("<div class='col-12 p_a5 transacgrid_d' id='transac-body'></div>");
 
             var gridEnd = $('<div id="gridEnd" style="width:100%;"></div>');
-            var table = "<table style='width:100%;margin:7px;'>";
-            table += "<tr style='width:100%;'><td class='transacgrid_f' style='width:30%;'>รวมเงิน</td><td style='width:5%;'> : </td><td style='width:65%;'><input type='text' class='w-100 float-right text-right' id='sub_total' name='sub_total' value='' disabled></td></tr>";
-            table += "<tr style='width:100%;'><td style='transacgrid_f'>ส่วนลด</td><td style='width:5%;'> : </td><td><input type='text' class='w-100 float-right text-right _number' id='discount' name='discount' value=''></td></tr>";  
-            table += "<tr style='width:100%;'><td style='transacgrid_f'>จำนวนเงินทั้งสิ้น</td><td style='width:5%;'> : </td><td><input type='text' class='w-100 float-right text-right' id='totalPrice' name='totalPrice' value='' disabled></td></tr>";  
+            var table = "<table style='width:100%;margin:7px;color:black;'>";
+            table += "<tr style='width:100%;'><td class='transacgrid_f' style='width:30%;'>รวมเงิน</td><td style='width:65%;'><input type='text' class='w-100 float-right text-right m_r15' id='sub_total' name='sub_total' value='' disabled></td></tr>";
+            table += "<tr style='width:100%;'><td class='transacgrid_f'>ส่วนลด</td><td><input type='text' class='w-100 float-right text-right _number m_r15' id='discount' name='discount' value=''></td></tr>";  
+            table += "<tr style='width:100%;'><td class='transacgrid_f'>จำนวนเงินทั้งสิ้น</td><td><input type='text' class='w-100 float-right text-right m_r15' id='totalPrice' name='totalPrice' value='' disabled></td></tr>";  
             table += "</table>";
             gridEnd.append(table);
             gridEnd.append("<div class='w-100'></div>");
@@ -62,12 +61,12 @@ function setTransac() {
             var uid = RandomMath();
             var TotalAmnt = GoodsPrice * QtyBarcode;
             var PricePerGoods = QtyBarcode > 1 ? "@" + String(numberWithCommas(parseFloat(GoodsPrice).toFixed(2))) : "";
-            var Goods = $('<div class="w_100 h_5 bg_white m_b5" id="GoodDetail" data-uid="' + uid + '"></div>');
-            Goods.append("<div class='w_5 float-left text-left'><span class='imageDel' style='cursor:pointer;'><input type='hidden' value='1234'></span></div>");
-            Goods.append("<div class='w_10 float-left text-center m_r5'><span class='w_100 h_0 text-center' name='GoodsQty'>"  + QtyBarcode + "</span></div>");
+            var Goods = $('<div class="w_100 h_7 bg_white m_b5 box_shadow p_a8" id="GoodDetail" data-uid="' + uid + '"></div>');
+            Goods.append("<div class='w_10 float-left text-center box-highlight'><span class='w_100 h_0 text-center' name='GoodsQty'>"  + QtyBarcode + "</span></div>");
             Goods.append("<div class='w_40 float-left text-left text-ellipsis' alt = '" + GoodsName + "'><span>" + GoodsName + "</span></div>");
             Goods.append("<div class='w_20 float-left text-right'><span id='PricePerGoods' style='display:inline-block;'>"  + PricePerGoods + "</span></div>");
             Goods.append("<div class='w_20 float-left text-right'><span id='TotalAmnt'>" + numberWithCommas(parseFloat(TotalAmnt).toFixed(2)) + "</span></div>");
+            Goods.append("<div class='w_10 float-left text-right'><img src='" + base_url + "extensions/images/icon/delete.png' class='p_b2 pointer'><input type='hidden' value='" + uid + "'></div>");
             _t_body.append(Goods);
             arr_Data.push({
                 uid : uid,
@@ -134,9 +133,11 @@ function setTransac() {
                     var Old_qty = Goods[index].GoodsQty;
                     Goods[index].GoodsQty = parseFloat(Old_qty) + parseFloat(GoodsBarcode);
                     var ThisGoodsPrice = GoodsPrice * GoodsBarcode; //Goods Price This Goods!!
+                    var PricePerGoods = "@" + String(numberWithCommas(parseFloat(GoodsPrice).toFixed(2)));
                     Goods[index].GoodsPrice = parseFloat(ThisGoodsPrice) + parseFloat(Goods[index].GoodsPrice); //Last GoodsPrice Atfer Update
 
-                    _t.Element.find("#transac-body #GoodDetail[data-uid='" + uid +  "']").children().eq(1).html("<span class='w_100 h_0 text-center' name='GoodsQty'>"  + Goods[index].GoodsQty + "</span>");
+                    _t.Element.find("#transac-body #GoodDetail[data-uid='" + uid +  "']").children().eq(0).html("<span class='w_100 h_0 text-center box-highlight' name='GoodsQty'>"  + Goods[index].GoodsQty + "</span>");
+                    _t.Element.find("#transac-body #GoodDetail[data-uid='" + uid +  "']").children().eq(2).html("<span id='PricePerGoods' style='display:inline-block;'>"  + PricePerGoods + "</span>");
                     _t.Element.find("#transac-body #GoodDetail[data-uid='" + uid +  "']").children().eq(3).html("<span id='GoodsPrice'>" + numberWithCommas(Goods[index].GoodsPrice.toFixed(2)) + "</span>");
                     _t.gridControl.calSummary(true,ThisGoodsPrice);
                 }

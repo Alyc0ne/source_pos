@@ -8,7 +8,6 @@ body {
     list-style-type: none;
 }
 span.imageDel {
-    content:url('icon-del_24.png');
     margin:0;
     padding:0
 }​
@@ -24,6 +23,15 @@ span.imageDel {
 }
 .h_5{
     height: 5% !important;
+}
+.h_6{
+    height: 6% !important;
+}
+.h_7{
+    height: 7% !important;
+}
+.h_8{
+    height: 8% !important;
 }
 .h_10{
     height: 10% !important;
@@ -58,6 +66,9 @@ span.imageDel {
 .w_45{
     width: 45% !important;
 }
+.w_50{
+    width: 50% !important;
+}
 .w_60{
     width: 60% !important;
 }
@@ -83,17 +94,38 @@ span.imageDel {
 .p_a5{
     padding: 5px !important;
 }
+.p_a6{
+    padding: 6px !important;
+}
+.p_a7{
+    padding: 7px !important;
+}
+.p_a8{
+    padding: 8px !important;
+}
+.p_a10{
+    padding: 10px !important;
+}
+.p_b2{
+    padding-bottom: 2px !important;
+}
 .m_a5{
     margin: 5px !important;
 }
 .m_t5{
     margin-top: 5px !important;
 }
-.m_t5p{
+.m_t5{
     margin-top: 5% !important;
+}
+.m_t10{
+    margin-top: 10% !important;
 }
 .m_r5{
     margin-right: 5px !important;
+}
+.m_r15{
+    margin-right: 15px !important;
 }
 .m_r10{
     margin-right: 10px !important;
@@ -162,6 +194,10 @@ p.footer {
     font-size: 15pt;    
 }
 
+.f_16{
+    font-size: 16pt;    
+}
+
 /* Control CSS according to screen size  */
 @media only screen and (max-height:1366px){
     .h_detail_pos{
@@ -178,10 +214,41 @@ p.footer {
     }
 }
 
-.box_header {
+@media only screen and (max-height:1980px){
+    .h_detail_pos{
+        height: 790px !important;
+    }
+
+    .transacgrid_d{
+        overflow:auto;
+        height:73%;
+    }
+
+    .transacgrid_f{
+        width: 35% !important;
+    }
+}
+
+.box_shadow {
     border: 1px solid #D0D0D0;
     box-shadow: 0 0 8px #D0D0D0;
-    background-color: black;
-    color:white;
 }
  
+.img_responsive{
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+}
+
+.text_white{
+    color: white;
+}
+
+.box-highlight{
+    /* border: 1px solid #b94a48;
+    box-shadow: 0 0 8px #D0D0D0; */
+}
+
+.pointer{
+    cursor:pointer;
+}

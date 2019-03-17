@@ -2,17 +2,19 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">ไม่สามารถดำเนินการได้</h5>
+        <h4 class="modal-title" id="exampleModalCenterTitle">ไม่สามารถดำเนินการได้</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" id='Alert-body'>
-        
+      <div class="modal-body">
+        <div class='w_50' id='Alert-body-img' class='float-left'>
+        </div>
+        <div class='w_50' id='Alert-body'>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
