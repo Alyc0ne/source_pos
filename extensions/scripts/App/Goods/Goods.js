@@ -47,9 +47,10 @@ function ListGoods(page) {
                     }
                 }
 
-                if ($i == (e.PageData - 1)) 
-                    if (page != e.PageData) 
-                        pagination += "<a href='#' class='page-item' id=" + ($i + 1) + ">Next</a>";
+                if (e.PageData > 1) 
+                    if ($i == (e.PageData - 1)) 
+                        if (page != e.PageData) 
+                            pagination += "<a href='#' class='page-item' id=" + ($i + 1) + ">Next</a>";
             }
 
             if (page == null) {

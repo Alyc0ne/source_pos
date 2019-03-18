@@ -313,18 +313,23 @@ p.footer {
     }
 }
 
-@media only screen and (min-height:1980px){
+@media only screen and (max-height:1980px) and (min-width: 1600px){
     .h_detail_pos{
-        height: 790px !important;
+        height: 800px !important;
     }
 
     .transacgrid_d{
         overflow:auto;
-        height:73%;
+        height:73.4%;
     }
 
     .transacgrid_f{
         width: 35% !important;
+    }
+
+    .ListGoods{
+        max-height: 535px;
+        overflow: auto;
     }
 }
 
