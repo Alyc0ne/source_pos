@@ -117,7 +117,7 @@ class BaseSystem extends CI_Model
             $table .= '
                 <tr>
                     <td class='.$center.'>'.$GoodsBarcode.'</td>
-                    <td>'.$Goods['GoodsName'].'</td>
+                    <td><a href="Detail?id='.$Goods['GoodsID'].'">'.$Goods['GoodsName'].'</a></td>
                     <td>'.$Goods['GoodsQty'].'</td>
                     <td>'.number_format((float)$Goods['GoodsPrice'], 2, '.', ',').'</td>    
                     <td>'.$Icon_Edit.$Icon_Delete.'</td>

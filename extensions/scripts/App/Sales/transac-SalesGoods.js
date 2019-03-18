@@ -25,7 +25,7 @@ function setTransac() {
         genGrid: function () {
             var Rightbox = $('<div class="row" style="height:100%!important;"></div>');
             var gridStart = $('<div id="gridStart" style="width:100%;"></div>');
-            gridStart.append("<div class='col-12 p_a8 f_16 box_shadow' style='height:7%;background-color: #1F262D;'><i class='m-r-10 mdi mdi-cart-outline text_white'></i><span class='text_white'>สินค้าในตะกร้า</span></div>");  
+            gridStart.append("<div class='col-12 transacgrid_h box_shadow'><i class='m-r-10 mdi mdi-cart-outline text_white'></i><span class='text_white'>สินค้าในตะกร้า</span></div>");  
             gridStart.append("<div class='col-12 p_a5 transacgrid_d' id='transac-body'></div>");
 
             var gridEnd = $('<div id="gridEnd" style="width:100%;"></div>');
@@ -61,7 +61,7 @@ function setTransac() {
             var uid = RandomMath();
             var TotalAmnt = GoodsPrice * QtyBarcode;
             var PricePerGoods = QtyBarcode > 1 ? "@" + String(numberWithCommas(parseFloat(GoodsPrice).toFixed(2))) : "";
-            var Goods = $('<div class="w_100 h_7 bg_white m_b5 box_shadow p_a8" id="GoodDetail" data-uid="' + uid + '"></div>');
+            var Goods = $('<div class="transacgrid_data box_shadow" id="GoodDetail" data-uid="' + uid + '"></div>');
             Goods.append("<div class='w_10 float-left text-center box-highlight'><span class='w_100 h_0 text-center' name='GoodsQty'>"  + QtyBarcode + "</span></div>");
             Goods.append("<div class='w_40 float-left text-left text-ellipsis' alt = '" + GoodsName + "'><span>" + GoodsName + "</span></div>");
             Goods.append("<div class='w_20 float-left text-right'><span id='PricePerGoods' style='display:inline-block;'>"  + PricePerGoods + "</span></div>");

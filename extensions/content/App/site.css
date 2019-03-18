@@ -36,6 +36,9 @@ span.imageDel {
 .h_10{
     height: 10% !important;
 }
+.h_50{
+    height: 50% !important;
+}
 .h_80{
     height: 80% !important;
 }
@@ -84,6 +87,38 @@ span.imageDel {
 .w_100{
     width: 100% !important;
 }
+.wh_5{
+    width: 5% !important;
+    height: 5% !important;
+}
+.wh_10{
+    width: 10% !important;
+    height: 10% !important;
+}
+.wh_15{
+    width: 15% !important;
+    height: 15% !important;
+}
+.wh_20{
+    width: 20% !important;
+    height: 20% !important;
+}
+.wh_50{
+    width: 50% !important;
+    height: 50% !important;
+}
+.wh_75{
+    width: 75% !important;
+    height: 75% !important;
+}
+.wh_80{
+    width: 80% !important;
+    height: 80% !important;
+}
+.wh_85{
+    width: 85% !important;
+    height: 85% !important;
+}
 .wh100{
     width: 100% !important;
     height: 100% !important;
@@ -108,6 +143,9 @@ span.imageDel {
 }
 .p_b2{
     padding-bottom: 2px !important;
+}
+.m_a0{
+    margin: 0px !important;
 }
 .m_a5{
     margin: 5px !important;
@@ -135,6 +173,9 @@ span.imageDel {
 }
 .m_b5{
     margin-bottom: 5px !important;
+}
+.m_b10{
+    margin-bottom: 10px !important;
 }
 .menu-active{
     color: #fff;
@@ -198,6 +239,28 @@ p.footer {
     font-size: 16pt;    
 }
 
+.transacgrid_h{
+    font-size: 16pt !important;    
+    height: 7% !important;
+    background-color: #1F262D !important;
+    padding: 8px !important;
+}
+
+.transacgrid_data{
+    width: 100% !important;
+    height: 7% !important;
+    background-color: white !important;
+    margin-bottom: 5% !important;
+    padding: 8px !important;
+}
+
+
+.ListGoods{
+    max-height: 200px;
+    overflow: auto;
+}
+
+
 /* Control CSS according to screen size  */
 @media only screen and (max-height:1366px){
     .h_detail_pos{
@@ -214,7 +277,43 @@ p.footer {
     }
 }
 
-@media only screen and (max-height:1980px){
+@media only screen and (max-width: 1600px) and (min-width: 1366px){
+    .h_detail_pos{
+        height: 615px !important;
+    }
+
+    .transacgrid_h{
+        font-size: 16pt !important;    
+        height: 7% !important;
+        background-color: #1F262D !important;
+        padding: 3px !important;
+        padding-left: 10px !important;
+    }
+
+    .transacgrid_d{
+        overflow:auto;
+        height:67.5%;
+    }
+
+    .transacgrid_data{
+        width: 100% !important;
+        height: 7% !important;
+        background-color: white !important;
+        margin-bottom: 5% !important;
+        padding: 2px !important;
+    }
+
+    .transacgrid_f{
+        width: 35% !important;
+    }
+
+    .ListGoods{
+        max-height: 400px;
+        overflow: auto;
+    }
+}
+
+@media only screen and (min-height:1980px){
     .h_detail_pos{
         height: 790px !important;
     }
@@ -252,3 +351,24 @@ p.footer {
 .pointer{
     cursor:pointer;
 }
+
+#style-2::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+#style-2::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #F5F5F5;
+}
+
+#style-2::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: rgba(0, 0, 0, 0.2);
+}
+  

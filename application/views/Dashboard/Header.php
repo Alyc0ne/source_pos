@@ -17,7 +17,7 @@
                 <!-- Logo text -->
             <span class="logo-text">
                     <!-- dark Logo text -->
-                    <img src="<?php echo base_url(); ?>ex/images/logo-text.png" alt="homepage" class="light-logo" />
+                    <!-- <img src="<?php echo base_url(); ?>ex/images/logo-text.png" alt="homepage" class="light-logo" /> -->
                 
             </span>
             <!-- Logo icon -->

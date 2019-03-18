@@ -30,10 +30,11 @@
     <!--Custom JavaScript -->
     <script src="<?php echo base_url(); ?>extensions/js/custom.min.js"></script>
     <script>var base_url = '<?php echo base_url() ?>';</script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>extensions/scripts/Default/apps.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>extensions/scripts/Default/apps.js"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>  
+    <link rel="stylesheet" href="<?php echo base_url(); ?>extensions/content/css/perfect-scrollbar.css">
 </head>
 
 <body>
