@@ -18,13 +18,13 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>extensions/content/App/site.css">
 
     <!-- Bundle CSS -->
-    <link href="<?php echo base_url(); ?>extensions/bundle/css/perfect-scrollbar.css" rel="stylesheet">
+    <!-- <link href="<?php echo base_url(); ?>extensions/bundle/css/perfect-scrollbar.css" rel="stylesheet"> -->
 
     <!-- Bundle JS -->
     <script src="<?php echo base_url(); ?>extensions/bundle/js/jquery_3.3.1.min.js"></script>
     <script src="<?php echo base_url(); ?>extensions/bundle/js/popper.min.js"></script>
     <script src="<?php echo base_url(); ?>extensions/bundle/js/bootstrap_4.1.0.min.js"></script>
-    <script src="<?php echo base_url(); ?>extensions/bundle/js/perfect-scrollbar.min"></script>
+    <script src="<?php echo base_url(); ?>extensions/bundle/js/perfect-scrollbar.jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>extensions/bundle/js/sparkline.js"></script>
     <script src="<?php echo base_url(); ?>extensions/bundle/js/waves.js"></script>
     <script src="<?php echo base_url(); ?>extensions/bundle/js/sidebarmenu.js"></script>

@@ -117,24 +117,23 @@ th, td {
 }
 
 .column1 {
-  width: 33%;
-  padding-left: 40px;
+  width: 15%;
 }
 
 .column2 {
-  width: 13%;
+  width: 40%;
 }
 
 .column3 {
-  width: 22%;
+  width: 15%;
 }
 
 .column4 {
-  width: 19%;
+  width: 20%;
 }
 
 .column5 {
-  width: 13%;
+  width: 10%;
 }
 
 /*==================================================================
