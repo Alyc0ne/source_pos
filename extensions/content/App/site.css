@@ -1,3 +1,13 @@
+@font-face {
+    font-family: Lato-Regular;
+    src: url('../../bundle/fonts/Lato/Lato-Regular.ttf'); 
+  }
+  
+  @font-face {
+    font-family: Lato-Bold;
+    src: url('../../bundle/fonts/Lato/Lato-Bold.ttf'); 
+  }
+
 html, 
 body {
     height: 100%;
@@ -171,11 +181,20 @@ span.imageDel {
 .m_l5{
     margin-left:5px !important;
 }
+.m_l10{
+    margin-left:10px !important;
+}
 .m_b5{
     margin-bottom: 5px !important;
 }
 .m_b10{
     margin-bottom: 10px !important;
+}
+.m_lr10{
+    margin: 0px 10px 0px 10px !important;
+}
+.m_lr15{
+    margin: 0px 15px 0px 15px !important;
 }
 .menu-active{
     color: #fff;
@@ -348,11 +367,6 @@ p.footer {
     color: white;
 }
 
-.box-highlight{
-    /* border: 1px solid #b94a48;
-    box-shadow: 0 0 8px #D0D0D0; */
-}
-
 .pointer{
     cursor:pointer;
 }
@@ -367,7 +381,10 @@ p.footer {
 #style-2::-webkit-scrollbar
 {
 	width: 6px;
-	background-color: #F5F5F5;
+    background-color: #cccccc;
+    right: 0;
+    background-color: transparent;
+    opacity: 0.1 !important;
 }
 
 #style-2::-webkit-scrollbar-thumb
@@ -376,4 +393,77 @@ p.footer {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	background-color: rgba(0, 0, 0, 0.2);
 }
+
+.tablehead{
+    width: 100%;
+}
+
+.tablehead th {
+    padding-top: 10px;
+    padding-bottom: 25px;
+}
+
+.column1 {
+    width: 33%;
+    margin-left: 10px;
+    padding-left: 20px; 
+}
   
+.column2 {
+    width: 13%;
+}
+  
+  .column3 {
+    width: 22%;
+  }
+  
+  .column4 {
+    width: 19%;
+  }
+  
+  .column5 {
+    width: 13%;
+  }
+  
+  .tablebody td {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    font-family: Lato-Regular;
+    font-size: 15px;
+    color: #808080;
+    line-height: 1.4;
+    background-color: #f7f7f7;
+    border: solid 1px transparent;
+    border-style: solid none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .tablebody tr {
+    overflow: hidden; 
+    border-bottom: 10px solid #fff;
+    border-radius: 10px;
+  }
+
+ .tablebody { 
+    border-collapse: separate; 
+    border-spacing: 0 10px; 
+    width: 100%;
+    padding-right: 20px !important;
+  }
+
+.tablebody td:first-child {
+    border-left-style: solid;
+    border-top-left-radius: 10px; 
+    border-bottom-left-radius: 10px;
+}
+.tablebody td:last-child {
+    border-right-style: solid;
+    border-bottom-right-radius: 10px; 
+    border-top-right-radius: 10px; 
+}
+
+.tablebody tr:hover td {
+    background-color: #ebebeb;
+    cursor: pointer;
+  }

@@ -15,7 +15,7 @@ class GoodsController extends CI_Controller{
     {
         $Where = array('IsDelete' => 0);
         $query = $this->db->where($Where)->get('smGoods')->result_array();
-        $record_per_page = 10; 
+        $record_per_page = 15; 
         if($this->input->post("page") != null)
         {  
              $page = $this->input->post("page");  

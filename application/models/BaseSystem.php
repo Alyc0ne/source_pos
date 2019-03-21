@@ -116,11 +116,11 @@ class BaseSystem extends CI_Model
             $center = $Goods['GoodsBarcode'] == null ? "text-center" : "";
             $table .= '
                 <tr>
-                    <td class='.$center.'>'.$GoodsBarcode.'</td>
-                    <td><a href="Detail?id='.$Goods['GoodsID'].'">'.$Goods['GoodsName'].'</a></td>
-                    <td>'.$Goods['GoodsQty'].'</td>
-                    <td>'.number_format((float)$Goods['GoodsPrice'], 2, '.', ',').'</td>    
-                    <td>'.$Icon_Edit.$Icon_Delete.'</td>
+                    <td class="column1 '.$center.'">'.$GoodsBarcode.'</td>
+                    <td class="column2"><a href="Detail?id='.$Goods['GoodsID'].'">'.$Goods['GoodsName'].'</a></td>
+                    <td class="column3">'.$Goods['GoodsQty'].'</td>
+                    <td class="column4">'.number_format((float)$Goods['GoodsPrice'], 2, '.', ',').'</td>    
+                    <td class="column5">'.$Icon_Edit.$Icon_Delete.'</td>
                 </tr>
             ';
         }
