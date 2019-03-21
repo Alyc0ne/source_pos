@@ -313,7 +313,7 @@ p.footer {
     }
 }
 
-@media only screen and (max-height:1980px) and (min-width: 1600px){
+@media only screen and (max-height:1980px) and (min-width: 1601px){
     .h_detail_pos{
         height: 800px !important;
     }

@@ -17,18 +17,19 @@
     <link href="<?php echo base_url(); ?>extensions/content/css/style.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url(); ?>extensions/content/App/site.css">
 
-    <script src="<?php echo base_url(); ?>extensions/js/jquery_3.3.1.min.js"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="<?php echo base_url(); ?>extensions/js/popper.min.js"></script>
-    <script src="<?php echo base_url(); ?>extensions/js/bootstrap_4.1.0.min.js"></script>
-    <script src="<?php echo base_url(); ?>extensions/js/perfect-scrollbar.jquery.min.js"></script>
-    <script src="<?php echo base_url(); ?>extensions/js/sparkline.js"></script>
-    <!--Wave Effects -->
-    <script src="<?php echo base_url(); ?>extensions/js/waves.js"></script>
-    <!--Menu sidebar -->
-    <script src="<?php echo base_url(); ?>extensions/js/sidebarmenu.js"></script>
-    <!--Custom JavaScript -->
-    <script src="<?php echo base_url(); ?>extensions/js/custom.min.js"></script>
+    <!-- Bundle CSS -->
+    <link href="<?php echo base_url(); ?>extensions/bundle/css/perfect-scrollbar.css" rel="stylesheet">
+
+    <!-- Bundle JS -->
+    <script src="<?php echo base_url(); ?>extensions/bundle/js/jquery_3.3.1.min.js"></script>
+    <script src="<?php echo base_url(); ?>extensions/bundle/js/popper.min.js"></script>
+    <script src="<?php echo base_url(); ?>extensions/bundle/js/bootstrap_4.1.0.min.js"></script>
+    <script src="<?php echo base_url(); ?>extensions/bundle/js/perfect-scrollbar.min"></script>
+    <script src="<?php echo base_url(); ?>extensions/bundle/js/sparkline.js"></script>
+    <script src="<?php echo base_url(); ?>extensions/bundle/js/waves.js"></script>
+    <script src="<?php echo base_url(); ?>extensions/bundle/js/sidebarmenu.js"></script>
+    <script src="<?php echo base_url(); ?>extensions/bundle/js/custom.min.js"></script>
+
     <script>var base_url = '<?php echo base_url() ?>';</script>
     <script type="text/javascript" src="<?php echo base_url(); ?>extensions/scripts/Default/apps.js"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
