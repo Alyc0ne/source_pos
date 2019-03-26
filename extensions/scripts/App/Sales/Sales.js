@@ -23,7 +23,7 @@ function manageAdd_updateGoods(QtyBarcode,DataGoods,TransactionGoods) {
     } 
 }
 
-$(document).on("click",".imageDel", function(e){
+$(document).on("click","#RemoveGoods", function(e){
     var uid = $(this).closest("#GoodDetail").data("uid");
     bootbox.confirm(
         "ต้องการลบสินค้าชิ้นนี้ ใช่หรือไม่ ?"

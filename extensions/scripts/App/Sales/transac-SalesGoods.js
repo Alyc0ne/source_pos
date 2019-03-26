@@ -25,7 +25,7 @@ function setTransac() {
         genGrid: function () {
             var Rightbox = $('<div class="row" style="height:100%!important;"></div>');
             var gridStart = $('<div id="gridStart" style="width:100%;"></div>');
-            gridStart.append("<div class='col-12 transacgrid_h box_shadow'><i class='m-r-10 mdi mdi-cart-outline text_white'></i><span class='text_white'>สินค้าในตะกร้า</span></div>");  
+            //gridStart.append("<div class='col-12 transacgrid_h box_shadow'><i class='m-r-10 mdi mdi-cart-outline text_white'></i><span class='text_white'>สินค้าในตะกร้า</span></div>");  
             gridStart.append("<div class='col-12 p_a5 transacgrid_d' id='transac-body'></div>");
 
             var gridEnd = $('<div id="gridEnd" style="width:100%;"></div>');
@@ -48,11 +48,22 @@ function setTransac() {
         getData_uid: function (uid){
             if(uid != null || uid != ""){
                 var GoodDetail = _t.Element.find("#transac-body #GoodDetail[data-uid='" + uid +  "']");
-                var obj = {
-                    GoodsQty: GoodDetail.children()[1].textContent,
-                    GoodsName:GoodDetail.children()[2].textContent,
-                    GoodsPrice:GoodDetail.children()[3].textContent,
+                var GoodsQty = GoodDetail.children()[0].textContent;
+                if (GoodsQty > 1) {
+                    var GoodsPrce = GoodDetail.children()[3].textContent;
+                    var obj = {
+                        GoodsQty: GoodsQty,
+                        GoodsName:GoodDetail.children()[1].textContent,
+                        GoodsPrice:GoodsPrce/GoodsQty,
+                    }
+                }else{
+                    var obj = {
+                        GoodsQty: GoodsQty,
+                        GoodsName:GoodDetail.children()[1].textContent,
+                        GoodsPrice:GoodDetail.children()[3].textContent,
+                    }
                 }
+
                 return obj;
             }
         },
@@ -66,7 +77,7 @@ function setTransac() {
             Goods.append("<div class='w_40 float-left text-left text-ellipsis' alt = '" + GoodsName + "'><span>" + GoodsName + "</span></div>");
             Goods.append("<div class='w_20 float-left text-right'><span id='PricePerGoods' style='display:inline-block;'>"  + PricePerGoods + "</span></div>");
             Goods.append("<div class='w_20 float-left text-right'><span id='TotalAmnt'>" + numberWithCommas(parseFloat(TotalAmnt).toFixed(2)) + "</span></div>");
-            Goods.append("<div class='w_10 float-left text-right'><img src='" + base_url + "extensions/images/icon/delete.png' class='p_b2 pointer'><input type='hidden' value='" + uid + "'></div>");
+            Goods.append("<div class='w_10 float-left text-right'><img id='RemoveGoods' src='" + base_url + "extensions/images/icon/delete_16_red.png' class='p_b2 pointer'><input type='hidden' value='" + uid + "'></div>");
             _t_body.append(Goods);
             arr_Data.push({
                 uid : uid,
@@ -114,7 +125,7 @@ function setTransac() {
 
             var GoodDetail = _t.Element.find("#transac-body #GoodDetail[data-uid='" + uid +  "']");
             var dataOneRow = _t.gridControl.getData_uid(uid);
-            var GoodsPrice = parseFloat(dataOneRow.GoodsQty) * parseFloat(dataOneRow.GoodsPrice.replace(/,/g, ''));
+            var GoodsPrice = parseFloat(dataOneRow.GoodsQty) * parseFloat(dataOneRow.GoodsPrice.toString().replace(/,/g, ''));
             _t.gridControl.calSummary(false,GoodsPrice);
             GoodDetail.remove();
         },

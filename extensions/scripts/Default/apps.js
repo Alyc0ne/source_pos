@@ -254,7 +254,7 @@ function getFirstPath() {
 
 function clearModal(name) {
     var ID = $(name);
-    ID.on('hidden.bs.modal', function(e) {
+    // ID.on('hidden.bs.modal', function(e) {
         $(this)
             .find("input,textarea,select")
             .val('')
@@ -262,7 +262,7 @@ function clearModal(name) {
             .find("input[type=checkbox], input[type=radio]")
             .prop("checked", "")
             .end();
-    })
+    // })
 }
 
 function PathLink(system) {
@@ -318,4 +318,51 @@ function callImages(type) {
 
 function CheckPage() {
     return $("#PageSystem").val();
+}
+
+
+/*############################# Modal #############################*/
+
+//Goods
+function ShowModalGoods() {
+    //openloading(true);
+    if(checkDataTable('Unit')){
+        $("#GoodsNo").val(GenRunningNumber("Goods"));
+        GetDataJson('Unit','#GoodsUnit');
+        $("#GoodsModal").modal();
+        setTimeout(function(){
+            $("#GoodsBarcode").focus();
+            openloading(false);
+        },700);
+    }
+}
+
+function SaveGoodsModal() {
+    if (bindValidate("#frmGoods")){
+        //openloading(true);
+        $.ajax({
+            type: 'POST',
+            url: base_url + "Goods/GoodsController/BindSave",
+            data: {
+                "GoodsNo" : $("#GoodsNo").val(),
+                "IsBarcode" : $("#IsBarcode:checkbox:checked").length,
+                "GoodsBarcode" : $("#GoodsBarcode").val(),
+                "GoodsName" : $("#GoodsName").val(),
+                "GoodsPrice" : $("#GoodsPrice").val(),
+                "GoodsCost" : $("#GoodsCost").val(),
+                "goods_unit_id" : $("#GoodsUnit").val()
+            },
+            datatype: "json",
+            traditional: true,
+            success: function (e) {
+                //openloading(false);
+                //PostMsgSuccess(" บันทึกข้อมูลสำเร็จ");
+                clearModal("#frmGoods");
+                $("#GoodsModal").modal('toggle');
+            },
+            error: function (e) {
+                //openloading(false);
+            }
+        });
+    }
 }

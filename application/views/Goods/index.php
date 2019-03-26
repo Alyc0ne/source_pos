@@ -1,35 +1,15 @@
-<script src="<?php echo base_url(); ?>extensions/js/Goods.js"></script>
-<link rel="stylesheet" href="<?php echo base_url(); ?>extensions/content/App/pagination.css">
-
-<!-- <div class="table-responsive t_test" data-pattern="priority-columns">
-  <table summary="This table shows how to create responsive tables using RWD-Table-Patterns' functionality" class="table table-hover">
-    <thead style='background-color:#1F262D;color:white;'>
-      <tr>
-        <th>Barcode</th>
-        <th data-priority="1">ชื่อสินค้า</th>
-        <th data-priority="2">จำนวนสินค้า</th>
-        <th data-priority="3">ราคาสินค้า</th>
-        <th data-priority="4">#</th>
-      </tr>
-    </thead>
-    <tbody class='ListGoods_body'>
-      
-
-    </tbody>
-  </table>
-</div> -->
-
-
+<script src="<?php echo base_url(); ?>extensions/scripts/App/Goods/Goods.js"></script>
+<link rel="stylesheet" href="<?php echo base_url(); ?>extensions/css/content/pagination.css">
+<input type='hidden' id='PageSystem' value='ListGoods'>
 <div class="col-md-12">
-    <div class="card h_detail_pos box_shadow">
+    <div class="card shadow mb-4 h_detail_pos">
         <div class="card-body p_a0" style="height:100%!important;">
           <div class="row h_100">
-            <div class='col-12 wh_15 m_b10' style='border:black 1px solid;'>
+            <div class='col-12 wh_15 m_b10'>
             </div>
 
             <div class='col-12 wh_75'>
-              <div class="table-responsive-xl m_a5 m_lr15">
-              
+              <div class="table-responsive" style='padding:0px 10px 0px 10px;'>
                 <table class="tablehead m_a0">
                   <thead>
                     <tr>
@@ -41,7 +21,8 @@
                     </tr>
                   </thead>
                 </table>
-                <div class='js-pscroll ListGoods' id='style-2'>
+
+                <div class='ListGoods' id='style-2'> 
                   <table class="tablebody">
                     <tbody class='ListGoods_body'>
                       
@@ -49,12 +30,16 @@
                     </tbody>
                   </table>
                 </div>
-                
-              </div>
-            </div>
 
-            <div class='col-12 wh_10'>
-              <div class="content_detail__pagination cdp pageListGood" actpage="1">
+              </div>
+
+            <div class='col-12 w_100 h_10'>
+              <div class='w_50' style='float:left;margin:12px 0px 12px 0px;'>
+                <p>Showing 1 to 10 of 57 entries</p>
+              </div>
+              <div class='w_50' style='float:right;'>
+                <div class="content_detail__pagination cdp pageListGood" actpage="1">
+              </div>
               </div>
             </div>
 
