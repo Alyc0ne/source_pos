@@ -315,3 +315,7 @@ function callImages(type) {
             break;
     }
 }
+
+function CheckPage() {
+    return $("#PageSystem").val();
+}

@@ -10,7 +10,9 @@ $(document).ready(function() {
         
     });
 
-    ListGoods();
+    if (CheckPage() == "ListGoods") {
+        ListGoods();
+    }   
 });
 
 function ListGoods(page) {
