@@ -157,6 +157,10 @@ span.imageDel {
 .p_b2{
     padding-bottom: 2px !important;
 }
+.p_tb4{
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+}
 .m_a0{
     margin: 0px !important;
 }
@@ -216,7 +220,7 @@ span.imageDel {
 }
 .pointer {cursor: pointer;}
 
-.error{
+.ErrorValidate{
     color: #b94a48;
 }
 
@@ -319,7 +323,7 @@ p.footer {
 
 @media only screen and (max-width: 1600px) and (min-width: 1366px){
     .h_detail_pos{
-        height: 650px !important;
+        height: 560px !important;
     }
 
     .POS_Header span{
@@ -348,17 +352,17 @@ p.footer {
         padding-left: 10px !important;
     } */
 
-    .transacgrid_d{
-        overflow:auto;
-        height:66%;
-    }
-
     .transacgrid_data{
         width: 100% !important;
-        height: 7% !important;
+        height: 9% !important;
         background-color: white !important;
         margin-bottom: 5% !important;
         padding: 2px !important;
+    }
+
+    .transacgrid_d{
+        overflow:auto;
+        height:60.5%;
     }
 
     .transacgrid_f{
@@ -398,8 +402,15 @@ p.footer {
  
 .img_responsive{
     width: 100%;
-    max-width: 400px;
     height: auto;
+}
+
+.max_w50{
+    max-width: 50px;
+}
+
+.max_w200{
+    max-width: 200px;
 }
 
 .text_white{
@@ -506,3 +517,54 @@ p.footer {
     background-color: #ebebeb;
     cursor: pointer;
   }
+
+  .lds-ripple {
+    display: inline-block;
+    position: fixed;
+    width: 64px;
+    height: 64px;
+    top:48%;
+    left: 48%;
+  }
+  .lds-ripple div {
+    position: absolute;
+    border: 4px solid red;
+    opacity: 1;
+    border-radius: 50%;
+    animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+  }
+  .lds-ripple div:nth-child(2) {
+    animation-delay: -0.5s;
+  }
+  @keyframes lds-ripple {
+    0% {
+      top: 28px;
+      left: 28px;
+      width: 0;
+      height: 0;
+      opacity: 1;
+    }
+    100% {
+      top: -1px;
+      left: -1px;
+      width: 58px;
+      height: 58px;
+      opacity: 0;
+    }
+  }
+  
+
+.window-overlay{
+    background-color: white;
+    opacity: 0.6;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    overflow-y: auto;
+    width: 100%;
+    z-index: 10000;
+    /*display: block;*/
+    display: none;
+    overflow-x: hidden;
+}

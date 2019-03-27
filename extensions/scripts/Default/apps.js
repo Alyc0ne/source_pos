@@ -29,15 +29,15 @@ $(document).on("keypress", "._number", function(e) {
     }
 });
 
-$(document).on("click", ".nav-link", function () {
-    openloading(true);
-    var ID = this.getAttribute('aria-controls');
-    setTimeout(function(){ 
-        $("#right-page #v-pills-tabContent").find("div.active").removeClass("show active");
-        $("#right-page #v-pills-tabContent").find("div#" + ID).addClass("show active");
-        openloading(false);
-    }, 1000);         
-});
+// $(document).on("click", ".nav-link", function () {
+//     openloading(true);
+//     var ID = this.getAttribute('aria-controls');
+//     setTimeout(function(){ 
+//         $("#right-page #v-pills-tabContent").find("div.active").removeClass("show active");
+//         $("#right-page #v-pills-tabContent").find("div#" + ID).addClass("show active");
+//         openloading(false);
+//     }, 1000);         
+// });
 
 $(document).on("blur", "._number", function(e) {
     var t = $(this);
@@ -51,21 +51,10 @@ $(document).on("blur", "._number", function(e) {
 
 function openloading(isLoad) {
     if (isLoad != null && isLoad != undefined) {
-        var html = "";
-        html += "<div class=\"overray-loading\">";
-        html += "   <div class=\"bg-backdrop\"></div>";
-        html += "   <div class=\"loading-wrapper\">";
-        //html += "      <div class=\"load-dots\"></div>";
-        html += "      <div class=\"load-icon\"></div>";
-        html += "   </div>";
-        html += "</div>";
-
         if (isLoad) {
-            $("html").find(".overray-loading").remove();
-            $("html").find(".loading-wrapper").remove();
-            $("body").append(html);
+            $(".window-overlay").css('display','block');
         } else {
-            $("html").find(".overray-loading").remove();
+            $(".window-overlay").css('display','none');
         }
     }
 }
@@ -73,7 +62,7 @@ function openloading(isLoad) {
 function bindValidate(frm) {
     var IsResult = true;
     if ($(frm).length > 0) {
-        $(frm).find("div.error").remove();
+        $(frm).find("div.ErrorValidate").remove();
         $(frm).find("input.border_red").removeClass("border_red");
         var tab = [];
         var frmControl = $(frm + " .require").parent();
@@ -115,13 +104,13 @@ function bindValidate(frm) {
                 }
                 if (!valResult) {
                     $(this).find("input[type=text],input[type=password], select, textarea").eq(0).addClass("border_red");
-                    $(this).find("input[type=text],input[type=password], select, textarea").eq(0).parent().find("div.error").remove();
-                    $(this).find("input[type=text],input[type=password], select:not('#TitleNameEnumID'), textarea").eq(0).parent().append("<div class='error'><label class='error'>กรุณากรอกข้อมูล</label></div>");
+                    $(this).find("input[type=text],input[type=password], select, textarea").eq(0).parent().find("div.ErrorValidate").remove();
+                    $(this).find("input[type=text],input[type=password], select:not('#TitleNameEnumID'), textarea").eq(0).parent().append("<div class='ErrorValidate'><label class='ErrorValidate'>กรุณากรอกข้อมูล</label></div>");
                 }
             }
         });
 
-        var checkError = $(frm).find("div.error").length;
+        var checkError = $(frm).find("div.ErrorValidate").length;
         if (checkError > 0) {
             var IsResult = false;
         }
@@ -325,7 +314,7 @@ function CheckPage() {
 
 //Goods
 function ShowModalGoods() {
-    //openloading(true);
+    openloading(true);
     if(checkDataTable('Unit')){
         $("#GoodsNo").val(GenRunningNumber("Goods"));
         GetDataJson('Unit','#GoodsUnit');
@@ -339,7 +328,7 @@ function ShowModalGoods() {
 
 function SaveGoodsModal() {
     if (bindValidate("#frmGoods")){
-        //openloading(true);
+        openloading(true);
         $.ajax({
             type: 'POST',
             url: base_url + "Goods/GoodsController/BindSave",
@@ -355,13 +344,13 @@ function SaveGoodsModal() {
             datatype: "json",
             traditional: true,
             success: function (e) {
-                //openloading(false);
+                openloading(false);
                 //PostMsgSuccess(" บันทึกข้อมูลสำเร็จ");
                 clearModal("#frmGoods");
                 $("#GoodsModal").modal('toggle');
             },
             error: function (e) {
-                //openloading(false);
+                openloading(false);
             }
         });
     }

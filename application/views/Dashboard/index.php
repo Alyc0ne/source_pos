@@ -45,6 +45,12 @@
       $Icon_Delete = "<span><img src=".base_url()."extensions\images\icon\Delete_16.png class='pointer'></span>";
   ?>
 
+  <div class='window-overlay'>
+    <div class="lds-ripple">
+      <div></div>
+      <div></div>
+    </div>
+  </div>
 
   <!-- Page Wrapper -->
   <div id="wrapper">
@@ -360,7 +366,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <!-- <span>Copyright &copy; Your Website 2019</span> -->
+            <span>Alyc0ne &copy; 2019 , Source Ver. 1.0.2.14, All right reserved.</span> 
           </div>
         </div>
       </footer>
