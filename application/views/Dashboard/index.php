@@ -366,7 +366,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Alyc0ne &copy; 2019 , Source Ver. 1.0.2.14, All right reserved.</span> 
+            <span>Alyc0ne &copy; 2019 , Source Ver. 0.0.0.1, All right reserved.</span> 
           </div>
         </div>
       </footer>

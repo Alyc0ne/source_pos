@@ -290,38 +290,47 @@ p.footer {
 /* Control CSS according to screen size  */
 @media only screen and (max-height:1366px){
     .h_detail_pos{
-        height: 510px !important;
+        height: 430px !important;
     }
 
     .POS_Header span{
-        width: 9% !important;
+        width: 12% !important;
         margin-right: 5px !important;
     }
 
     .POS_Header input#QtyBarcode{
-        width: 10% !important;
+        width: 8% !important;
         margin-left: 2px !important;
+        margin-right: 5px !important;
         text-align: center !important;
         height: 5% !important;
     } 
 
     .POS_Header input#GoodsBarcodeSearch{
-        width: 50% !important;
+        width: 75% !important;
         height: 5% !important;
         margin: 0 auto !important;
     } 
 
+    .transacgrid_data{
+        width: 100% !important;
+        height: 13% !important;
+        background-color: white !important;
+        margin-bottom: 5% !important;
+        padding: 2px !important;
+    }   
+
     .transacgrid_d{
         overflow:auto;
-        height:60%;
+        height:48.5%;
     }
 
     .transacgrid_f{
-        width: 35% !important;
+        width: 40% !important;
     }
 }
 
-@media only screen and (max-width: 1600px) and (min-width: 1366px){
+@media only screen and (max-width: 1600px) and (min-width: 1367px){
     .h_detail_pos{
         height: 560px !important;
     }

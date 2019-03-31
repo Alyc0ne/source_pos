@@ -98,6 +98,7 @@ $(document).on("click", "#btn-Select-NoGoodsBarcode", function (e) {
 });
 
 $(document).on("change", "#GoodsBarcodeSearch", function(ae) {
+    openloading(true);
     var QtyBarcode = $("#QtyBarcode").val();
     $.ajax({
         type: 'POST',
@@ -112,8 +113,9 @@ $(document).on("change", "#GoodsBarcodeSearch", function(ae) {
             }
         },
         error: function(e) {
-            //openloading(false);
+            openloading(false);
         }
     });
     $("#GoodsBarcodeSearch").val("");
+    openloading(false);
 });
