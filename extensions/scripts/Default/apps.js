@@ -29,6 +29,51 @@ $(document).on("keypress", "._number", function(e) {
     }
 });
 
+// $(document).on('keypress', function(e) {
+//     if ( e.key == 122) 
+//         alert(Kuy);
+// });
+
+// document.body.addEventListener("keydown",function(e){
+//     e = e || window.event;
+//     var key = e.which || e.keyCode; // keyCode detection
+//     var ctrl = e.ctrlKey ? e.ctrlKey : ((key === 17) ? true : false); // ctrl detection
+
+//     if ( key == 122 ) {
+//         console.log("F11 !");
+//     } else if ( key == 67 && ctrl ) {
+//         console.log("Ctrl + C Pressed !");
+//     }
+
+// },false);
+
+function doc_keyUp(e) {
+    e.preventDefault;
+    // this would test for whichever key is 40 and the ctrl key at the same time
+    if (e.keyCode == 122) {
+        // call your function to do the thing
+        alert("key");
+        
+    }
+}
+// register the handler 
+document.addEventListener('keyup', function (e) {
+    // this would test for whichever key is 40 and the ctrl key at the same time
+    if (e.keyCode == 122) {
+        // call your function to do the thing
+        alert("key");
+        return false;
+        
+    }
+}, false);
+
+
+$(document).on("keydown",function(e){
+    if(e.keyCode===122) return false
+    
+    //Stop FullScreen
+})
+
 // $(document).on("click", ".nav-link", function () {
 //     openloading(true);
 //     var ID = this.getAttribute('aria-controls');

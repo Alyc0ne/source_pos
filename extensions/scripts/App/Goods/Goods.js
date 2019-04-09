@@ -11,7 +11,7 @@ $(document).ready(function() {
     });
 
     if (CheckPage() == "ListGoods") {
-        ListGoods();
+        //ListGoods();
     }   
 });
 
@@ -106,6 +106,25 @@ function GetGoods(page) {
             
             pagination += ' </nav>';
             $('.page').append(pagination);
+        },
+        error: function (e) {
+            //openloading(false);
+        }
+    });
+}
+
+function EditGoods($id) {
+    $.ajax({
+        type: 'POST',
+        url: base_url + "Goods/GoodsController/GetGoodsDetail",
+        data: {
+            page : page,
+        },
+        dataType: "json",
+        traditional: true,
+        success: function (e) {
+            $("#GoodsModal").modal();
+            
         },
         error: function (e) {
             //openloading(false);

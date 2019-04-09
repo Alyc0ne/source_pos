@@ -18,8 +18,13 @@ class BaseSystem extends CI_Model
         return $data;
     }
 
-    public function GetDataOneRow($table,$id){
-        $result = $this->db->where('UnitID',$id)->get($table)->row_array();
+    public function GetDataAllRow($Table,$Where){
+        $result = $this->db->where($Where)->get($Table)->result_array();
+        return $result;
+    }
+
+    public function GetDataOneRow($Table,$Where){
+        $result = $this->db->where($Where)->get($Table)->row_array();
         return $result;
     }
 
@@ -45,61 +50,73 @@ class BaseSystem extends CI_Model
         return $result;
     }
 
-    public function GetGoodsNoBarcode($ListGoods,$start)
-    {   
-        if ($ListGoods != null) {
-            $result = $ListGoods[$start - 1];
-        }
+    // public function GetGoodsNoBarcode($ListGoods,$start)
+    // {   
+    //     if ($ListGoods != null) {
+    //         $result = $ListGoods[$start - 1];
+    //     }
         
-        $table = '';
-        //( SELECT    ROW_NUMBER() OVER ( ORDER BY OrderDate ) AS RowNum,
-        //$result = $this->db->where($where)->get('smGoods',$start,$record_per_page)->result_array();
-        //$query = $this->db->where($where)->get('smGoods')->result_array();
-        $table .= '
-            <table class="table">
-                <thead class="thead-light">
-                    <tr>
-                        <th class="w_5">
-                            <label class="customcheckbox m-b-20">
-                                <input type="checkbox" id="mainCheckbox" />
-                                <span class="checkmark"></span>
-                            </label>
-                        </th>
-                        <th scope="col" class="w_10 text-center">#</th>
-                        <th scope="col" class="w_70">ชื่อสินค้า</th>
-                        <th scope="col" class="w_15 text-right">ราคาสินค้า</th>
-                    </tr>
-                </thead>
-                <tbody class="NoGoodsBarcode_Body">
-        ';
-        foreach ($result as $data) {
-            $table .= '
-                <tr id="uid" data-goodsid="'. $data['GoodsID'] .'">
-                    <th>
-                    <label class="customcheckbox">
-                    <input type="checkbox" class="chkNoGoodsBarcode" />
-                    <span class="checkmark"></span>
-                    </label>
-                    </th>
-                    <td id="NoGoodsBarcode_QtyBarcode"><input type="number" style="height:5%;" class="text-center w_100" id="QtyBarcode" name="QtyBarcode" min="1" max="99" value="1"></td>
-                    <td id="NoGoodsBarcode_GoodsName">'. $data['GoodsName'] .'</td>
-                    <td id="NoGoodsBarcode_GoodsPrice" class="text-right">'.number_format((float)$data['GoodsPrice'], 2, '.', '').'</td>
-                </tr>
-            ';
+    //     $table = '';
+    //     //( SELECT    ROW_NUMBER() OVER ( ORDER BY OrderDate ) AS RowNum,
+    //     //$result = $this->db->where($where)->get('smGoods',$start,$record_per_page)->result_array();
+    //     //$query = $this->db->where($where)->get('smGoods')->result_array();
+    //     $table .= '
+    //         <table class="table">
+    //             <thead class="thead-light">
+    //                 <tr>
+    //                     <th class="w_5">
+    //                         <label class="customcheckbox m-b-20">
+    //                             <input type="checkbox" id="mainCheckbox" />
+    //                             <span class="checkmark"></span>
+    //                         </label>
+    //                     </th>
+    //                     <th scope="col" class="w_10 text-center">#</th>
+    //                     <th scope="col" class="w_70">ชื่อสินค้า</th>
+    //                     <th scope="col" class="w_15 text-right">ราคาสินค้า</th>
+    //                 </tr>
+    //             </thead>
+    //             <tbody class="NoGoodsBarcode_Body">
+    //     ';
+    //     foreach ($result as $data) {
+    //         $table .= '
+    //             <tr id="uid" data-goodsid="'. $data['GoodsID'] .'">
+    //                 <th>
+    //                 <label class="customcheckbox">
+    //                 <input type="checkbox" class="chkNoGoodsBarcode" />
+    //                 <span class="checkmark"></span>
+    //                 </label>
+    //                 </th>
+    //                 <td id="NoGoodsBarcode_QtyBarcode"><input type="number" style="height:5%;" class="text-center w_100" id="QtyBarcode" name="QtyBarcode" min="1" max="99" value="1"></td>
+    //                 <td id="NoGoodsBarcode_GoodsName">'. $data['GoodsName'] .'</td>
+    //                 <td id="NoGoodsBarcode_GoodsPrice" class="text-right">'.number_format((float)$data['GoodsPrice'], 2, '.', '').'</td>
+    //             </tr>
+    //         ';
+    //     }
+
+    //     $table .= '
+    //             </tbody>
+    //                 <!-- <tfoot class="page">
+    //                 </tfoot> -->
+
+    //         </table>
+    //     ';
+
+    //     return $ResultData = array(
+    //         "ListGoods"=>$result,
+    //         "TableData"=>$table
+    //     );
+    // }
+
+    public function GetGoodsNoBarcode($ListGoods)
+    {   
+        foreach ($ListGoods as $data) {
+            $Goods_Arr([
+                "GoodsName" => $data['GoodsName'],
+                "GoodsPrice" => $data['GoodsPrice']
+            ]);
         }
 
-        $table .= '
-                </tbody>
-                    <!-- <tfoot class="page">
-                    </tfoot> -->
-
-            </table>
-        ';
-
-        return $ResultData = array(
-            "ListGoods"=>$result,
-            "TableData"=>$table
-        );
+        return $Goods_Arr;
     }
 
     public function GenListGoods($ListGoods,$start)

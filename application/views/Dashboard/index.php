@@ -19,6 +19,7 @@
 
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="<?php echo base_url(); ?>extensions/css/content/site.css">
+  <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 
   <!-- Js Bundle-->
   <script src="<?php echo base_url(); ?>extensions/js/bundle/jquery.min.js"></script>
@@ -28,6 +29,8 @@
   <script src="<?php echo base_url(); ?>extensions/js/bundle/Chart.min.js"></script>
   <script src="<?php echo base_url(); ?>extensions/js/bundle/chart-area-demo.js"></script>
   <script src="<?php echo base_url(); ?>extensions/js/bundle/chart-pie-demo.js"></script>
+  <!-- <script src="<?php echo base_url(); ?>extensions/js/bundle/jquery.dataTables.min.js"></script>
+  <script src="<?php echo base_url(); ?>extensions/js/bundle/dataTables.bootstrap4.min.js"></script> -->
 
   <script type="text/javascript" src="<?php echo base_url(); ?>extensions/scripts/Default/apps.js"></script> 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
