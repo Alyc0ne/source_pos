@@ -9,6 +9,7 @@ class SalesController extends CI_Controller{
     {
         $data['path_link'] = "Sales/index";
         $data['result'] = null;
+        $data['SystemName'] = "POS";
         $this->load->view("Dashboard/index",$data);
         //echo json_encode($data);
     }

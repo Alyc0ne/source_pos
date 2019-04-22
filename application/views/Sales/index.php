@@ -2,6 +2,7 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>extensions/scripts/App/Sales/transac-SalesGoods.js"></script>
 <link href="<?php echo base_url(); ?>extensions/css/content/site.css" rel="stylesheet">
 
+<input type='hidden' id='SystemName' name='SystemName' value='<?php echo $SystemName; ?>'>
 <div class="col-lg-8">
     <!-- Project Card Example -->
     <div class="card shadow mb-4 h_detail_pos" id="left_SellGoods">
@@ -41,8 +42,11 @@
 
 <div class="col-lg-4">
     <div class="card shadow mb-4 h_detail_pos" id="Right_SellGoods">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">สินค้าในตระกร้า</h6>
+        <div class="card-header">
+            <!-- <h6 class="m-0 font-weight-bold text-primary">สินค้าในตระกร้า</h6> -->
+            <div style='height:100%;width:100%'>
+                <input type='text' class='wh100 text-center p_a15' style='font-size:36pt;' id='sub_total' name='sub_total' disabled>
+            </div>
         </div>
         <div class="card-body p_a0" style="height:100%!important;">
             <div class="col-12" id="Sell-PageRight" style="height:100%!important;">

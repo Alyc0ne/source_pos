@@ -44,6 +44,7 @@
       $this->load->view("Shared/Modal/Confrim");
       $this->load->view("Shared/Modal/NoGoodsBarcode");
       $this->load->view("Shared/Modal/Alert");
+      $this->load->view("Shared/Modal/Confrim_POS");
       $Icon_Edit = "<span class='m_r5'><img src=".base_url()."extensions\images\icon\Edit_16.png class='pointer'></span>";
       $Icon_Delete = "<span><img src=".base_url()."extensions\images\icon\Delete_16.png class='pointer'></span>";
   ?>
@@ -352,9 +353,9 @@
                       "Icon_Edit" => $Icon_Edit,
                       "Icon_Delete" => $Icon_Delete
                   ]);
-                  $this->load->view($path_link,$Arr); 
+                  $this->load->view($path_link,$SystemName,$Arr); 
               }else {
-                  $this->load->view($path_link); 
+                  $this->load->view($path_link,$SystemName); 
               }
             ?>
           </div>

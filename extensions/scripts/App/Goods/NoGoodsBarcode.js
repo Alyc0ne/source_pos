@@ -30,25 +30,25 @@ function GetNoGoodsBarcode(page) {
             $(".page").html("");
             $(".table-responsive").append(e.TableData);
 
-            // var pagination = '<nav aria-label="...">';
-            // pagination += '<ul class="pagination  justify-content-center">';
-            // pagination += '<li class="page-item disabled">';
-            // pagination += '<a class="page-link" href="#" tabindex="-1">Previous</a>';
-            // pagination += '</li>';
+            var pagination = '<nav aria-label="...">';
+            pagination += '<ul class="pagination  justify-content-center">';
+            pagination += '<li class="page-item disabled">';
+            pagination += '<a class="page-link" href="#" tabindex="-1">Previous</a>';
+            pagination += '</li>';
 
-            // for (let c = 0; c < e.PageData; c++) {
-            //     var numPage = c+1;
-            //     pagination += '<li class="page-item"><a class="NoBarcode_Page-link" id=' + numPage + ' href="#">' + numPage + '</a></li>';
-            // }
+            for (let c = 0; c < e.PageData; c++) {
+                var numPage = c+1;
+                pagination += '<li class="page-item"><a class="NoBarcode_Page-link" id=' + numPage + ' href="#">' + numPage + '</a></li>';
+            }
             
-            // if (e.PageData > page) {
-            //     pagination += '<li class="page-item">';
-            //     pagination += '<a class="page-link" href="#" id=' + page + 1 + '>Next</a>';
-            //     pagination += '</li>';
-            // }
+            if (e.PageData > page) {
+                pagination += '<li class="page-item">';
+                pagination += '<a class="page-link" href="#" id=' + page + 1 + '>Next</a>';
+                pagination += '</li>';
+            }
             
             // pagination += ' </nav>';
-            // $('.page').append(pagination);
+            $('.page').append(pagination);
         },
         error: function (e) {
             //openloading(false);

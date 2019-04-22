@@ -154,6 +154,9 @@ span.imageDel {
 .p_a10{
     padding: 10px !important;
 }
+.p_a15{
+    padding: 15px !important;
+}
 .p_b2{
     padding-bottom: 2px !important;
 }
@@ -377,13 +380,13 @@ p.footer {
         width: 100% !important;
         height: 9% !important;
         background-color: white !important;
-        margin-bottom: 5% !important;
+        margin-bottom: 2% !important;
         padding: 2px !important;
     }
 
     .transacgrid_d{
         overflow:auto;
-        height:60.5%;
+        height:65.5%;
     }
 
     .transacgrid_f{

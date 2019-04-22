@@ -7,6 +7,7 @@ class DashboardController extends CI_Controller{
 
     public function index(){
       $data['path_link'] = "";
+      $data['SystemName'] = "Dashboard";
       $this->load->view("Dashboard/index",$data);
     }
 

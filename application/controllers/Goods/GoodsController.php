@@ -7,14 +7,15 @@ class GoodsController extends CI_Controller{
 
     public function index()
     {
-        // $Where = array('IsDelete' => 0);
-        // $table = "smGoods";
-        // $data['path_link'] = "Goods/index";
-        // //$data['Goods'] = $this->BaseSystem->GetDataAllRow($Where,$table);
-        // $data['Goods'] = $this->db->where($Where)->get('smGoods')->result_array();
-        // $this->load->view("Dashboard/index",$data);
+        $Where = array('IsDelete' => 0);
+        $table = "smGoods";
+        $data['path_link'] = "Goods/index";
+        $data['SystemName'] = "Goods";
+        //$data['Goods'] = $this->BaseSystem->GetDataAllRow($Where,$table);
+        $data['Goods'] = $this->db->where($Where)->get('smGoods')->result_array();
+        $this->load->view("Dashboard/index",$data);
 
-        $this->load->view("phpinfo");
+        //$this->load->view("phpinfo");
     }
 
     public function ListGoods()
@@ -96,54 +97,55 @@ class GoodsController extends CI_Controller{
         echo $result;
     }
 
-    // public function getNoGoodsBarcode()
-    // {
-    //     $Where = array('IsDelete' => 0,'IsBarcode' => 0);
-    //     $query = $this->db->where($Where)->get('smGoods')->result_array();
-    //     $record_per_page = 5; 
-    //     $page = '';  
-
-    //     if($this->input->post("page") != null)
-    //     {  
-    //          $page = $this->input->post("page");  
-    //     }  
-    //     else  
-    //     {  
-    //          $page = 1;  
-    //     }  
-
-    //     $start = ( $page - 1 ) * $record_per_page;  
-    //     //$record_per_page = $start == 0 ? $record_per_page - 2 : $record_per_page;
-    //     $total_pages = ceil($this->db->where($Where)->count_all('smGoods') / $record_per_page);
-    //     $ListGoods = array_chunk($query, $record_per_page); 
-    //     $ResultData = $this->BaseSystem->GetGoodsNoBarcode($ListGoods,$page);
-    //     $arr = array(
-    //         "GoodsData"=>$ResultData['ListGoods'],
-    //         "TableData"=>$ResultData['TableData'],
-    //         "PageData"=>$total_pages
-    //     );
-
-    //     echo json_encode($arr);
-
-    //     //        $config['total_rows'] = ;
-    //     //https://www.youtube.com/watch?v=nfDMTzmGi9Q
-    //     //https://www.youtube.com/watch?v=xME6uHYTcLU Debug PHP
-    // }
-
     public function getNoGoodsBarcode()
     {
         $Where = array('IsDelete' => 0,'IsBarcode' => 0);
         $query = $this->db->where($Where)->get('smGoods')->result_array();
+        $record_per_page = 5; 
+        $page = '';  
 
-        //$ResultData = $this->BaseSystem->GetGoodsNoBarcode($query);
-        // $arr = array(
-        //     "GoodsData"=>$ResultData['ListGoods'],
-        //     "TableData"=>$ResultData['TableData'],
-        //     "PageData"=>$total_pages
-        // );
+        if($this->input->post("page") != null)
+        {  
+             $page = $this->input->post("page");  
+        }  
+        else  
+        {  
+             $page = 1;  
+        }  
 
-        echo json_encode($ResultData);
+        $start = ( $page - 1 ) * $record_per_page;  
+        //$record_per_page = $start == 0 ? $record_per_page - 2 : $record_per_page;
+        $total_pages = ceil($this->db->where($Where)->count_all('smGoods') / $record_per_page);
+        $ListGoods = array_chunk($query, $record_per_page); 
+        $ResultData = $this->BaseSystem->GetGoodsNoBarcode($ListGoods,$page);
+        $arr = array(
+            "GoodsData"=>$ResultData['ListGoods'],
+            "TableData"=>$ResultData['TableData'],
+            "PageData"=>$total_pages
+        );
+
+        echo json_encode($arr);
+
+        //        $config['total_rows'] = ;
+        //https://www.youtube.com/watch?v=nfDMTzmGi9Q
+        //https://www.youtube.com/watch?v=xME6uHYTcLU Debug PHP
+        //https://medium.com/@jaythedeveloper/ultimate-guide-debug-php-iis-in-visual-studio-code-using-xdebug-14fced013f22 Debug PHP IIS
     }
+
+    // public function getNoGoodsBarcode()
+    // {
+    //     $Where = array('IsDelete' => 0,'IsBarcode' => 0);
+    //     $query = $this->db->where($Where)->get('smGoods')->result_array();
+
+    //     //$ResultData = $this->BaseSystem->GetGoodsNoBarcode($query);
+    //     // $arr = array(
+    //     //     "GoodsData"=>$ResultData['ListGoods'],
+    //     //     "TableData"=>$ResultData['TableData'],
+    //     //     "PageData"=>$total_pages
+    //     // );
+
+    //     echo json_encode($query);
+    // }
 
     public function GetGoodsDetail()
     {

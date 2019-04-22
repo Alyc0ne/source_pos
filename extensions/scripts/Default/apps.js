@@ -6,6 +6,10 @@ function GetPath() {
     return pathArray;
 }
 
+function CheckSystemName() {
+    return $("#SystemName").val();
+}
+
 $(document).on("keypress", "._number", function(e) {
     // data length validate
     // Length | Num | Decimal | Comma | Dot
@@ -59,19 +63,37 @@ function doc_keyUp(e) {
 // register the handler 
 document.addEventListener('keyup', function (e) {
     // this would test for whichever key is 40 and the ctrl key at the same time
-    if (e.keyCode == 122) {
-        // call your function to do the thing
-        alert("key");
-        return false;
-        
-    }
+    if (CheckSystemName() == "POS") {
+        if (e.keyCode == 122) {
+            // call your function to do the thing
+            alert("key");
+            return false;
+            
+        }
+    } 
 }, false);
 
+$(document).on("keydown",function(e){
+    if(e.keyCode===112) return false
+    
+    //Stop Helper Chorme (F1)
+})
+
+document.addEventListener('keyup', function (e) {
+    if (CheckSystemName() == "POS") {
+        if (e.keyCode == 112) {
+            // call your function to do the thing
+            openloading(true);
+            $("#Confrim_POS").modal();
+            return false;
+        }
+    }
+}, false);
 
 $(document).on("keydown",function(e){
     if(e.keyCode===122) return false
     
-    //Stop FullScreen
+    //Stop FullScreen (F12)
 })
 
 // $(document).on("click", ".nav-link", function () {
@@ -337,6 +359,12 @@ function AlertModal(AlertIcon,AlertText) {
     $("#AlertModal").modal();
     $("#Alert-body-img").html(AlertIcon);
     $("#Alert-body").html(AlertText);
+}
+
+function Confirm_POS(TotalAmnt) {
+    $("#Confrim_POS").modal();
+    //$("#Confrim_POS_body").html(TotalAmnt);
+    openloading(false);
 }
 
 function callImages(type) {

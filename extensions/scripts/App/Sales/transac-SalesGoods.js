@@ -28,15 +28,18 @@ function setTransac() {
             //gridStart.append("<div class='col-12 transacgrid_h box_shadow'><i class='m-r-10 mdi mdi-cart-outline text_white'></i><span class='text_white'>สินค้าในตะกร้า</span></div>");  
             gridStart.append("<div class='col-12 p_a5 transacgrid_d' id='transac-body'></div>");
 
-            var gridEnd = $('<div id="gridEnd" style="width:100%;"></div>');
-            var table = "<table style='width:100%;margin:7px;color:black;'>";
-            table += "<tr style='width:100%;'><td class='transacgrid_f' style='width:30%;'>รวมเงิน</td><td style='width:65%;'><input type='text' class='w-100 float-right text-right m_r15' id='sub_total' name='sub_total' value='' disabled></td></tr>";
+            var gridEnd = $('<div id="gridEnd" style="width:100%;border-top:solid 1px #e3e6f0; padding:4px;"></div>');
+            // var TotalSummary = "<div style='height:20%;width:100%'>";
+            // TotalSummary += "<input type='text' class='wh100 text-center p_a15' id='sub_total' name='sub_total' disabled>";
+            // TotalSummary += "</div>"
+            //var table = "<table style='width:100%;margin:7px;color:black;'>";
+            //table += "<tr style='width:100%;'><td class='transacgrid_f' style='width:30%;'>รวมเงิน</td><td style='width:65%;'><input type='text' class='w-100 float-right text-right m_r15' id='sub_total' name='sub_total' value='' disabled></td></tr>";
             //table += "<tr style='width:100%;'><td class='transacgrid_f'>ส่วนลด</td><td><input type='text' class='w-100 float-right text-right _number m_r15' id='discount' name='discount' value=''></td></tr>";  
             //table += "<tr style='width:100%;'><td class='transacgrid_f'>จำนวนเงินทั้งสิ้น</td><td><input type='text' class='w-100 float-right text-right m_r15' id='totalPrice' name='totalPrice' value='' disabled></td></tr>";  
-            table += "</table>";
-            gridEnd.append(table);
-            gridEnd.append("<div class='w-100'></div>");
-            gridEnd.append("<button class='btn btn-success w-100 p-3' id='SaveInvoice'>จ่ายชำระ (F11)</button>");
+            //table += "</table>";
+            //gridEnd.append(TotalSummary);
+            gridEnd.append("<div class='w-100></div>");
+            gridEnd.append("<button class='btn btn-success w-100 p-3' id='SaveInvoice'>จ่ายชำระ (F1)</button>");
             
             gridStart.append(gridEnd);
             Rightbox.append(gridStart);
