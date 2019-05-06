@@ -9,12 +9,12 @@ $(document).on("click", "#IsBarcode", function () {
     }
 });
 
-function ShowModalNoGoodsBarcode() {
-    GetNoGoodsBarcode();
-    $("#NoGoodsBarcodeModal").modal();
-}
+// function ShowModalNoGoodsBarcode() {
+//     GetNoGoodsBarcode();
+// }
 
-function GetNoGoodsBarcode(page) {
+function ShowModalNoGoodsBarcode(page) {
+    openloading(true);
     $.ajax({
         type: 'POST',
         url: base_url + "Goods/GoodsController/getNoGoodsBarcode",
@@ -24,6 +24,7 @@ function GetNoGoodsBarcode(page) {
         dataType: "json",
         traditional: true,
         success: function (e) {
+            $("#NoGoodsBarcodeModal").modal();
             TempGoodsIDNoGoodsBarcode = [];
             TempDataNoGoodsBarcode = e.GoodsData;
             $(".table-responsive").html("");
@@ -49,9 +50,10 @@ function GetNoGoodsBarcode(page) {
             
             // pagination += ' </nav>';
             $('.page').append(pagination);
+            openloading(false);
         },
         error: function (e) {
-            //openloading(false);
+            openloading(false);
         }
     });
 }

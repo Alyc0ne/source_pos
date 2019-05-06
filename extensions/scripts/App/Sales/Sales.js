@@ -16,7 +16,7 @@ function manageAdd_updateGoods(QtyBarcode,DataGoods,TransactionGoods) {
     }
 
     if(index == null){
-        var GoodsPrice = transacSalesGoods.gridControl.addData(DataGoods.GoodsID,DataGoods.GoodsName,DataGoods.GoodsPrice,QtyBarcode);
+        var GoodsPrice = transacSalesGoods.gridControl.addData(DataGoods,QtyBarcode);
         transacSalesGoods.gridControl.calSummary(true,parseFloat(GoodsPrice));
     }else{
         transacSalesGoods.gridControl.updateGoodsByIndex(index.uid,DataGoods.GoodsPrice,QtyBarcode);
@@ -57,43 +57,36 @@ function numberWithCommas(x) {
 }
 
 $(document).on("click","#SaveInvoice", function () {
-    var GridGoods = transacSalesGoods.gridControl.selectDataGrid().length;
-    if (GridGoods > 0) {
-        $("#ConfrimModal").modal();
-            $("#Confrim_SaveInvoice").click(function () {
-                SaveInvoice(function (callback) {
-                    if (!!callback) {
-                        console.log("true");
-                    }else{  
-                        bootbox.alert("<center>ไม่สามารถดำเนินการต่อได้<br>กรุณาติดต่อผู้ดูแลระบบ</center>");
-                    }
-                });
-            });
-    }else{
-        var iconAlert = "<img src='" + base_url + "extensions/images/icon/box.png'>";
-        var txtAlert = "<h3 class='text-center text-red float-left'>ไม่มีสินค้าในตะกร้า !</h3>";
-        AlertModal(iconAlert,txtAlert);
-    }
-    
+    Confirm_POS();
 })
 
-function SaveInvoice(callback) {
+function SaveInvoice() {
     var GridGoods = transacSalesGoods.gridControl.selectDataGrid();
+    var InvoiceData = {
+        InvoiceNo : GenRunningNumber("Invoice"),
+        TotalAmnt : $("#TotalAmnt").val(),
+        ReceiveAmnt : $("#ReceiveAmnt").val(),
+        ChangeAmnt : $("#ChangeAmnt").val(),
+        Discount : null,
+        DiscountAmnt : null,
+        NetAmnt : $("#TotalAmnt").val()
+    };
     if (GridGoods.length > 0) {
         $.ajax({
             type: 'POST',
             url: base_url + "Invoice/InvoiceController/SaveInvoice",
             dataType: 'json',
             data: {
-                "GoodsData" : JSON.stringify(GridGoods)
+                "GoodsData" : JSON.stringify(GridGoods),
+                "InvoiceData" : JSON.stringify(InvoiceData)
             },
             async: false,
             traditional: true,
             success: function (e) {
-                callback(true);
+                //callback(true);
             },
             error: function (e) {
-                callback(false);
+                //callback(false);
             }
         });
     }else{

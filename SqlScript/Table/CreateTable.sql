@@ -1,0 +1,86 @@
+IF NOT EXISTS(SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'dbo.smGoods') AND Type = N'U')
+BEGIN
+CREATE TABLE [dbo].[smGoods](
+	[GoodsID] VARCHAR(50) PRIMARY KEY NOT NULL,
+	[GoodsNo] VARCHAR(50) NOT NULL,
+	[GoodsBarcode] VARCHAR(20) NULL,
+	[GoodsName] VARCHAR(255) NOT NULL,
+	[GoodsQty] DECIMAL(20,2) NOT NULL,
+	[GoodsPrice] DECIMAL(20,2) NOT NULL,
+	[GoodsCost] DECIMAL(20,2) NULL,
+	[GoodsUnitID] VARCHAR(50) NOT NULL,
+	[GoodsUnitName] VARCHAR(255) NOT NULL,
+	[GoodsLocationID] VARCHAR(50) NULL,
+	[GoodsLocationName] VARCHAR(50) NULL,
+	[CreatedBy] VARCHAR(50) DEFAULT NULL,
+	[CreatedDate] DATETIME NOT NULL,
+	[ModifiedBy] VARCHAR(50) DEFAULT NULL,
+	[ModifiedDate] DATETIME NOT NULL,
+	[IsDelete] BIT NOT NULL,
+	[IsBarcode] BIT NOT NULL
+)
+END
+GO
+
+IF NOT EXISTS(SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'dbo.smUnit') AND Type = N'U')
+BEGIN
+CREATE TABLE [dbo].[smUnit](
+	[UnitID] VARCHAR(50) PRIMARY KEY NOT NULL,
+	[UnitNo] VARCHAR(50) NOT NULL,
+	[UnitName] VARCHAR(255) NOT NULL,
+	[UnitQty] DECIMAL(20,2) NOT NULL,
+	[CreatedBy] VARCHAR(50) NULL,
+	[CreatedDate] DATETIME NOT NULL,
+	[ModifiedBy] VARCHAR(50) DEFAULT NULL,
+	[ModifiedDate] DATETIME NOT NULL,
+	[IsDelete] BIT NOT NULL
+)
+END
+GO
+
+IF NOT EXISTS(SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'dbo.soInvoice') AND Type = N'U')
+BEGIN
+CREATE TABLE [dbo].soInvoice(
+	[InvoiceID] VARCHAR(50) PRIMARY KEY NOT NULL,
+	[InvoiceNo] VARCHAR(50) NOT NULL,
+	[OrderID] VARCHAR(50) NOT NULL,
+	[DocDate] DATETIME NOT NULL,
+	[InvoiceDate] DATETIME NOT NULL,
+	[TotalAmnt] DECIMAL(20,2) NOT NULL,
+	[Discount] VARCHAR(50) NOT NULL,
+	[DiscountAmnt] DECIMAL(20,2) NOT NULL,
+	[NetAmnt] DECIMAL(20,2) NOT NULL,
+	[CashAmnt] DECIMAL(20,2) NOT NULL,
+	[BlueFalgAmnt] DECIMAL(20,2) NOT NULL,
+	[TotalPayAmnt] DECIMAL(20,2) NOT NULL,
+	[RowFlag] TINYINT NOT NULL,
+	[CreatedBy] VARCHAR(50) NULL,
+	[CreatedDate] DATETIME NOT NULL,
+	[ModifiedBy] VARCHAR(50) DEFAULT NULL,
+	[ModifiedDate] DATETIME NOT NULL,
+	[IsDelete] BIT NOT NULL,
+	[IsCancel] BIT NOT NULL
+)
+END
+GO
+
+IF NOT EXISTS(SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'dbo.soInvoiceGoods') AND Type = N'U')
+BEGIN
+CREATE TABLE [dbo].soInvoiceGoods(
+	[InvoiceGoodsID] VARCHAR(50) PRIMARY KEY NOT NULL,
+	[InvoiceID] VARCHAR(50) NOT NULL,
+	[GoodsID] VARCHAR(50) NOT NULL,
+	[GoodsNo] VARCHAR(50) NOT NULL,
+	[GoodsBarcode] VARCHAR(20) NULL,
+	[GoodsName] VARCHAR(255) NOT NULL,
+	[GoodsQty] DECIMAL(20,2) NOT NULL,
+	[GoodsPrice] DECIMAL(20,2) NOT NULL,
+	[TotalAmnt] DECIMAL(20,2) NOT NULL,
+	[CreatedBy] VARCHAR(50) NULL,
+	[CreatedDate] DATETIME NOT NULL,
+	[ModifiedBy] VARCHAR(50) DEFAULT NULL,
+	[ModifiedDate] DATETIME NOT NULL,
+	[IsDelete] BIT NOT NULL
+)
+END
+GO

@@ -14,6 +14,8 @@ class BaseController extends CI_Controller{
             $FirstChar = "UN";$table = "smUnit";$coloumn = "UnitNo";
         } else if($System == "Goods") {
             $FirstChar = "GO";$table = "smGoods";$coloumn = "GoodsNo";
+        } else if ($System == "Invoice") {
+            $FirstChar = "IN";$table = "soInvoice";$coloumn = "InvoiceNo";
         }
         
 

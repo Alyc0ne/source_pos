@@ -513,3 +513,7 @@ p.footer {
     display: none;
     overflow-x: hidden;
 }
+
+.clear_b{
+    clear: both;
+}

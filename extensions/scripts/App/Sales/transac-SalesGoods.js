@@ -70,27 +70,29 @@ function setTransac() {
                 return obj;
             }
         },
-        addData: function (GoodsID,GoodsName,GoodsPrice,QtyBarcode) { //QtyBarcode : Number Of Goods
+        addData: function (DataGoods,QtyBarcode) { //QtyBarcode : Number Of Goods
             var _t_body = _t.Element.find('#transac-body');
             var uid = RandomMath();
-            var TotalAmnt = GoodsPrice * QtyBarcode;
-            var PricePerGoods = QtyBarcode > 1 ? "@" + String(numberWithCommas(parseFloat(GoodsPrice).toFixed(2))) : "";
+            var TotalAmnt = DataGoods.GoodsPrice * QtyBarcode;
+            var PricePerGoods = QtyBarcode > 1 ? "@" + String(numberWithCommas(parseFloat(DataGoods.GoodsPrice).toFixed(2))) : "";
             var Goods = $('<div class="transacgrid_data box_shadow" id="GoodDetail" data-uid="' + uid + '"></div>');
             Goods.append("<div class='w_10 float-left text-center box-highlight'><span class='w_100 h_0 text-center' name='GoodsQty'>"  + QtyBarcode + "</span></div>");
-            Goods.append("<div class='w_40 float-left text-left text-ellipsis' alt = '" + GoodsName + "'><span>" + GoodsName + "</span></div>");
+            Goods.append("<div class='w_40 float-left text-left text-ellipsis' alt = '" + DataGoods.GoodsName + "'><span>" + DataGoods.GoodsName + "</span></div>");
             Goods.append("<div class='w_20 float-left text-right'><span id='PricePerGoods' style='display:inline-block;'>"  + PricePerGoods + "</span></div>");
             Goods.append("<div class='w_20 float-left text-right'><span id='TotalAmnt'>" + numberWithCommas(parseFloat(TotalAmnt).toFixed(2)) + "</span></div>");
             Goods.append("<div class='w_10 float-left text-right'><img id='RemoveGoods' src='" + base_url + "extensions/images/icon/delete_16_red.png' class='p_b2 pointer'><input type='hidden' value='" + uid + "'></div>");
             _t_body.append(Goods);
             arr_Data.push({
                 uid : uid,
-                GoodsID : GoodsID,
-                GoodsName : GoodsName,
+                GoodsBarcode : DataGoods.GoodsBarcode,
+                GoodsID : DataGoods.GoodsID,
+                GoodsNo : DataGoods.GoodsNo,
+                GoodsName : DataGoods.GoodsName,
                 GoodsQty : QtyBarcode,
-                GoodsPrice : GoodsPrice,
+                GoodsPrice : DataGoods.GoodsPrice,
                 TotalAmnt : TotalAmnt
             });
-            var sumPrice = QtyBarcode * GoodsPrice;
+            var sumPrice = QtyBarcode * DataGoods.GoodsPrice;
             return sumPrice;
         },
         calSummary: function (plus,GoodsPrice,Discount) {

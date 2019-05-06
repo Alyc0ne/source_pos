@@ -83,8 +83,8 @@ document.addEventListener('keyup', function (e) {
     if (CheckSystemName() == "POS") {
         if (e.keyCode == 112) {
             // call your function to do the thing
-            openloading(true);
-            $("#Confrim_POS").modal();
+            Confirm_POS();
+
             return false;
         }
     }
@@ -186,25 +186,25 @@ function bindValidate(frm) {
 
 }
 /*---------------Messenger Alert----------------*/
-Messenger.options = {
-    extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
-    theme: 'air'
-}
+// Messenger.options = {
+//     extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
+//     theme: 'air'
+// }
 
-function HideMsg() {
-    Messenger().hideAll();
-}
+// function HideMsg() {
+//     Messenger().hideAll();
+// }
 
-function PostMsgSuccess(msg) {
-    Messenger().hideAll();
-    Messenger().post({
-        //     id: 'success-post-msg',
-        message: msg,
-        //     type: 'success',
-        hideAfter: 2,
-        //     hideOnNavigate: true
-    });
-}
+// function PostMsgSuccess(msg) {
+//     Messenger().hideAll();
+//     Messenger().post({
+//         //     id: 'success-post-msg',
+//         message: msg,
+//         //     type: 'success',
+//         hideAfter: 2,
+//         //     hideOnNavigate: true
+//     });
+// }
 
 function GenRunningNumber(system) {
     var Running = "";
@@ -361,10 +361,31 @@ function AlertModal(AlertIcon,AlertText) {
     $("#Alert-body").html(AlertText);
 }
 
-function Confirm_POS(TotalAmnt) {
-    $("#Confrim_POS").modal();
-    //$("#Confrim_POS_body").html(TotalAmnt);
+function Confirm_POS() {
+    openloading(true);
+    var GridGoods = transacSalesGoods.gridControl.selectDataGrid().length;
+    if (GridGoods > 0) {
+        $("#Confrim_POS").modal();
+        var TotalAmnt = $("#sub_total").val();
+        $("#Confrim_POS").find("#TotalAmnt").val(TotalAmnt)
+
+        $("#Confrim_SaveInvoice").click(function () {
+            SaveInvoice(function (callback) {
+                if (!!callback) {
+                    console.log("true");
+                }else{  
+                    bootbox.alert("<center>ไม่สามารถดำเนินการต่อได้<br>กรุณาติดต่อผู้ดูแลระบบ</center>");
+                }
+            });
+        });
+    }else{
+        var iconAlert = "<img src='" + base_url + "extensions/images/icon/box.png'>";
+        var txtAlert = "<h3 class='text-center text-red float-left'>ไม่มีสินค้าในตะกร้า !</h3>";
+        AlertModal(iconAlert,txtAlert);
+    }
     openloading(false);
+
+
 }
 
 function callImages(type) {
