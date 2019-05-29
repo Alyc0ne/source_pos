@@ -83,7 +83,7 @@ function SaveInvoice() {
             async: false,
             traditional: true,
             success: function (e) {
-                //callback(true);
+                callback(true);
             },
             error: function (e) {
                 //callback(false);
@@ -93,3 +93,9 @@ function SaveInvoice() {
 
     }
 }
+
+function myFunction() {
+    var myWindow = window.open("", "myWindow", "width=200,height=100");
+    myWindow.document.write("<p>This is 'myWindow'</p>");
+    //myWindow.opener.document.write("<p>This is the source window!</p>");
+  }

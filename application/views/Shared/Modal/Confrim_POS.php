@@ -55,8 +55,15 @@ button[disabled]{
 
         <div style='width:80%;height:20%;margin: 0 auto;'>
           <div style='width:100%;height:20%;float:right;'>
-            <input type='text' class='input-l' value='จำนวนเงินที่รับมา' disabled>
-            <input type='text' class='text-right input_r' id='ReceiveAmnt'>
+            <input type='text' class='input-l' value='จำนวนเงินที่รับมา (เงินสด)' disabled>
+            <input type='text' class='text-right input_r' id='CashAmnt' value='0.00'>
+          </div>
+        </div>
+
+        <div style='width:80%;height:20%;margin: 0 auto;'>
+          <div style='width:100%;height:20%;float:right;'>
+            <input type='text' class='input-l' value='จำนวนเงินที่รับมา (บัตร)' disabled>
+            <input type='text' class='text-right input_r' id='BlueFlagAmnt' value='0.00'>
           </div>
         </div>
 
@@ -66,6 +73,9 @@ button[disabled]{
             <input type='text' class='text-right input_r' id='ChangeAmnt' disabled>
           </div>
         </div>
+
+        <!-- <input type='hidden' id='BalanceAmnt' class='text-red' style='border:none;'> -->
+        <span id='BalanceAmnt' class='text-red' hide></span>
 
       </div>
       <div class="modal-footer">
@@ -77,19 +87,40 @@ button[disabled]{
 </div>
 
 <script>
-$(document).on("blur","#ReceiveAmnt", function () {
-  var ReceiveAmnt = $(this).val();
-  var TotalAmnt = $("#TotalAmnt").val();
-  var ChangeAmnt = 0;
-  if (ReceiveAmnt >= TotalAmnt) {
-    ChangeAmnt = TotalAmnt - ReceiveAmnt;
-    $("button#Confrim_SaveInvoice").prop('disabled',false);
-  }else{
-    ChangeAmnt = 0;
-    $("button#Confrim_SaveInvoice").prop('disabled',true);
-  }
-  
-  $("#ReceiveAmnt").val(numberWithCommas(parseFloat(ReceiveAmnt).toFixed(2)));
-  $("#ChangeAmnt").val(numberWithCommas(parseFloat(ChangeAmnt).toFixed(2)));
+$(document).on("blur","#CashAmnt", function () {
+  CalAmnt();
 });
+
+$(document).on("blur","#BlueFlagAmnt", function () {
+  CalAmnt();
+});
+
+function CalAmnt() {
+  var CashAmnt = $("#CashAmnt").val();
+  var BlueFlagAmnt = $("#BlueFlagAmnt").val();
+  var TotalAmnt = parseFloat($("#TotalAmnt").val());
+  var ChangeAmnt = 0;
+  var ReceiveAmnt = parseFloat(CashAmnt) + parseFloat(BlueFlagAmnt);
+
+  if (CashAmnt != "" && BlueFlagAmnt != "") {
+    if (ReceiveAmnt >= TotalAmnt) {
+      ChangeAmnt = TotalAmnt - ReceiveAmnt;
+      $("button#Confrim_SaveInvoice").prop('disabled',false);
+      $("span#BalanceAmnt").hide();
+    }else{
+      ChangeAmnt = 0;
+      $("button#Confrim_SaveInvoice").prop('disabled',true);
+      $("#BalanceAmnt").prop("type",'text');
+      var BalanceAmnt = TotalAmnt - ReceiveAmnt;
+      $("span#BalanceAmnt").show().text("ยอดต้องชำระคงเหลือ : " + numberWithCommas(parseFloat(BalanceAmnt).toFixed(2)));
+    }
+    
+    $("#CashAmnt").val(numberWithCommas(parseFloat(CashAmnt).toFixed(2)));
+    $("#BlueFlagAmnt").val(numberWithCommas(parseFloat(BlueFlagAmnt).toFixed(2)));
+    $("#ChangeAmnt").val(numberWithCommas(parseFloat(ChangeAmnt).toFixed(2)));
+  }else{
+    $("#CashAmnt").val(numberWithCommas(parseFloat(0).toFixed(2)));
+    $("#BlueFlagAmnt").val(numberWithCommas(parseFloat(0).toFixed(2)));
+  }
+}
 </script>

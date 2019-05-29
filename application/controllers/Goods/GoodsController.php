@@ -99,8 +99,15 @@ class GoodsController extends CI_Controller{
 
     public function getNoGoodsBarcode()
     {
+        $txtSearch = '';
+        $IsFirst = false;
+        if ($this->input->post("txtSearch") != null) {
+            $txtSearch = $this->input->post("txtSearch");
+            $IsFirst = true;
+        }
+
         $Where = array('IsDelete' => 0,'IsBarcode' => 0);
-        $query = $this->db->where($Where)->get('smGoods')->result_array();
+        $query = $this->db->like('GoodsName',$txtSearch)->where($Where)->get('smGoods')->result_array();
         $record_per_page = 5; 
         $page = '';  
 
@@ -115,13 +122,14 @@ class GoodsController extends CI_Controller{
 
         $start = ( $page - 1 ) * $record_per_page;  
         //$record_per_page = $start == 0 ? $record_per_page - 2 : $record_per_page;
-        $total_pages = ceil($this->db->where($Where)->count_all('smGoods') / $record_per_page);
+        $total_pages = ceil(count($query) / $record_per_page);
         $ListGoods = array_chunk($query, $record_per_page); 
         $ResultData = $this->BaseSystem->GetGoodsNoBarcode($ListGoods,$page);
         $arr = array(
             "GoodsData"=>$ResultData['ListGoods'],
             "TableData"=>$ResultData['TableData'],
-            "PageData"=>$total_pages
+            "PageData"=>$total_pages,
+            "IsFirst"=>$IsFirst
         );
 
         echo json_encode($arr);

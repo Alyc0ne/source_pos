@@ -200,6 +200,9 @@ span.imageDel {
 .m_b10{
     margin-bottom: 10px !important;
 }
+.m_b20{
+    margin-bottom: 20px !important;
+}
 .m_lr10{
     margin: 0px 10px 0px 10px !important;
 }
@@ -516,4 +519,8 @@ p.footer {
 
 .clear_b{
     clear: both;
+}
+
+.float_r{
+    float: right;
 }

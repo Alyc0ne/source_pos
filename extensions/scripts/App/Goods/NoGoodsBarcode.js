@@ -1,3 +1,5 @@
+var IsFirst = 0;
+
 $(document).on("click", "#IsBarcode", function () {
     var IsBarcode = $("#IsBarcode:checkbox:checked").length;
     if (IsBarcode > 0) {
@@ -9,48 +11,75 @@ $(document).on("click", "#IsBarcode", function () {
     }
 });
 
-// function ShowModalNoGoodsBarcode() {
-//     GetNoGoodsBarcode();
-// }
+function ShowModalNoGoodsBarcode() {
+    GetNoGoodsBarcode(function (callback) {
+        if (!!callback) {
+            $("#NoGoodsBarcodeModal").modal();
+        }
+    });
+}
 
-function ShowModalNoGoodsBarcode(page) {
+function GetNoGoodsBarcode(callback,page,txtSearch) {
     openloading(true);
     $.ajax({
         type: 'POST',
         url: base_url + "Goods/GoodsController/getNoGoodsBarcode",
         data: {
             page : page,
+            txtSearch : txtSearch
         },
         dataType: "json",
         traditional: true,
         success: function (e) {
-            $("#NoGoodsBarcodeModal").modal();
-            TempGoodsIDNoGoodsBarcode = [];
-            TempDataNoGoodsBarcode = e.GoodsData;
-            $(".table-responsive").html("");
-            $(".page").html("");
-            $(".table-responsive").append(e.TableData);
+            if (e != null) {
+                $("#SearchNoGoodsBarcode").val("");
+                TempGoodsIDNoGoodsBarcode = [];
+                TempDataNoGoodsBarcode = e.GoodsData;
+                $(".table-responsive").html("");
+                $(".page").html("");
+                $(".table-responsive").append(e.TableData);
 
-            var pagination = '<nav aria-label="...">';
-            pagination += '<ul class="pagination  justify-content-center">';
-            pagination += '<li class="page-item disabled">';
-            pagination += '<a class="page-link" href="#" tabindex="-1">Previous</a>';
-            pagination += '</li>';
+                var pagination = '<ul class="pagination justify-content-center">';
 
-            for (let c = 0; c < e.PageData; c++) {
-                var numPage = c+1;
-                pagination += '<li class="page-item"><a class="NoBarcode_Page-link" id=' + numPage + ' href="#">' + numPage + '</a></li>';
+                for (let c = 0; c < e.PageData; c++) {
+                    var numPage = c+1;
+                    
+                    if (c == 0) {
+                        if (typeof page == "undefined" || page == 0) {
+                            pagination += '<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>';
+                        }else{
+                            pagination += '<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>';
+                        }
+                    }        
+
+                    if (typeof page == "undefined" && IsFirst == 0) {
+                        IsFirst++;
+                        pagination += '<li class="page-item active"><a class="page-link NoBarcode_Page-link" id=' + numPage + ' href="#">' + numPage + '</a></li>';
+                    }else{
+                        if (e.IsFirst) {
+                            pagination += '<li class="page-item active"><a class="page-link NoBarcode_Page-link" id=' + numPage + ' href="#">' + numPage + '</a></li>';
+                        }else if (page == numPage) {
+                            pagination += '<li class="page-item active"><a class="page-link NoBarcode_Page-link" id=' + numPage + ' href="#">' + numPage + '</a></li>';
+                        }else{
+                            pagination += '<li class="page-item"><a class="page-link NoBarcode_Page-link" id=' + numPage + ' href="#">' + numPage + '</a></li>';
+                        }
+                    }
+                }
+                
+                if (e.PageData > page) {
+                    // pagination += '<li class="page-item">';
+                    // pagination += '<a class="page-link" href="#" id=' + page + 1 + '>Next</a>';
+                    // pagination += '</li>';
+                    pagination += '<li class="page-item"><a class="page-link" href="#" id=' + page + 1 + '>Next</a></li>';
+                }
+                
+                // pagination += ' </nav>';
+                $('.page').append(pagination);
+                openloading(false);
+                if (callback != null) {
+                    callback(true);
+                }
             }
-            
-            if (e.PageData > page) {
-                pagination += '<li class="page-item">';
-                pagination += '<a class="page-link" href="#" id=' + page + 1 + '>Next</a>';
-                pagination += '</li>';
-            }
-            
-            // pagination += ' </nav>';
-            $('.page').append(pagination);
-            openloading(false);
         },
         error: function (e) {
             openloading(false);
@@ -60,7 +89,8 @@ function ShowModalNoGoodsBarcode(page) {
 
 $(document).on('click', '.NoBarcode_Page-link', function(){  
     var page = $(this).attr("id");  
-    GetNoGoodsBarcode(page);  
+    var txtSearch = $("#SearchNoGoodsBarcode").val();
+    GetNoGoodsBarcode(null,page,txtSearch);  
 });  
 
 $(document).on("click", ".chkNoGoodsBarcode", function (e) {
@@ -120,4 +150,16 @@ $(document).on("change", "#GoodsBarcodeSearch", function(ae) {
     });
     $("#GoodsBarcodeSearch").val("");
     openloading(false);
+});
+
+$(document).on('keypress', '#SearchNoGoodsBarcode',function(e) {
+    if(e.which == 13) {
+        var txtSearch = $("#SearchNoGoodsBarcode").val();
+        GetNoGoodsBarcode(null,null,txtSearch);
+    }
+});
+
+$(document).on("click", "#btn-SearchNoGoodsBarcode", function () {
+    var txtSearch = $("#SearchNoGoodsBarcode").val();
+    GetNoGoodsBarcode(null,null,txtSearch);
 });

@@ -56,16 +56,13 @@ class BaseSystem extends CI_Model
             $result = $ListGoods[$start - 1];
         }
         
-        $table = '';
-        //( SELECT    ROW_NUMBER() OVER ( ORDER BY OrderDate ) AS RowNum,
-        //$result = $this->db->where($where)->get('smGoods',$start,$record_per_page)->result_array();
-        //$query = $this->db->where($where)->get('smGoods')->result_array();
-        $table .= '
+        //$table = '';
+        $table = '
             <table class="table">
                 <thead class="thead-light">
                     <tr>
                         <th class="w_5">
-                            <label class="customcheckbox m-b-20">
+                            <label class="customcheckbox m_b20">
                                 <input type="checkbox" id="mainCheckbox" />
                                 <span class="checkmark"></span>
                             </label>
@@ -77,18 +74,27 @@ class BaseSystem extends CI_Model
                 </thead>
                 <tbody class="NoGoodsBarcode_Body">
         ';
-        foreach ($result as $data) {
+        if (!empty($result)) {
+            foreach ($result as $data) {
+                $table .= '
+                    <tr id="uid" data-goodsid="'. $data['GoodsID'] .'">
+                        <th>
+                        <label class="customcheckbox">
+                        <input type="checkbox" class="chkNoGoodsBarcode" />
+                        <span class="checkmark"></span>
+                        </label>
+                        </th>
+                        <td id="NoGoodsBarcode_QtyBarcode"><input type="number" style="height:5%;" class="text-center w_100" id="QtyBarcode" name="QtyBarcode" min="1" max="99" value="1"></td>
+                        <td id="NoGoodsBarcode_GoodsName">'. $data['GoodsName'] .'</td>
+                        <td id="NoGoodsBarcode_GoodsPrice" class="text-right">'.number_format((float)$data['GoodsPrice'], 2, '.', '').'</td>
+                    </tr>
+                ';
+            }
+        }else {
+            $result = null;
             $table .= '
-                <tr id="uid" data-goodsid="'. $data['GoodsID'] .'">
-                    <th>
-                    <label class="customcheckbox">
-                    <input type="checkbox" class="chkNoGoodsBarcode" />
-                    <span class="checkmark"></span>
-                    </label>
-                    </th>
-                    <td id="NoGoodsBarcode_QtyBarcode"><input type="number" style="height:5%;" class="text-center w_100" id="QtyBarcode" name="QtyBarcode" min="1" max="99" value="1"></td>
-                    <td id="NoGoodsBarcode_GoodsName">'. $data['GoodsName'] .'</td>
-                    <td id="NoGoodsBarcode_GoodsPrice" class="text-right">'.number_format((float)$data['GoodsPrice'], 2, '.', '').'</td>
+                <tr>
+                    <td colspan ="4" style="font-size:18pt;"> <b>ไม่พบข้อมูลที่ค้นหา</b> </td>
                 </tr>
             ';
         }

@@ -19,7 +19,7 @@ class InvoiceController extends CI_Controller{
        $De_GoodsData = json_decode($GoodsData,true);
        $De_InvoiceData = json_decode($InvoiceData,true);
 
-       $Invoice[] = array(
+       $Invoice = array(
          'InvoiceID'=>substr(uniqid(), 3),
          'InvoiceNo'=>'000',
          'OrderID'=>null,
@@ -41,9 +41,11 @@ class InvoiceController extends CI_Controller{
          'IsCancel'=>false
        );
 
+       $this->db->insert('soInvoice', $Invoice);
+
        $eee = floatval($De_InvoiceData['TotalAmnt']);
        foreach ($De_GoodsData as $_GoodsData) {
-            $InvoiceGoods[] = array(
+            $InvoiceGoods = array(
                 'InvoiceGoodsID' =>substr(uniqid(), 3),
                 'InvoiceID' => $Invoice[0]['InvoiceID'],
                 'GoodsID' => $_GoodsData['GoodsID'],
@@ -60,6 +62,8 @@ class InvoiceController extends CI_Controller{
                 "IsDelete"=>false,
             );
        }
+
+       $this->db->insert('soInvoiceGoods', $InvoiceGoods);
 
        echo json_encode($De_GoodsData);
     }
