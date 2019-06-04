@@ -18,6 +18,7 @@ class InvoiceController extends CI_Controller{
        $InvoiceData = $this->input->post('InvoiceData');
        $De_GoodsData = json_decode($GoodsData,true);
        $De_InvoiceData = json_decode($InvoiceData,true);
+       $IsSucces = false;
 
        $Invoice = array(
          'InvoiceID'=>substr(uniqid(), 3),
@@ -30,8 +31,8 @@ class InvoiceController extends CI_Controller{
          'DiscountAmnt'=>null,
          'NetAmnt'=>floatval($De_InvoiceData['NetAmnt']),
          'CashAmnt'=>floatval($De_InvoiceData['CashAmnt']),
-         'BlueFalgAmnt'=>floatval($De_InvoiceData['BlueFalgAmnt']),
-         'TotalPayAmnt'=>(floatval($De_InvoiceData['CashAmnt']) + floatval($De_InvoiceData['BlueFalgAmnt'])),
+         'BlueFlagAmnt'=>floatval($De_InvoiceData['BlueFlagAmnt']),
+         'TotalPayAmnt'=>(floatval($De_InvoiceData['CashAmnt']) + floatval($De_InvoiceData['BlueFlagAmnt'])),
          'RowFlag'=>'1', //Open
          "CreatedBy"=>null,
          "CreatedDate"=>date("Y-m-d H:i:s"),
@@ -43,11 +44,12 @@ class InvoiceController extends CI_Controller{
 
        $this->db->insert('soInvoice', $Invoice);
 
-       $eee = floatval($De_InvoiceData['TotalAmnt']);
-       foreach ($De_GoodsData as $_GoodsData) {
+       if ($Invoice != null) {
+        $eee = floatval($De_InvoiceData['TotalAmnt']);
+        foreach ($De_GoodsData as $_GoodsData) {
             $InvoiceGoods = array(
                 'InvoiceGoodsID' =>substr(uniqid(), 3),
-                'InvoiceID' => $Invoice[0]['InvoiceID'],
+                'InvoiceID' => $Invoice['InvoiceID'],
                 'GoodsID' => $_GoodsData['GoodsID'],
                 'GoodsNo' => $_GoodsData['GoodsNo'], 
                 'GoodsBarcode' => $_GoodsData['GoodsBarcode'], 
@@ -61,11 +63,13 @@ class InvoiceController extends CI_Controller{
                 "ModifiedDate"=>date("Y-m-d H:i:s"),
                 "IsDelete"=>false,
             );
+        }
+
+        $this->db->insert('soInvoiceGoods', $InvoiceGoods);
+        $IsSucces = true;
        }
 
-       $this->db->insert('soInvoiceGoods', $InvoiceGoods);
-
-       echo json_encode($De_GoodsData);
+       echo json_encode($IsSucces);
     }
 
 }

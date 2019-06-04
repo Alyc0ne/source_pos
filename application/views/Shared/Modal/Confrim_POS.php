@@ -74,13 +74,16 @@ button[disabled]{
           </div>
         </div>
 
-        <!-- <input type='hidden' id='BalanceAmnt' class='text-red' style='border:none;'> -->
-        <span id='BalanceAmnt' class='text-red' hide></span>
-
+        
+        <div style='width:80%;height:20%;margin: 0 auto;'>
+          <div style='width:100%;height:20%;float:right;'>
+            <span id='BalanceAmnt' class='text-red' hide></span>
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
         <!-- <button type="button" class="btn btn-secondary btn-Confrim" data-dismiss="modal">Cancel</button> -->
-        <button type="button" class="btn btn-primary btn-primary_Confrim" id='Confrim_SaveInvoice' onclick='javascript:SaveInvoice();'><i class="mdi mdi-check"></i>ชำระเงิน</button>
+        <button type="button" class="btn btn-primary btn-primary_Confrim" id='Confrim_SaveInvoice'><i class="mdi mdi-check"></i>ชำระเงิน</button>
       </div>
     </div>
   </div>

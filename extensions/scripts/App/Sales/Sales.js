@@ -60,12 +60,13 @@ $(document).on("click","#SaveInvoice", function () {
     Confirm_POS();
 })
 
-function SaveInvoice() {
+function SaveInvoice(callback) {
     var GridGoods = transacSalesGoods.gridControl.selectDataGrid();
     var InvoiceData = {
         InvoiceNo : GenRunningNumber("Invoice"),
         TotalAmnt : $("#TotalAmnt").val(),
-        ReceiveAmnt : $("#ReceiveAmnt").val(),
+        CashAmnt : $("#CashAmnt").val(),
+        BlueFlagAmnt : $("#BlueFlagAmnt").val(),
         ChangeAmnt : $("#ChangeAmnt").val(),
         Discount : null,
         DiscountAmnt : null,
@@ -83,10 +84,10 @@ function SaveInvoice() {
             async: false,
             traditional: true,
             success: function (e) {
-                callback(true);
+                callback(e);
             },
             error: function (e) {
-                //callback(false);
+                callback(false);
             }
         });
     }else{
