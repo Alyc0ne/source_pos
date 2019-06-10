@@ -16,13 +16,14 @@ class InvoiceController extends CI_Controller{
     {
        $GoodsData = $this->input->post('GoodsData');
        $InvoiceData = $this->input->post('InvoiceData');
+       $Draft = $this->input->post('Type');
        $De_GoodsData = json_decode($GoodsData,true);
        $De_InvoiceData = json_decode($InvoiceData,true);
        $IsSucces = false;
 
        $Invoice = array(
          'InvoiceID'=>substr(uniqid(), 3),
-         'InvoiceNo'=>'000',
+         'InvoiceNo'=>$De_InvoiceData['InvoiceNo'],
          'OrderID'=>null,
          'DocDate'=>date("Y-m-d H:i:s"),
          'InvoiceDate'=>date("Y-m-d H:i:s"),
@@ -33,7 +34,7 @@ class InvoiceController extends CI_Controller{
          'CashAmnt'=>floatval($De_InvoiceData['CashAmnt']),
          'BlueFlagAmnt'=>floatval($De_InvoiceData['BlueFlagAmnt']),
          'TotalPayAmnt'=>(floatval($De_InvoiceData['CashAmnt']) + floatval($De_InvoiceData['BlueFlagAmnt'])),
-         'RowFlag'=>'1', //Open
+         'RowFlag'=> $Draft ? '2' : '1', //1 : Open // 2 : Draft
          "CreatedBy"=>null,
          "CreatedDate"=>date("Y-m-d H:i:s"),
          "ModifiedBy"=>null,

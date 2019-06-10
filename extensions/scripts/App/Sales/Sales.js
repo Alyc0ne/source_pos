@@ -60,7 +60,8 @@ $(document).on("click","#SaveInvoice", function () {
     Confirm_POS();
 })
 
-function SaveInvoice(callback) {
+function SaveInvoice(draft = false) {
+    openloading(true);
     var GridGoods = transacSalesGoods.gridControl.selectDataGrid();
     var InvoiceData = {
         InvoiceNo : GenRunningNumber("Invoice"),
@@ -79,24 +80,39 @@ function SaveInvoice(callback) {
             dataType: 'json',
             data: {
                 "GoodsData" : JSON.stringify(GridGoods),
-                "InvoiceData" : JSON.stringify(InvoiceData)
+                "InvoiceData" : JSON.stringify(InvoiceData),
+                "Type" : draft
             },
             async: false,
             traditional: true,
             success: function (e) {
-                callback(e);
+                if (e) {
+                    if (!draft) {
+                        PrintSlip();
+                    }
+                    ClearPOS();
+                    openloading(true);
+                }
             },
             error: function (e) {
                 callback(false);
+                openloading(false);
             }
         });
     }else{
-
+        var txtAlert = "<h3 class='text-center text-red float-left'>กรุณาเลือกสินค้า !</h3>";
+        AlertModal(txtAlert);
+        openloading(false);
     }
 }
 
-function myFunction() {
+function PrintSlip() {
     var myWindow = window.open("", "myWindow", "width=200,height=100");
     myWindow.document.write("<p>This is 'myWindow'</p>");
     //myWindow.opener.document.write("<p>This is the source window!</p>");
   }
+
+function ClearPOS() {
+    $("#Confrim_POS").modal('toggle');
+    transacSalesGoods.gridControl.ClearPOS();
+}

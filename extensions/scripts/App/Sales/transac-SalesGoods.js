@@ -38,8 +38,10 @@ function setTransac() {
             //table += "<tr style='width:100%;'><td class='transacgrid_f'>จำนวนเงินทั้งสิ้น</td><td><input type='text' class='w-100 float-right text-right m_r15' id='totalPrice' name='totalPrice' value='' disabled></td></tr>";  
             //table += "</table>";
             //gridEnd.append(TotalSummary);
+            
             gridEnd.append("<div class='w-100></div>");
-            gridEnd.append("<button class='btn btn-success w-100 p-3' id='SaveInvoice'>จ่ายชำระ (F1)</button>");
+            gridEnd.append("<button class='btn btn-success w_60 p-3 m_r10' id='SaveInvoice'>จ่ายชำระ (F1)</button>");
+            gridEnd.append("<button class='btn btn btn-warning w_37 p-3' onclick='javascript:SaveInvoice();'>แบบร่าง (F2)</button>");
             
             gridStart.append(gridEnd);
             Rightbox.append(gridStart);
@@ -94,6 +96,13 @@ function setTransac() {
             });
             var sumPrice = QtyBarcode * DataGoods.GoodsPrice;
             return sumPrice;
+        },
+        clearData: function () {
+            arr_Data = [];
+            var _t_body = _t.Element.find('#transac-body')
+            _t_body.html("");
+
+            $("#sub_total").val("");
         },
         calSummary: function (plus,GoodsPrice,Discount) {
             if (GoodsPrice != null || GoodsPrice != "" || GoodsPrice != 0 || typeof GoodsPrice == "undefined") {

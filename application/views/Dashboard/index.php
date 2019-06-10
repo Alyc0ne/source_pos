@@ -17,7 +17,7 @@
   <link href="<?php echo base_url(); ?>extensions/css/bundle/all.min.css" rel="stylesheet" type="text/css">
   <link href="<?php echo base_url(); ?>extensions/css/bundle/sb-admin-2.min.css" rel="stylesheet">
 
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="<?php echo base_url(); ?>extensions/css/content/site.css">
   <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 
@@ -34,7 +34,7 @@
 
   <script type="text/javascript" src="<?php echo base_url(); ?>extensions/scripts/Default/apps.js"></script> 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
 </head>
 
 <body id="page-top">

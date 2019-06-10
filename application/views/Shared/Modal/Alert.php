@@ -8,9 +8,9 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class='w_50' id='Alert-body-img' class='float-left'>
-        </div>
-        <div class='w_50' id='Alert-body'>
+        <!-- <div class='w_50' id='Alert-body-img' class='float-left'>
+        </div> -->
+        <div class='w_100' id='Alert-body'>
         </div>
       </div>
       <div class="modal-footer">

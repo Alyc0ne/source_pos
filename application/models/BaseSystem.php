@@ -113,17 +113,65 @@ class BaseSystem extends CI_Model
         );
     }
 
-    // public function GetGoodsNoBarcode($ListGoods)
-    // {   
-    //     foreach ($ListGoods as $data) {
-    //         $Goods_Arr([
-    //             "GoodsName" => $data['GoodsName'],
-    //             "GoodsPrice" => $data['GoodsPrice']
-    //         ]);
-    //     }
+    public function GenTableModal($Header,$BodyName,$Body,$text){
+        $table = '<table class="table">
+                    <thead class="thead-light">';
+        /************************* Start Generate Header  *************************/
+        $table .= 
+        '<tr>
+            <th class="w_5">
+                <label class="customcheckbox m_b20">
+                    <input type="checkbox" id="mainCheckbox" />
+                    <span class="checkmark"></span>
+                </label>
+            </th>
+            <th scope="col" class="w_10 text-center">#</th>';
 
-    //     return $Goods_Arr;
-    // }
+        for ($i=0; $i < $Header; $i++) { 
+            $table .='<th scope="col" class="'.$Header['class'][$i].'">"'.$Header['name'][$i].'"</th>';
+        }
+
+        $table .= '</tr>';
+        /************************* END Generate Header  *************************/
+        
+        $table .= '<tbody class="'.$BodyName.'">';
+        /************************* Start Generate Body  *************************/
+        $t_body = '
+        <tr id="uid" data-id="">
+            <th>
+                <label class="customcheckbox">
+                    <input type="checkbox" class="chkNo" />
+                    <span class="checkmark"></span>
+                </label>
+            </th>';
+
+        for ($i=0; $i < $Body; $i++) { 
+            if ($Body[$i]['IsInput']) {
+                $t_body .= '<td id="'.$Body['ID'].'"><input type="'.$Body[$i]['type'].'" class="'.$Body[$i]['input_class'].'" id="'.$Body[$i]['input_id'].'" name="'.$Body[$i]['input_name'].'" "'.$Body[$i]['type'] == "number".'" ? min="1" max="99" : "" value="1"></td>';
+            } else {
+                if ($Body[$i]['type'] == "number") {
+                    $t_body .= '<td id="'.$Body['ID'].'" class="text-right"></td>'; //.number_format((float)$data['GoodsPrice'], 2, '.', '').
+                } else {
+                    $t_body .= '<td id="'.$Body['ID'].'">''</td>';
+                }
+            }
+        }
+
+        $t_body .= '</tr>';
+        /************************* END Generate Body  *************************/
+            
+        /* 
+        var promise = {
+            'arr' : [{
+                'type' : 'input',
+                't' : '1'
+            }] 
+            
+        }
+        
+        */
+
+    }
 
     public function GenListGoods($ListGoods,$start)
     {   

@@ -66,7 +66,7 @@ document.addEventListener('keyup', function (e) {
     if (CheckSystemName() == "POS") {
         if (e.keyCode == 122) {
             // call your function to do the thing
-            alert("key");
+            //alert("key");
             return false;
             
         }
@@ -84,6 +84,17 @@ document.addEventListener('keyup', function (e) {
         if (e.keyCode == 112) {
             // call your function to do the thing
             Confirm_POS();
+
+            return false;
+        }
+    }
+}, false);
+
+document.addEventListener('keyup', function (e) {
+    if (CheckSystemName() == "POS") {
+        if (e.keyCode == 113) {
+            // call your function to do the thing
+            SaveInvoice(true);
 
             return false;
         }
@@ -355,9 +366,9 @@ function RandomMath() {
     return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
 }
 
-function AlertModal(AlertIcon,AlertText) {
+function AlertModal(AlertText) {
     $("#AlertModal").modal();
-    $("#Alert-body-img").html(AlertIcon);
+    //$("#Alert-body-img").html(AlertIcon);
     $("#Alert-body").html(AlertText);
 }
 
@@ -368,24 +379,11 @@ function Confirm_POS() {
         $("#Confrim_POS").modal();
         var TotalAmnt = $("#sub_total").val();
         $("#Confrim_POS").find("#TotalAmnt").val(TotalAmnt)
-
-        $("#Confrim_SaveInvoice").click(function () {
-            SaveInvoice(function (callback) {
-                if (!!callback) {
-                    console.log("true");
-                }else{  
-                    bootbox.alert("<center>ไม่สามารถดำเนินการต่อได้<br>กรุณาติดต่อผู้ดูแลระบบ</center>");
-                }
-            });
-        });
     }else{
-        var iconAlert = "<img src='" + base_url + "extensions/images/icon/box.png'>";
-        var txtAlert = "<h3 class='text-center text-red float-left'>ไม่มีสินค้าในตะกร้า !</h3>";
-        AlertModal(iconAlert,txtAlert);
+        var txtAlert = "<h3 class='text-center text-red float-left'>กรุณาเลือกสินค้า !</h3>";
+        AlertModal(txtAlert);
     }
     openloading(false);
-
-
 }
 
 function callImages(type) {

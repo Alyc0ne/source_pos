@@ -7,7 +7,11 @@
     <!-- Project Card Example -->
     <div class="card shadow mb-4 h_detail_pos" id="left_SellGoods">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
+            <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-info" onclick="javascript:waitPayment();">
+                    <i class="fa fa-search"></i> รอชำระ
+                </button>
+            </div>
         </div>
     
         <div class="card-body" style="height:100%!important;">
