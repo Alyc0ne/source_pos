@@ -99,6 +99,7 @@ class GoodsController extends CI_Controller{
 
     public function getNoGoodsBarcode()
     {
+        $objTable = $this->input->post("objTable"); 
         $txtSearch = '';
         $IsFirst = false;
         if ($this->input->post("txtSearch") != null) {
@@ -124,7 +125,8 @@ class GoodsController extends CI_Controller{
         //$record_per_page = $start == 0 ? $record_per_page - 2 : $record_per_page;
         $total_pages = ceil(count($query) / $record_per_page);
         $ListGoods = array_chunk($query, $record_per_page); 
-        $ResultData = $this->BaseSystem->GetGoodsNoBarcode($ListGoods,$page);
+        $de = json_decode($objTable,true);
+        $ResultData = $this->BaseSystem->GenTableModal($de,$ListGoods,$page);
         $arr = array(
             "GoodsData"=>$ResultData['ListGoods'],
             "TableData"=>$ResultData['TableData'],

@@ -25,6 +25,7 @@ function GetNoGoodsBarcode(callback,page,txtSearch) {
         type: 'POST',
         url: base_url + "Goods/GoodsController/getNoGoodsBarcode",
         data: {
+            objTable : JSON.stringify(gebObjTable()),
             page : page,
             txtSearch : txtSearch
         },

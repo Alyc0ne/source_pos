@@ -447,3 +447,31 @@ function SaveGoodsModal() {
         });
     }
 }
+
+function gebObjTable(numColumn) {
+    //if (numColumn == 3) {
+        var header = {
+            'class' : ['w_10 text-center','w_70','w_15 text-right'],
+            'name' : ['#','ชื่อสินค้า','ราคาสินค้า'],
+            'length' : 3
+        }
+    
+        var body = {
+            'BodyClass' : 'NoGoodsBarcode_Body',
+            'ID' : ['NoGoodsBarcode_QtyBarcode','NoGoodsBarcode_GoodsName','NoGoodsBarcode_GoodsPrice'],
+            'IsInput' : [true,false,false],
+            'detailBody' : {
+                'type' : ['number','',''],
+                'class' : ['text-center w_100','','text-right"'],
+                'name' : ['QtyBarcode','',''],
+                'id' : ['QtyBarcode','','']
+            },
+            'length' : 3
+        }
+    //}  
+
+    return obj = {
+        Header : header,
+        Body : body
+    };
+}
