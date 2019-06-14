@@ -462,7 +462,7 @@ function gebObjTable(numColumn) {
             'IsInput' : [true,false,false],
             'detailBody' : {
                 'type' : ['number','',''],
-                'class' : ['text-center w_100','','text-right"'],
+                'class' : ['text-center w_100 h_5','','text-right"'],
                 'name' : ['QtyBarcode','',''],
                 'id' : ['QtyBarcode','','']
             },

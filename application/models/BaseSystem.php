@@ -1,8 +1,9 @@
 <?php    
-class NoGoodsBarcode
+class objNoGoodsBarcode
 {
     public $detail;
     public $column;
+    public $format;
 }
 
 class BaseSystem extends CI_Model
@@ -122,7 +123,6 @@ class BaseSystem extends CI_Model
     public function GenTableModal($Table,$ListGoods,$start){ //,$BodyName,$Body,$text
         $IsHeader = false;
         $IsBody = false;
-        $Detail = array();
 
         if ($ListGoods != null) {
             $result = $ListGoods[$start - 1];
@@ -165,34 +165,39 @@ class BaseSystem extends CI_Model
                             <span class="checkmark"></span>
                         </label>
                     </th>';
-                array_push($Detail, $temp);    
+                $Detail[] = $temp;
 
-                $obj = array();
                 for ($stepThree=0; $stepThree < $Body['length']; $stepThree++) { 
                     if (!empty($result)) {
-                        # code...
                         if ($Body['IsInput'][$stepThree]) {
-                            $temp = '<td id='.$Body['ID'][$stepThree].'><input type='.$DetailBody['type'][$stepThree].' class='.$DetailBody['class'][$stepThree].' id='.$DetailBody['id'][$stepThree].' name='.$DetailBody['name'][$stepThree].'> %s </td>'; //'.$DetailBody['type'][$stepThree] == "number".' ? min="1" max="99" value="1" : ""
-                            $tt = array('detail' => $temp);
-
-                            array_push($obj, $tt)
-                            array_push($Detail['detail'], $obj); 
-                            array_push($Detail['column'], "GoodsName"); 
+                            $addMoreOption = $DetailBody['type'][$stepThree] == "number" ? " min='1' max='99' value='1' " : "";
+                                $temp = '<td id='.$Body['ID'][$stepThree].'><input type='.$DetailBody['type'][$stepThree].' class='.$DetailBody['class'][$stepThree].' id='.$DetailBody['id'][$stepThree].' name='.$DetailBody['name'][$stepThree].''.$addMoreOption.'> %s </td>';
+                                $objBody = new objNoGoodsBarcode();
+                                $objBody->detail = $temp;
+                                $objBody->column = '';
+                                $objBody->format = 'string';
+                                $detailTemp[] = $objBody; 
                         }else {
-                           if ($DetailBody['type'][$stepThree] == "number") {
-                                $temp = '<td id='.$Body['ID'][$stepThree].' class='.$DetailBody['class'][$stepThree].'> %s </td>'; //.number_format((float)$data['GoodsPrice'], 2, '.', '').
-                                $obj = array('detail' => $temp);
-                                array_push($Detail['detail'], $obj); 
-                                array_push($Detail['column'], "GoodsPrice");
+                           if ($DetailBody['type'][$stepThree] == "number") {                                
+                                $temp = '<td id='.$Body['ID'][$stepThree].' name='.$DetailBody['name'][$stepThree].' class='.$DetailBody['class'][$stepThree].'> %01.2f </td>';
+                                $objBody = new objNoGoodsBarcode();
+                                $objBody->detail = $temp;
+                                $objBody->column = 'GoodsPrice';
+                                $objBody->format = 'decimal';
+                                $detailTemp[] = $objBody; 
                             } else {
                                 $temp = '<td id='.$Body['ID'][$stepThree].'> %s </td>';
-                                $obj = array('detail' => $temp);
-                                array_push($Detail['detail'], $obj); 
-                                array_push($Detail['column'], "");
+                                $objBody = new objNoGoodsBarcode();
+                                $objBody->detail = $temp;
+                                $objBody->column = "GoodsName";
+                                $objBody->format = 'string';
+                                $detailTemp[] = $objBody; 
                             }
                         }
                     }
                 }
+
+                $arr = array($detailTemp);
 
                 if (empty($result)) {
                     $result = null;
@@ -200,79 +205,40 @@ class BaseSystem extends CI_Model
                         <tr><td colspan ="4" style="font-size:18pt;"> <b>ไม่พบข้อมูลที่ค้นหา</b> </td>';
                 }else {
                     foreach ($result as $data) {
-                        $table_td = '';
-                        for ($i=0; $i < count($Detail['detail']); $i++) { 
-                            if ($i == 0) {
-                                $table_td .= $Detail['detail'][$i];
-                            }else {
-                                $table_td .= sprintf($Detail['detail'][$i],$data[$Detail['column']]);
-                            }
+                        $table_td = '<tr id="uid" data-id="">
+                        <th>
+                            <label class="customcheckbox">
+                                <input type="checkbox" class="chkNo" />
+                                <span class="checkmark"></span>
+                            </label>
+                        </th>';
+
+                        for ($i=0; $i < count($detailTemp); $i++) { 
+                            /*if ($i == 0) {
+                                $table_td .= $detailTemp[$i]->detail;
+                            }else {*/
+                                $a = "";
+                                $e = $detailTemp[$i]->column;
+                                if (!empty($e)) {
+                                    if ($detailTemp[$i]->format == 'number') {
+                                        $a = number_format((float)$data[$detailTemp[$i]->column], 2, '.', '');
+                                    }else {
+                                        $a = $data[$detailTemp[$i]->column];
+                                    }
+                                }
+                                
+                                $table_td .= sprintf($detailTemp[$i]->detail,$a);
+                            //}
                         }
                         $table_td .= '</tr>';
-                        $table .= $table_td;
                     }
+                    $table .= $table_td;
                 }
 
                 $IsBody = true;
                 //$table .= '</tr>';
             }
         }
-
-        
-       
-        
-        
-       
-        // $t_body = '
-        // <tr id="uid" data-id="">
-        //     <th>
-        //         <label class="customcheckbox">
-        //             <input type="checkbox" class="chkNo" />
-        //             <span class="checkmark"></span>
-        //         </label>
-        //     </th>';
-
-        // for ($i=0; $i < $Body; $i++) { 
-        //     if ($Body[$i]['IsInput']) {
-        //         $t_body .= '<td id="'.$Body['ID'].'"><input type="'.$Body[$i]['type'].'" class="'.$Body[$i]['input_class'].'" id="'.$Body[$i]['input_id'].'" name="'.$Body[$i]['input_name'].'" "'.$Body[$i]['type'] == "number".'" ? min="1" max="99" : "" value="1"></td>';
-        //     } else {
-        //         if ($Body[$i]['type'] == "number") {
-        //             $t_body .= '<td id="'.$Body['ID'].'" class="text-right"></td>'; //.number_format((float)$data['GoodsPrice'], 2, '.', '').
-        //         } else {
-        //             $t_body .= '<td id="'.$Body['ID'].'">''</td>';
-        //         }
-        //     }
-        // }
-
-        // $t_body .= '</tr>';
-        /************************* END Generate Body  *************************/
-            
-        // $table .= '<tbody class="NoGoodsBarcode_Body">
-        // ';
-        // if (!empty($result)) {
-        //     foreach ($result as $data) {
-        //         $table .= '
-        //             <tr id="uid" data-goodsid="'. $data['GoodsID'] .'">
-        //                 <th>
-        //                 <label class="customcheckbox">
-        //                 <input type="checkbox" class="chkNoGoodsBarcode" />
-        //                 <span class="checkmark"></span>
-        //                 </label>
-        //                 </th>
-        //                 <td id="NoGoodsBarcode_QtyBarcode"><input type="number" style="height:5%;" class="text-center w_100" id="QtyBarcode" name="QtyBarcode" min="1" max="99" value="1"></td>
-        //                 <td id="NoGoodsBarcode_GoodsName">'. $data['GoodsName'] .'</td>
-        //                 <td id="NoGoodsBarcode_GoodsPrice" class="text-right">'.number_format((float)$data['GoodsPrice'], 2, '.', '').'</td>
-        //             </tr>
-        //         ';
-        //     }
-        // }else {
-        //     $result = null;
-        //     $table .= '
-        //         <tr>
-        //             <td colspan ="4" style="font-size:18pt;"> <b>ไม่พบข้อมูลที่ค้นหา</b> </td>
-        //         </tr>
-        //     ';
-        // }
 
         $table .= '
                 </tbody>
