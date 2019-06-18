@@ -126,7 +126,7 @@ class GoodsController extends CI_Controller{
         $total_pages = ceil(count($query) / $record_per_page);
         $ListGoods = array_chunk($query, $record_per_page); 
         $de = json_decode($objTable,true);
-        $ResultData = $this->BaseSystem->GenTableModal($de,$ListGoods,$page);
+        $ResultData = $this->BaseSystem->GetGoodsNoBarcode($ListGoods,$page);
         $arr = array(
             "GoodsData"=>$ResultData['ListGoods'],
             "TableData"=>$ResultData['TableData'],

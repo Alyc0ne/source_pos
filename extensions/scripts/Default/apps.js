@@ -436,10 +436,11 @@ function SaveGoodsModal() {
             datatype: "json",
             traditional: true,
             success: function (e) {
-                openloading(false);
-                //PostMsgSuccess(" บันทึกข้อมูลสำเร็จ");
-                clearModal("#frmGoods");
-                $("#GoodsModal").modal('toggle');
+                if (e) {
+                    openloading(false);
+                    clearModal("#frmGoods");
+                    $("#GoodsModal").modal('toggle');
+                }
             },
             error: function (e) {
                 openloading(false);

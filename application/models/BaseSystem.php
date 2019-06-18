@@ -57,68 +57,68 @@ class BaseSystem extends CI_Model
         return $result;
     }
 
-    // public function GetGoodsNoBarcode($ListGoods,$start)
-    // {   
-    //     if ($ListGoods != null) {
-    //         $result = $ListGoods[$start - 1];
-    //     }
+    public function GetGoodsNoBarcode($ListGoods,$start)
+    {   
+        if ($ListGoods != null) {
+            $result = $ListGoods[$start - 1];
+        }
         
-    //     //$table = '';
-    //     $table = '
-    //         <table class="table">
-    //             <thead class="thead-light">
-    //                 <tr>
-    //                     <th class="w_5">
-    //                         <label class="customcheckbox m_b20">
-    //                             <input type="checkbox" id="mainCheckbox" />
-    //                             <span class="checkmark"></span>
-    //                         </label>
-    //                     </th>
-    //                     <th scope="col" class="w_10 text-center">#</th>
-    //                     <th scope="col" class="w_70">ชื่อสินค้า</th>
-    //                     <th scope="col" class="w_15 text-right">ราคาสินค้า</th>
-    //                 </tr>
-    //             </thead>
-    //             <tbody class="NoGoodsBarcode_Body">
-    //     ';
-    //     if (!empty($result)) {
-    //         foreach ($result as $data) {
-    //             $table .= '
-    //                 <tr id="uid" data-goodsid="'. $data['GoodsID'] .'">
-    //                     <th>
-    //                     <label class="customcheckbox">
-    //                     <input type="checkbox" class="chkNoGoodsBarcode" />
-    //                     <span class="checkmark"></span>
-    //                     </label>
-    //                     </th>
-    //                     <td id="NoGoodsBarcode_QtyBarcode"><input type="number" style="height:5%;" class="text-center w_100" id="QtyBarcode" name="QtyBarcode" min="1" max="99" value="1"></td>
-    //                     <td id="NoGoodsBarcode_GoodsName">'. $data['GoodsName'] .'</td>
-    //                     <td id="NoGoodsBarcode_GoodsPrice" class="text-right">'.number_format((float)$data['GoodsPrice'], 2, '.', '').'</td>
-    //                 </tr>
-    //             ';
-    //         }
-    //     }else {
-    //         $result = null;
-    //         $table .= '
-    //             <tr>
-    //                 <td colspan ="4" style="font-size:18pt;"> <b>ไม่พบข้อมูลที่ค้นหา</b> </td>
-    //             </tr>
-    //         ';
-    //     }
+        //$table = '';
+        $table = '
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th class="w_5">
+                            <label class="customcheckbox m_b20">
+                                <input type="checkbox" id="mainCheckbox" />
+                                <span class="checkmark"></span>
+                            </label>
+                        </th>
+                        <th scope="col" class="w_10 text-center">#</th>
+                        <th scope="col" class="w_70">ชื่อสินค้า</th>
+                        <th scope="col" class="w_15 text-right">ราคาสินค้า</th>
+                    </tr>
+                </thead>
+                <tbody class="NoGoodsBarcode_Body">
+        ';
+        if (!empty($result)) {
+            foreach ($result as $data) {
+                $table .= '
+                    <tr id="uid" data-goodsid="'. $data['GoodsID'] .'">
+                        <th>
+                        <label class="customcheckbox">
+                        <input type="checkbox" class="chkNoGoodsBarcode" />
+                        <span class="checkmark"></span>
+                        </label>
+                        </th>
+                        <td id="NoGoodsBarcode_QtyBarcode"><input type="number" style="height:5%;" class="text-center w_100" id="QtyBarcode" name="QtyBarcode" min="1" max="99" value="1"></td>
+                        <td id="NoGoodsBarcode_GoodsName">'. $data['GoodsName'] .'</td>
+                        <td id="NoGoodsBarcode_GoodsPrice" class="text-right">'.number_format((float)$data['GoodsPrice'], 2, '.', '').'</td>
+                    </tr>
+                ';
+            }
+        }else {
+            $result = null;
+            $table .= '
+                <tr>
+                    <td colspan ="4" style="font-size:18pt;"> <b>ไม่พบข้อมูลที่ค้นหา</b> </td>
+                </tr>
+            ';
+        }
 
-    //     $table .= '
-    //             </tbody>
-    //                 <!-- <tfoot class="page">
-    //                 </tfoot> -->
+        $table .= '
+                </tbody>
+                    <!-- <tfoot class="page">
+                    </tfoot> -->
 
-    //         </table>
-    //     ';
+            </table>
+        ';
 
-    //     return $ResultData = array(
-    //         "ListGoods"=>$result,
-    //         "TableData"=>$table
-    //     );
-    // }
+        return $ResultData = array(
+            "ListGoods"=>$result,
+            "TableData"=>$table
+        );
+    }
 
     public function GenTableModal($Table,$ListGoods,$start){ //,$BodyName,$Body,$text
         $IsHeader = false;

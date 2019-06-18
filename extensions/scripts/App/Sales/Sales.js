@@ -113,6 +113,7 @@ function PrintSlip() {
   }
 
 function ClearPOS() {
-    $("#Confrim_POS").modal('toggle');
-    transacSalesGoods.gridControl.ClearPOS();
+    $("#Confrim_POS").modal('hide');
+    transacSalesGoods.gridControl.clearData();
+    //openloading(true);
 }
