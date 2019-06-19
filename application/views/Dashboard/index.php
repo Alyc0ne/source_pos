@@ -12,32 +12,33 @@
   <title>SB Admin 2 - Dashboard</title>
   <script>var base_url = '<?php echo base_url() ?>';</script>
 
-  <!-- CSS & Font Bundle-->
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-  <link href="<?php echo base_url(); ?>extensions/css/bundle/all.min.css" rel="stylesheet" type="text/css">
-  <link href="<?php echo base_url(); ?>extensions/css/bundle/sb-admin-2.min.css" rel="stylesheet">
-
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="<?php echo base_url(); ?>extensions/css/content/site.css">
-  <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
-
   <!-- Js Bundle-->
   <script src="<?php echo base_url(); ?>extensions/js/bundle/jquery.min.js"></script>
   <script src="<?php echo base_url(); ?>extensions/js/bundle/bootstrap.bundle.min.js"></script>
   <script src="<?php echo base_url(); ?>extensions/js/bundle/jquery.easing.min.js"></script>
-  <script src="<?php echo base_url(); ?>extensions/js/bundle/sb-admin-2.min.js"></script>
-  <script src="<?php echo base_url(); ?>extensions/js/bundle/Chart.min.js"></script>
+  <script src="<?php echo base_url(); ?>extensions/js/bundle/sb-admin-2.js"></script>
+  <!-- <script src="<?php echo base_url(); ?>extensions/js/bundle/Chart.min.js"></script>
   <script src="<?php echo base_url(); ?>extensions/js/bundle/chart-area-demo.js"></script>
-  <script src="<?php echo base_url(); ?>extensions/js/bundle/chart-pie-demo.js"></script>
+  <script src="<?php echo base_url(); ?>extensions/js/bundle/chart-pie-demo.js"></script> -->
   <!-- <script src="<?php echo base_url(); ?>extensions/js/bundle/jquery.dataTables.min.js"></script>
   <script src="<?php echo base_url(); ?>extensions/js/bundle/dataTables.bootstrap4.min.js"></script> -->
 
   <script type="text/javascript" src="<?php echo base_url(); ?>extensions/scripts/Default/apps.js"></script> 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
+
+  <!-- CSS & Font Bundle-->
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>extensions/css/bundle/all.min.css" rel="stylesheet" type="text/css">
+  <link href="<?php echo base_url(); ?>extensions/css/bundle/sb-admin-2.min.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>extensions/css/bundle/burgerMenu.css" rel="stylesheet">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="<?php echo base_url(); ?>extensions/css/content/site.css">
+  <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 </head>
 
-<body id="page-top">
+<body id="page-top" class='sidebar-toggled'>
   <?php
       $this->load->view("Shared/Modal/Goods");
       $this->load->view("Shared/Modal/Unit");
@@ -60,15 +61,36 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+      <div class="sidebar-brand d-flex align-items-center justify-content-center"  id="sidebarHide">
+        <div class="sidebar-brand-icon">
+          <nav role="navigation">
+            <div id="menuToggle">
+
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </nav>
         </div>
-        <div class="sidebar-brand-text mx-3">Mung Pen Kuy Rai A <sup>2</sup></div>
-      </a>
+        <div class="sidebar-brand-text mx-3">
+          Mung Pen Kuy Rai A <sup>2</sup>
+        </div>
+      </div>
+     
+
+    <!-- <nav role="navigation">
+      <div id="menuToggle">
+
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav> -->
+
+
 
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
@@ -170,12 +192,6 @@
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
-
-      <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-      </div>
-
     </ul>
     <!-- End of Sidebar -->
 
