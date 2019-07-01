@@ -20,6 +20,7 @@ class InvoiceController extends CI_Controller{
        $De_GoodsData = json_decode($GoodsData,true);
        $De_InvoiceData = json_decode($InvoiceData,true);
        $IsSucces = false;
+       $TotalPayAmnt = floatval($De_InvoiceData['CashAmnt']) + floatval($De_InvoiceData['BlueFlagAmnt']);
 
        $Invoice = array(
          'InvoiceID'=>substr(uniqid(), 3),
@@ -33,14 +34,15 @@ class InvoiceController extends CI_Controller{
          'NetAmnt'=>floatval($De_InvoiceData['NetAmnt']),
          'CashAmnt'=>floatval($De_InvoiceData['CashAmnt']),
          'BlueFlagAmnt'=>floatval($De_InvoiceData['BlueFlagAmnt']),
-         'TotalPayAmnt'=>(floatval($De_InvoiceData['CashAmnt']) + floatval($De_InvoiceData['BlueFlagAmnt'])),
+         'TotalPayAmnt'=>$TotalPayAmnt,
+         'ChangeAmnt'=>(floatval($De_InvoiceData['NetAmnt']) - $TotalPayAmnt),
          'RowFlag'=> $Draft ? '2' : '1', //1 : Open // 2 : Draft
          "CreatedBy"=>null,
          "CreatedDate"=>date("Y-m-d H:i:s"),
          "ModifiedBy"=>null,
          "ModifiedDate"=>date("Y-m-d H:i:s"),
          'IsDelete'=>false,
-         'IsCancel'=>false
+         'IsInactive'=>false
        );
 
        $this->db->insert('soInvoice', $Invoice);
@@ -66,12 +68,21 @@ class InvoiceController extends CI_Controller{
             );
         }
 
-        $this->db->insert('soInvoiceGoods', $InvoiceGoods);
+        $this->db->insert('soInvoiceItem', $InvoiceGoods);
         $IsSucces = true;
        }
 
        echo json_encode($IsSucces);
     }
 
+    public function PaymentSlip()
+    {
+        $InvoiceID = $this->input->post("DocID");
+        //$Where = array('InvoiceID' => $InvoiceID ,'IsDelete' => 0);
+        $Where = array('InvoiceID' => '9d66db0a92' ,'IsDelete' => 0);
+        $data['Invoice'] = $this->BaseSystem->GetDataOneRow("soInvoice",$Where);
+        $data['InvoiceItem'] = $this->BaseSystem->GetDataAllRow("soInvoiceItem",$Where);
+        $this->load->view("Sales/UC/PaymentSlip",$data);
+    }
 }
 ?>

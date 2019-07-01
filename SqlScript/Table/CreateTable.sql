@@ -53,20 +53,21 @@ CREATE TABLE [dbo].soInvoice(
 	[CashAmnt] DECIMAL(20,2) NULL,
 	[BlueFlagAmnt] DECIMAL(20,2) NULL,
 	[TotalPayAmnt] DECIMAL(20,2) NOT NULL,
+	[ChangeAmnt] DECIMAL(20,2) NOT NULL,
 	[RowFlag] TINYINT NOT NULL,
 	[CreatedBy] VARCHAR(50) NULL,
 	[CreatedDate] DATETIME NOT NULL,
 	[ModifiedBy] VARCHAR(50) DEFAULT NULL,
 	[ModifiedDate] DATETIME NOT NULL,
 	[IsDelete] BIT NOT NULL,
-	[IsCancel] BIT NOT NULL
+	[IsInactive] BIT NOT NULL
 )
 END
 GO
 
-IF NOT EXISTS(SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'dbo.soInvoiceGoods') AND Type = N'U')
+IF NOT EXISTS(SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'dbo.soInvoiceItem') AND Type = N'U')
 BEGIN
-CREATE TABLE [dbo].soInvoiceGoods(
+CREATE TABLE [dbo].soInvoiceItem(
 	[InvoiceGoodsID] VARCHAR(50) PRIMARY KEY NOT NULL,
 	[InvoiceID] VARCHAR(50) NOT NULL,
 	[GoodsID] VARCHAR(50) NOT NULL,

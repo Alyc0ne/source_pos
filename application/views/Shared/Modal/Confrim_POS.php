@@ -99,13 +99,13 @@ $(document).on("blur","#BlueFlagAmnt", function () {
 });
 
 function CalAmnt() {
-  var CashAmnt = $("#CashAmnt").val();
-  var BlueFlagAmnt = $("#BlueFlagAmnt").val();
-  var TotalAmnt = parseFloat($("#TotalAmnt").val());
+  var CashAmnt = parseFloat($("#CashAmnt").val().replace(',', ''));
+  var BlueFlagAmnt = parseFloat($("#BlueFlagAmnt").val().replace(',', ''));
+  var TotalAmnt = parseFloat($("#TotalAmnt").val().replace(',', ''));
   var ChangeAmnt = 0;
-  var ReceiveAmnt = parseFloat(CashAmnt) + parseFloat(BlueFlagAmnt);
+  var ReceiveAmnt = CashAmnt + BlueFlagAmnt;
 
-  if (CashAmnt != "" && BlueFlagAmnt != "") {
+  if (ReceiveAmnt > 0) {
     if (ReceiveAmnt >= TotalAmnt) {
       ChangeAmnt = TotalAmnt - ReceiveAmnt;
       $("button#Confrim_SaveInvoice").prop('disabled',false);

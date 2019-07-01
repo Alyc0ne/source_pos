@@ -8,11 +8,8 @@
     src: url('../../bundle/fonts/Lato/Lato-Bold.ttf'); 
   }
 
-html, 
-body {
-    /* height: 100%;
-    font-family: 'Raleway', sans-serif;
-    overflow: hidden; */
+html{
+    font-family: 'Mali', cursive;
 }
 #sub-menu{
     list-style-type: none;
