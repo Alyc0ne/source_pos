@@ -106,8 +106,8 @@ function SaveInvoice(draft = false) {
 }
 
 function PrintSlip(DocID) {
-    var myWindow = window.open(base_url + "Sales/InvoiceController/PaymentSlip?id" + DocID, "width=200,height=100");
-    //var myWindow = window.open(base_url + "Sales/InvoiceController/PaymentSlip", "width=200,height=100");
+    //var myWindow = window.open(base_url + "Invoice/InvoiceController/PaymentSlip?id" + DocID, "width=200,height=100");
+    var myWindow = window.open(base_url + "Invoice/InvoiceController/PaymentSlip", "width=200,height=100");
     //myWindow.document.write("<p>This is 'myWindow'</p>");
   }
 

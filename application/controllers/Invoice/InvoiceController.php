@@ -20,7 +20,7 @@ class InvoiceController extends CI_Controller{
        $De_GoodsData = json_decode($GoodsData,true);
        $De_InvoiceData = json_decode($InvoiceData,true);
        $IsSucces = false;
-       $TotalPayAmnt = floatval($De_InvoiceData['CashAmnt']) + floatval($De_InvoiceData['BlueFlagAmnt']);
+       $TotalPayAmnt = ConvertToFloat($De_InvoiceData['CashAmnt']) + ConvertToFloat($De_InvoiceData['BlueFlagAmnt']);
 
        $Invoice = array(
          'InvoiceID'=>substr(uniqid(), 3),
@@ -28,14 +28,14 @@ class InvoiceController extends CI_Controller{
          'OrderID'=>null,
          'DocDate'=>date("Y-m-d H:i:s"),
          'InvoiceDate'=>date("Y-m-d H:i:s"),
-         'TotalAmnt'=>floatval($De_InvoiceData['TotalAmnt']),
+         'TotalAmnt'=>ConvertToFloat($De_InvoiceData['TotalAmnt']),
          'Discount'=>null,
          'DiscountAmnt'=>null,
-         'NetAmnt'=>floatval($De_InvoiceData['NetAmnt']),
-         'CashAmnt'=>floatval($De_InvoiceData['CashAmnt']),
-         'BlueFlagAmnt'=>floatval($De_InvoiceData['BlueFlagAmnt']),
+         'NetAmnt'=>ConvertToFloat($De_InvoiceData['NetAmnt']),
+         'CashAmnt'=>ConvertToFloat($De_InvoiceData['CashAmnt']),
+         'BlueFlagAmnt'=>ConvertToFloat($De_InvoiceData['BlueFlagAmnt']),
          'TotalPayAmnt'=>$TotalPayAmnt,
-         'ChangeAmnt'=>(floatval($De_InvoiceData['NetAmnt']) - $TotalPayAmnt),
+         'ChangeAmnt'=>($TotalPayAmnt - ConvertToFloat($De_InvoiceData['NetAmnt'])),
          'RowFlag'=> $Draft ? '2' : '1', //1 : Open // 2 : Draft
          "CreatedBy"=>null,
          "CreatedDate"=>date("Y-m-d H:i:s"),
@@ -48,7 +48,6 @@ class InvoiceController extends CI_Controller{
        $this->db->insert('soInvoice', $Invoice);
 
        if ($Invoice != null) {
-        $eee = floatval($De_InvoiceData['TotalAmnt']);
         foreach ($De_GoodsData as $_GoodsData) {
             $InvoiceGoods = array(
                 'InvoiceGoodsID' =>substr(uniqid(), 3),
@@ -66,9 +65,9 @@ class InvoiceController extends CI_Controller{
                 "ModifiedDate"=>date("Y-m-d H:i:s"),
                 "IsDelete"=>false,
             );
+            $this->db->insert('soInvoiceItem', $InvoiceGoods);
         }
 
-        $this->db->insert('soInvoiceItem', $InvoiceGoods);
         $IsSucces = true;
        }
 
@@ -79,7 +78,7 @@ class InvoiceController extends CI_Controller{
     {
         $InvoiceID = $this->input->post("DocID");
         //$Where = array('InvoiceID' => $InvoiceID ,'IsDelete' => 0);
-        $Where = array('InvoiceID' => '9d66db0a92' ,'IsDelete' => 0);
+        $Where = array('InvoiceID' => 'c2b776d2b0' ,'IsDelete' => 0);
         $data['Invoice'] = $this->BaseSystem->GetDataOneRow("soInvoice",$Where);
         $data['InvoiceItem'] = $this->BaseSystem->GetDataAllRow("soInvoiceItem",$Where);
         $this->load->view("Sales/UC/PaymentSlip",$data);

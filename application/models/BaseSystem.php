@@ -280,7 +280,16 @@ class BaseSystem extends CI_Model
             "TableData"=>$table
         );
     }
-    
+
+    public function checkLogin($Where)
+    {
+        $IsLogin = false;
+        $result = $this->db->where($Where)->get('smUser')->row_array();
+        if (count($result) > 0) {
+            $IsLogin = true;
+        }
+        return $IsLogin;
+    }
 }
       
 ?>
